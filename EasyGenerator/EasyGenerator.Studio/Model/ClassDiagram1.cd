@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EasyGenerator.Studio.Model.ColumnInfo" Collapsed="true">
+    <Position X="1" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAgACAAFAhAIDAIUKCAgRCAhIUAACAGgAQARgAEBE=</HashCode>
+      <FileName>Model\ColumnInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyGenerator.Studio.Model.Window">
+    <Position X="6.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYAAAAGAAEAhAABAIQAAQAQAAAAEAAAACCAAAAggAAA=</HashCode>
+      <FileName>Model\Window.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyGenerator.Studio.Model.CommonModule" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CommonModule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyGenerator.Studio.Model.Database" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEIACAAAAAAAAA=</HashCode>
+      <FileName>Model\Database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyGenerator.Studio.Model.LoginModule" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\LoginModule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyGenerator.Studio.Model.Module" Collapsed="true">
+    <Position X="1" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAgQAAA=</HashCode>
+      <FileName>Model\Module.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyGenerator.Studio.Model.Project" Collapsed="true">
+    <Position X="2.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAQAA=</HashCode>
+      <FileName>Model\Project.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyGenerator.Studio.Model.Reference" Collapsed="true">
+    <Position X="4.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAABAAAQAAAAEAAABCABAKQAAAAA=</HashCode>
+      <FileName>Model\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyGenerator.Studio.Model.SystemModule" Collapsed="true">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\SystemModule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyGenerator.Studio.Model.TableInfo" Collapsed="true">
+    <Position X="1" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAIAAAAAQEAAAEBAAACAAAAAgAAAA=</HashCode>
+      <FileName>Model\TableInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyGenerator.Studio.Model.UI" Collapsed="true">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Model\UI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyGenerator.Studio.Model.ViewInfo" Collapsed="true">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAIAAAAAQEAAAEBAAACAAAAAgAAAA=</HashCode>
+      <FileName>Model\ViewInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="EasyGenerator.Studio.Model.DatabaseType" Collapsed="true">
+    <Position X="1" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAgIQEAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\DatabaseType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EasyGenerator.Studio.Model.SqlType" Collapsed="true">
+    <Position X="2.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAgAAAAjAQAACACAAAAACAAAAAAAAAoACA=</HashCode>
+      <FileName>Model\SqlType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

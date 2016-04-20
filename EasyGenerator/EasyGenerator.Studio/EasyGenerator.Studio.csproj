@@ -1,0 +1,677 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A4888270-91C9-412B-A753-E965E7D8F241}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EasyGenerator.Studio</RootNamespace>
+    <AssemblyName>EasyGenerator.Studio</AssemblyName>
+    <ApplicationIcon>Application.ico</ApplicationIcon>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>EasyGenerator.Studio.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutDlg.Designer.cs">
+      <DependentUpon>AboutDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssemblyCache\CacheAssemblies.cs" />
+    <Compile Include="AssemblyCache\CacheFlags.cs" />
+    <Compile Include="AssemblyCache\Controllers.cs" />
+    <Compile Include="AssemblyCache\GACDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssemblyCache\GACDlg.Designer.cs">
+      <DependentUpon>GACDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssemblyCache\IAssemblyEnum.cs" />
+    <Compile Include="AssemblyCache\IAssemblyName.cs" />
+    <Compile Include="AssemblyCache\NameDisplayFlags.cs" />
+    <Compile Include="BuildDomainDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuildDomainDlg.Designer.cs">
+      <DependentUpon>BuildDomainDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Builder\Domain.cs" />
+    <Compile Include="Controls\DbTreeNode.cs" />
+    <Compile Include="Controls\UiTreeNode.cs" />
+    <Compile Include="Controls\UserControls\ListView\Designers.cs" />
+    <Compile Include="Controls\UserControls\ListView\ListviewAPI.cs" />
+    <Compile Include="Controls\UserControls\ListView\XPListview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UserControls\ListView\XPListViewGroup.cs" />
+    <Compile Include="Controls\UserControls\ListView\XPListViewGroupCollection.cs" />
+    <Compile Include="Controls\UserControls\ListView\XPListViewItem.cs" />
+    <Compile Include="Controls\UserControls\ListView\XPListViewItemCollection.cs" />
+    <Compile Include="Controls\UserControls\MirroredListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UserControls\MirroredTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UserControls\MultiTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TreeNodeType.cs" />
+    <Compile Include="DbHelper\Access\AccessDriver.cs" />
+    <Compile Include="DbHelper\Access\AccessSchemaExtractor.cs" />
+    <Compile Include="DbHelper\ConnectionInfo.cs" />
+    <Compile Include="DbHelper\Driver.cs" />
+    <Compile Include="DbHelper\DriverFactory.cs" />
+    <Compile Include="DbHelper\Info\ConstraintInfo.cs" />
+    <Compile Include="DbHelper\Info\KeyInfo.cs" />
+    <Compile Include="DbHelper\MSSQL\MSSQLDriver.cs" />
+    <Compile Include="DbHelper\MSSQL\MSSQL2000SchemaExtractor.cs" />
+    <Compile Include="DbHelper\OLESchemaExtractor.cs" />
+    <Compile Include="DriverDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DriverDlg.Designer.cs">
+      <DependentUpon>DriverDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engine\CodeGenerationDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engine\CodeGenerationDlg.Designer.cs">
+      <DependentUpon>CodeGenerationDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engine\FileOutput.cs" />
+    <Compile Include="Engine\ICodeOutput.cs" />
+    <Compile Include="Engine\GeneratorEngine.cs" />
+    <Compile Include="Engine\GenerationArgs.cs" />
+    <Compile Include="Engine\EasyGeneratorTemplate.cs" />
+    <Compile Include="Engine\PageModel.cs" />
+    <Compile Include="Engine\TemplateDir.cs" />
+    <Compile Include="Engine\TemplateFile.cs" />
+    <Compile Include="Engine\OutputFile.cs" />
+    <Compile Include="EntitiesDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntitiesDlg.Designer.cs">
+      <DependentUpon>EntitiesDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenerationDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerationDlg.Designer.cs">
+      <DependentUpon>GenerationDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginWindowDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginWindowDlg.Designer.cs">
+      <DependentUpon>LoginWindowDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ColumnsFromTableNameConverter.cs" />
+    <Compile Include="PropertyTools\TablesConverter.cs" />
+    <Compile Include="PropertyTools\CheckedListBoxEditor.cs" />
+    <Compile Include="PropertyTools\DatetimeDefaultConverter.cs" />
+    <Compile Include="Model\Dialog.cs" />
+    <Compile Include="PropertyTools\ListColumnsFromLookupTableEditor.cs" />
+    <Compile Include="Model\OptionItem.cs" />
+    <Compile Include="Model\DBControl.cs" />
+    <Compile Include="Model\DBControlType.cs" />
+    <Compile Include="Model\DBViewControl.cs" />
+    <Compile Include="Model\DBViewControlType.cs" />
+    <Compile Include="Model\ColumnInfo.cs" />
+    <Compile Include="Model\CommonModule.cs" />
+    <Compile Include="Model\Connection.cs" />
+    <Compile Include="Model\ContextObject.cs" />
+    <Compile Include="Model\Database.cs" />
+    <Compile Include="Model\DatabaseType.cs" />
+    <Compile Include="PropertyTools\PropertyOrder.cs" />
+    <Compile Include="Model\SearchModeControl.cs" />
+    <Compile Include="PropertyTools\StringValueDefaultConverter.cs" />
+    <Compile Include="Model\EntityInfo.cs" />
+    <Compile Include="Model\LoginModule.cs" />
+    <Compile Include="Model\Module.cs" />
+    <Compile Include="Model\PrimaryColumnInfo.cs" />
+    <Compile Include="Model\SearchMode.cs" />
+    <Compile Include="PropertyTools\NodeInvisibleAttribute.cs" />
+    <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\ReferenceInfo.cs" />
+    <Compile Include="Model\SqlType.cs" />
+    <Compile Include="Model\SystemModule.cs" />
+    <Compile Include="Model\TableInfo.cs" />
+    <Compile Include="Model\TextAlign.cs" />
+    <Compile Include="Model\UI.cs" />
+    <Compile Include="Model\ViewInfo.cs" />
+    <Compile Include="Model\Window.cs" />
+    <Compile Include="PropertyTools\CheckedListBoxUITypeEditor.cs" />
+    <Compile Include="PropertyTools\ContextObjectTypeConverter.cs" />
+    <Compile Include="PropertyTools\ClientTreeViewStringConverter.cs" />
+    <Compile Include="PropertyTools\NodeAttribute.cs" />
+    <Compile Include="PropertyTools\PropertyHelper.cs" />
+    <Compile Include="ModuleDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuleDlg.Designer.cs">
+      <DependentUpon>ModuleDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RefreshProjectDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RefreshProjectDlg.Designer.cs">
+      <DependentUpon>RefreshProjectDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash.Designer.cs">
+      <DependentUpon>Splash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BuildDomain.cs" />
+    <Compile Include="Builder\DatabaseBuilder.cs" />
+    <Compile Include="EasyGeneratorStudio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EasyGeneratorStudio.Designer.cs">
+      <DependentUpon>EasyGeneratorStudio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\NomenclatureHelper.cs" />
+    <Compile Include="Utils\ProfileHelper.cs" />
+    <Compile Include="Utils\SerializableDictionary.cs" />
+    <Compile Include="Utils\XmlHelper.cs" />
+    <Compile Include="WindowDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowDlg.Designer.cs">
+      <DependentUpon>WindowDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TableDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TableDlg.Designer.cs">
+      <DependentUpon>TableDlg.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AboutDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AboutDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssemblyCache\GACDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GACDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuildDomainDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BuildDomainDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UserControls\ListView\XPListview.resx">
+      <DependentUpon>XPListview.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DriverDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DriverDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engine\CodeGenerationDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CodeGenerationDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntitiesDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EntitiesDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerationDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GenerationDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginWindowDlg.resx">
+      <DependentUpon>LoginWindowDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuleDlg.resx">
+      <DependentUpon>ModuleDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RefreshProjectDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RefreshProjectDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EasyGeneratorStudio.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EasyGeneratorStudio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Splash.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Splash.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="WindowDlg.resx">
+      <DependentUpon>WindowDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableDlg.resx">
+      <DependentUpon>TableDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Model\ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Utils\Common.cs" />
+    <Compile Include="Utils\Configuration.cs" />
+    <Compile Include="Utils\Mapper.cs" />
+    <Compile Include="Utils\TemplatesLoader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\item416x16 24-bit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveas-alt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gears.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\conf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open116x16 24-bit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save all16x16 24-bit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save16x16 24-bit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open216x16 8-bit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cubes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cubes.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add16x16 8-bit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\statistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ErModelPage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Loaded_Libraries.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Libary.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_open_16_h.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_document_16.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forward-alt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back-alt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Application.ico" />
+    <Content Include="Readme.txt" />
+    <None Include="Resources\GotoShortcutsHS1.png" />
+    <None Include="Resources\AddTableHS1.png" />
+    <None Include="Resources\generate.png" />
+    <None Include="Resources\AddLibrariesHS.png" />
+    <None Include="Resources\AboutImg.png" />
+    <None Include="Resources\Splash.bmp" />
+    <None Include="Resources\Constant.png" />
+    <None Include="Resources\AddLibraryrHS.png" />
+    <None Include="Resources\LibrariesHS.png" />
+    <None Include="Resources\saveHS.png" />
+    <None Include="Resources\AddTableHS.png" />
+    <None Include="Resources\ActualSizeHS.png" />
+    <None Include="Resources\ZoomHS.png" />
+    <None Include="Resources\XMLFileHS.png" />
+    <None Include="Resources\WindowsHS.png" />
+    <None Include="Resources\WebInsertHyperlinkHS.png" />
+    <None Include="Resources\Web.png" />
+    <None Include="Resources\WarningHS.png" />
+    <None Include="Resources\ViewThumbnailsHS.png" />
+    <None Include="Resources\TileWindowsHorizontallyHS.png" />
+    <None Include="Resources\ThumbnailViewHS.png" />
+    <None Include="Resources\ThumbnailView.png" />
+    <None Include="Resources\ThumbnailLoadingHS.png" />
+    <None Include="Resources\TextboxHS.png" />
+    <None Include="Resources\TaskHS.png" />
+    <None Include="Resources\TableHS.png" />
+    <None Include="Resources\SymbolHS.png" />
+    <None Include="Resources\SychronizeListHS.png" />
+    <None Include="Resources\StopHS.png" />
+    <None Include="Resources\SplitSubdocumentHS.png" />
+    <None Include="Resources\SpeechMicHS.png" />
+    <None Include="Resources\SortUpHS.png" />
+    <None Include="Resources\SortHS.png" />
+    <None Include="Resources\ShowRulerHS.png" />
+    <None Include="Resources\ShowRulelinesHS.png" />
+    <None Include="Resources\ShowGridlinesHS.png" />
+    <None Include="Resources\ShowGridlines2HS.png" />
+    <None Include="Resources\ShowAllCommentsHS.png" />
+    <None Include="Resources\SendToBackHS.png" />
+    <None Include="Resources\SendBackwardHS.png" />
+    <None Include="Resources\SearchWebHS.png" />
+    <None Include="Resources\SearchFolderHS.png" />
+    <None Include="Resources\SaveFormDesignHS.png" />
+    <None Include="Resources\SaveAsWebPageHS.png" />
+    <None Include="Resources\SaveAllHS.png" />
+    <None Include="Resources\RulerHS.png" />
+    <None Include="Resources\RoutingSlipHS.png" />
+    <None Include="Resources\RightToLeftDoucmentHS.png" />
+    <None Include="Resources\RightsRestrictedHS.png" />
+    <None Include="Resources\RightArrowHS.png" />
+    <None Include="Resources\RightArrow2HS.png" />
+    <None Include="Resources\RighsRestrictedHS.png" />
+    <None Include="Resources\RestartHS.png" />
+    <None Include="Resources\ResizeHS.png" />
+    <None Include="Resources\RepeatHS.png" />
+    <None Include="Resources\RenameFolderHS.png" />
+    <None Include="Resources\RelationshipsHS.png" />
+    <None Include="Resources\RefreshDocViewHS.png" />
+    <None Include="Resources\RecordHS.png" />
+    <None Include="Resources\RecolorPictureHS.png" />
+    <None Include="Resources\RadialChartHS.png" />
+    <None Include="Resources\PushpinHS.png" />
+    <None Include="Resources\PublishToWebHS.png" />
+    <None Include="Resources\PublishPlanHS.png" />
+    <None Include="Resources\ProtectSubdocumentHS.png" />
+    <None Include="Resources\ProtectFormHS.png" />
+    <None Include="Resources\PropertiesHS.png" />
+    <None Include="Resources\PrintSetupHS.png" />
+    <None Include="Resources\PrintPreviewHS.png" />
+    <None Include="Resources\PrintHS.png" />
+    <None Include="Resources\PrimaryKeyHS.png" />
+    <None Include="Resources\PreviousPageHS.png" />
+    <None Include="Resources\PortraitLandscapeHS.png" />
+    <None Include="Resources\PortraitHS.png" />
+    <None Include="Resources\PointerHS.png" />
+    <None Include="Resources\PlayHS.png" />
+    <None Include="Resources\PieChartHS.png" />
+    <None Include="Resources\PieChart3DHS.png" />
+    <None Include="Resources\PauseRecorderHS.png" />
+    <None Include="Resources\PauseHS.png" />
+    <None Include="Resources\PasteHS.png" />
+    <None Include="Resources\PageWidthHS.png" />
+    <None Include="Resources\PageUpHS.png" />
+    <None Include="Resources\pageNumberHS.png" />
+    <None Include="Resources\OutdentHS.png" />
+    <None Include="Resources\OrgChartHS.png" />
+    <None Include="Resources\OrganizerHS.png" />
+    <None Include="Resources\OptionsHS.png" />
+    <None Include="Resources\OpenSelectedItemHS.png" />
+    <None Include="Resources\openHS.png" />
+    <None Include="Resources\openfolderHS.png" />
+    <None Include="Resources\NoteHS.png" />
+    <None Include="Resources\NextPageHS.png" />
+    <None Include="Resources\NewReportHS.png" />
+    <None Include="Resources\NewMessageHS.png" />
+    <None Include="Resources\NewFolderHS.png" />
+    <None Include="Resources\NewDocumentHS.png" />
+    <None Include="Resources\NewCardHS.png" />
+    <None Include="Resources\NavForward.png" />
+    <None Include="Resources\NavBack.png" />
+    <None Include="Resources\MultiplePagesHS.png" />
+    <None Include="Resources\MoveToFolderHS.png" />
+    <None Include="Resources\MoveFolderHS.png" />
+    <None Include="Resources\MonthlyViewHS.png" />
+    <None Include="Resources\List_NumberedVertTHS.png" />
+    <None Include="Resources\List_NumberedTBHS.png" />
+    <None Include="Resources\List_NumberedRTLHS.png" />
+    <None Include="Resources\List_NumberedHS.png" />
+    <None Include="Resources\List_BulletsHS.png" />
+    <None Include="Resources\LineColorHS.png" />
+    <None Include="Resources\LegendHS.png" />
+    <None Include="Resources\ItalicHS.png" />
+    <None Include="Resources\InsertTabControlHS.png" />
+    <None Include="Resources\InsertPictureHS.png" />
+    <None Include="Resources\InsertHyperlinkHS.png" />
+    <None Include="Resources\IndentHS.png" />
+    <None Include="Resources\ImportXMLHS.png" />
+    <None Include="Resources\HTMLSubmitHS.png" />
+    <None Include="Resources\HTMLPasswordHS.png" />
+    <None Include="Resources\HTMLPageHS.png" />
+    <None Include="Resources\HtmlBalanceBracesHS.png" />
+    <None Include="Resources\HomeHS.png" />
+    <None Include="Resources\HighlightHS.png" />
+    <None Include="Resources\Help.png" />
+    <None Include="Resources\graphhs.png" />
+    <None Include="Resources\GotoShortcutsHS.png" />
+    <None Include="Resources\GoToPreviousMessage.png" />
+    <None Include="Resources\GoToPrevious.png" />
+    <None Include="Resources\GoToParentFolderHS.png" />
+    <None Include="Resources\GoToNextHS.png" />
+    <None Include="Resources\GoRtlHS.png" />
+    <None Include="Resources\GoLtrHS.png" />
+    <None Include="Resources\FunctionHS.png" />
+    <None Include="Resources\FullScreenHS.png" />
+    <None Include="Resources\FullScreen.png" />
+    <None Include="Resources\FormulaEvaluatorHS.png" />
+    <None Include="Resources\FormRunHS.png" />
+    <None Include="Resources\FontSchemeHS.png" />
+    <None Include="Resources\FontHS.png" />
+    <None Include="Resources\FontDialogHS.png" />
+    <None Include="Resources\FlipVerticalHS.png" />
+    <None Include="Resources\FlipHorizontalHS.png" />
+    <None Include="Resources\Flag_redHS.png" />
+    <None Include="Resources\Flag_greenHS.png" />
+    <None Include="Resources\Flag_blueHS.png" />
+    <None Include="Resources\FindNextHS.png" />
+    <None Include="Resources\FindHS.png" />
+    <None Include="Resources\Filter2HS.png" />
+    <None Include="Resources\FillUpHS.png" />
+    <None Include="Resources\FillRightHS.png" />
+    <None Include="Resources\FillLeftHS.png" />
+    <None Include="Resources\FillDownHS.png" />
+    <None Include="Resources\FaxHS.png" />
+    <None Include="Resources\ExpirationHS.png" />
+    <None Include="Resources\ExpandSpaceHS.png" />
+    <None Include="Resources\eps_openHS.png" />
+    <None Include="Resources\eps_open_largelHS.png" />
+    <None Include="Resources\eps_closedHS.png" />
+    <None Include="Resources\EnvelopeHS.png" />
+    <None Include="Resources\EditTableHS.png" />
+    <None Include="Resources\EditInformationHS.png" />
+    <None Include="Resources\EditCodeHS.png" />
+    <None Include="Resources\EditBrightContrastHS.png" />
+    <None Include="Resources\Edit_UndoHS.png" />
+    <None Include="Resources\Edit_RedoHS.png" />
+    <None Include="Resources\DoubleRightArrowHS.png" />
+    <None Include="Resources\DoubleLeftArrowHS.png" />
+    <None Include="Resources\DocumentHS.png" />
+    <None Include="Resources\DisplayInColorHS.png" />
+    <None Include="Resources\DialHS.png" />
+    <None Include="Resources\DeleteHS.png" />
+    <None Include="Resources\DeleteFolderHS.png" />
+    <None Include="Resources\DataContainer_NewRecordHS.png" />
+    <None Include="Resources\DataContainer_MovePreviousHS.png" />
+    <None Include="Resources\DataContainer_MoveNextHS.png" />
+    <None Include="Resources\DataContainer_MoveLastHS.png" />
+    <None Include="Resources\DataContainer_MoveFirstHS.png" />
+    <None Include="Resources\DataContainer_MoveFirsHS.png" />
+    <None Include="Resources\CutHS.png" />
+    <None Include="Resources\CopyHS.png" />
+    <None Include="Resources\CopyFolderHS.png" />
+    <None Include="Resources\ConflictHS.png" />
+    <None Include="Resources\compareversionsHS.png" />
+    <None Include="Resources\CommentHS.png" />
+    <None Include="Resources\ColorHS.png" />
+    <None Include="Resources\Color_fontHS.png" />
+    <None Include="Resources\Color_font.png" />
+    <None Include="Resources\CheckSpellingHS.png" />
+    <None Include="Resources\CheckGrammarHS.png" />
+    <None Include="Resources\CheckBoxHS.png" />
+    <None Include="Resources\CenterAcrossHS.png" />
+    <None Include="Resources\CascadeWindowsHS.png" />
+    <None Include="Resources\CanvasScaleHS.png" />
+    <None Include="Resources\Calendar_scheduleHS.png" />
+    <None Include="Resources\CalculatorHS.png" />
+    <None Include="Resources\BringToFrontHS.png" />
+    <None Include="Resources\BringForwardHS.png" />
+    <None Include="Resources\BreakpointHS.png" />
+    <None Include="Resources\Book_StackOfReportsHS.png" />
+    <None Include="Resources\book_reportHS.png" />
+    <None Include="Resources\Book_openHS.png" />
+    <None Include="Resources\Book_angleHS.png" />
+    <None Include="Resources\book_addressHS.png" />
+    <None Include="Resources\boldhs.png" />
+    <None Include="Resources\BehindTextHS.png" />
+    <None Include="Resources\BarCodeHS.png" />
+    <None Include="Resources\BackgroundSoundHS.png" />
+    <None Include="Resources\AudioHS.png" />
+    <None Include="Resources\AttachmentHS.png" />
+    <None Include="Resources\ArrangeWindowsHS.png" />
+    <None Include="Resources\ArrangeSideBySideHS.png" />
+    <None Include="Resources\AlignToGridHS.png" />
+    <None Include="Resources\AlignTableCellMiddleRightHS.png" />
+    <None Include="Resources\AlignTableCellMiddleLeftJustHS.png" />
+    <None Include="Resources\AlignTableCellMiddleCenterHS.png" />
+    <None Include="Resources\AlignObjectsTopHS.png" />
+    <None Include="Resources\AlignObjectsRightHS.png" />
+    <None Include="Resources\AlignObjectsLeftHS.png" />
+    <None Include="Resources\AlignObjectsCenteredVerticalHS.png" />
+    <None Include="Resources\AlignObjectsCenteredHorizontalHS.png" />
+    <None Include="Resources\AlignObjectsBottomHS.png" />
+    <None Include="Resources\AddToFavoritesHS.png" />
+    <None Include="Resources\uparrow.png" />
+    <None Include="Resources\ThumbTop.png" />
+    <None Include="Resources\ThumbSpanTop.png" />
+    <None Include="Resources\ThumbSpanBottom.png" />
+    <None Include="Resources\ThumbMiddle.png" />
+    <None Include="Resources\ThumbBottom.png" />
+    <None Include="Resources\downarrow.png" />
+    <None Include="Resources\Screenshot - 11_17_2006 , 11_15_08 PM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\EditorWrapper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\RazorEngine\RazorEngine.csproj">
+      <Project>{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}</Project>
+      <Name>RazorEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

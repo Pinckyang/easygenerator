@@ -1,0 +1,151 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyGenerator.Studio", "EasyGenerator.Studio\EasyGenerator.Studio.csproj", "{A4888270-91C9-412B-A753-E965E7D8F241}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3E72CE85-5477-488E-9FFB-3FB44C8789FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorEngine", "Core\RazorEngine\RazorEngine.csproj", "{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorEngine.Web", "Core\RazorEngine.Web\RazorEngine.Web.csproj", "{992F8CCC-BA76-42A6-9807-4E49EDABF694}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E0485CC5-E357-44DB-BB51-9D57D6B8883E}"
+	ProjectSection(SolutionItems) = preProject
+		Shared\RazorEnigne.snk = Shared\RazorEnigne.snk
+		Shared\SharedAssemblyInfo.cs = Shared\SharedAssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEasyGenerator", "TestEasyGenerator\TestEasyGenerator.csproj", "{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{657A8D69-2718-4211-85DE-810593A8F07B}"
+	ProjectSection(SolutionItems) = preProject
+		EasyGenerator.vsmdi = EasyGenerator.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = EasyGenerator.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug .Net 2.0|Any CPU = Debug .Net 2.0|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Express .Net 2.0|Any CPU = Express .Net 2.0|Any CPU
+		Express|Any CPU = Express|Any CPU
+		MonoDebug|Any CPU = MonoDebug|Any CPU
+		MonoExpress|Any CPU = MonoExpress|Any CPU
+		MonoRelease|Any CPU = MonoRelease|Any CPU
+		MonoStandard|Any CPU = MonoStandard|Any CPU
+		Release .Net 2.0|Any CPU = Release .Net 2.0|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Standard .Net 2.0|Any CPU = Standard .Net 2.0|Any CPU
+		Standard|Any CPU = Standard|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Debug .Net 2.0|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Debug .Net 2.0|Any CPU.Build.0 = Debug|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Express .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Express .Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Express|Any CPU.ActiveCfg = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Express|Any CPU.Build.0 = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.MonoDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.MonoDebug|Any CPU.Build.0 = Debug|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.MonoExpress|Any CPU.ActiveCfg = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.MonoExpress|Any CPU.Build.0 = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.MonoRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.MonoRelease|Any CPU.Build.0 = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.MonoStandard|Any CPU.ActiveCfg = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.MonoStandard|Any CPU.Build.0 = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Release .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Release .Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Standard .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Standard .Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Standard|Any CPU.ActiveCfg = Release|Any CPU
+		{A4888270-91C9-412B-A753-E965E7D8F241}.Standard|Any CPU.Build.0 = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Debug .Net 2.0|Any CPU.ActiveCfg = Debug|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Debug .Net 2.0|Any CPU.Build.0 = Debug|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Express .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Express .Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Express|Any CPU.ActiveCfg = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Express|Any CPU.Build.0 = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoDebug|Any CPU.Build.0 = Debug|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoExpress|Any CPU.ActiveCfg = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoExpress|Any CPU.Build.0 = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoRelease|Any CPU.Build.0 = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoStandard|Any CPU.ActiveCfg = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoStandard|Any CPU.Build.0 = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Release .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Release .Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Standard .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Standard .Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Standard|Any CPU.ActiveCfg = Release|Any CPU
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Standard|Any CPU.Build.0 = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Debug .Net 2.0|Any CPU.ActiveCfg = Debug|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Debug .Net 2.0|Any CPU.Build.0 = Debug|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Express .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Express .Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Express|Any CPU.ActiveCfg = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Express|Any CPU.Build.0 = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoDebug|Any CPU.Build.0 = Debug|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoExpress|Any CPU.ActiveCfg = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoExpress|Any CPU.Build.0 = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoRelease|Any CPU.Build.0 = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoStandard|Any CPU.ActiveCfg = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoStandard|Any CPU.Build.0 = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Release .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Release .Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Release|Any CPU.Build.0 = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Standard .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Standard .Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Standard|Any CPU.ActiveCfg = Release|Any CPU
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Standard|Any CPU.Build.0 = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Debug .Net 2.0|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Debug .Net 2.0|Any CPU.Build.0 = Debug|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Express .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Express .Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Express|Any CPU.ActiveCfg = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Express|Any CPU.Build.0 = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.MonoDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.MonoDebug|Any CPU.Build.0 = Debug|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.MonoExpress|Any CPU.ActiveCfg = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.MonoExpress|Any CPU.Build.0 = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.MonoRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.MonoRelease|Any CPU.Build.0 = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.MonoStandard|Any CPU.ActiveCfg = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.MonoStandard|Any CPU.Build.0 = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Release .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Release .Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Standard .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Standard .Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Standard|Any CPU.ActiveCfg = Release|Any CPU
+		{A5668C14-41E5-46A1-8A45-BFE6DED3EA1C}.Standard|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9} = {3E72CE85-5477-488E-9FFB-3FB44C8789FA}
+		{992F8CCC-BA76-42A6-9807-4E49EDABF694} = {3E72CE85-5477-488E-9FFB-3FB44C8789FA}
+		{E0485CC5-E357-44DB-BB51-9D57D6B8883E} = {3E72CE85-5477-488E-9FFB-3FB44C8789FA}
+	EndGlobalSection
+EndGlobal
