@@ -61,7 +61,7 @@ namespace EasyGenerator.Studio.Engine
         private void RunProcess()
         {
             this.codeEngine.LoadTemplates(this.templateDir);
-            this.codeEngine.GenorateFiles(this.outputDir);
+            this.codeEngine.GenerateFiles(this.outputDir);
         }
 
 

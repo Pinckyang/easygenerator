@@ -20,7 +20,7 @@ namespace EasyGenerator.Studio.Model
         private bool integratedSecurity = true;
 
         [CategoryAttribute("设计"), DefaultValueAttribute("")]
-        [XmlElement("DataSource")]
+        [XmlAttribute("DataSource")]
         public string DataSource
         {
             get { return dataSource; }
@@ -31,7 +31,7 @@ namespace EasyGenerator.Studio.Model
             }
         }
         [CategoryAttribute("设计"), DefaultValueAttribute("")]
-        [XmlElement("InitialCatalog")]
+        [XmlAttribute("InitialCatalog")]
         public string InitialCatalog
         {
             get { return initialCatalog; }
@@ -42,7 +42,7 @@ namespace EasyGenerator.Studio.Model
             }
         }
         [CategoryAttribute("设计"), DefaultValueAttribute("")]
-        [XmlElement("UserID")]
+        [XmlAttribute("UserID")]
         public string UserID
         {
             get { return userID; }
@@ -53,7 +53,7 @@ namespace EasyGenerator.Studio.Model
             }
         }
         [CategoryAttribute("设计"), DefaultValueAttribute("")]
-        [XmlElement("Password")]
+        [XmlAttribute("Password")]
         public string Password
         {
             get { return password; }
@@ -64,7 +64,7 @@ namespace EasyGenerator.Studio.Model
             }
         }
         [CategoryAttribute("设计"), DefaultValueAttribute(true)]
-        [XmlElement("IntegratedSecurity")]
+        [XmlAttribute("IntegratedSecurity")]
         public bool IntegratedSecurity
         {
             get { return integratedSecurity; }
@@ -75,18 +75,8 @@ namespace EasyGenerator.Studio.Model
             }
         }
 
-        //public Connection(ContextObject owner)
-        //    :base(owner)
-        //{
-        //}
-
         public object Clone()
         {
-            //MemoryStream stream = new MemoryStream();
-            //BinaryFormatter formatter = new BinaryFormatter();
-            //formatter.Serialize(stream, this);
-            //stream.Position = 0;
-            //return formatter.Deserialize(stream);
             return this.MemberwiseClone();
         }
     }

@@ -18,15 +18,15 @@ namespace EasyGenerator.Studio.Model
         private string name = "CommonModule";
         private string caption = "通用模块";
         private string description = "通用模块";
-        private ContextObjectDictionary<string, Dialog> dialogs = null;
+        private List<Dialog> dialogs = null;
 
         public CommonModule()
         {
-            dialogs = new ContextObjectDictionary<string, Dialog>(this);
+            dialogs = new ContextObjectList<Dialog>(this);
         }
 
         [ReadOnly(true)]
-        [XmlElement("Name")]
+        [XmlAttribute("Name")]
         public string Name
         {
             get { return name; }
@@ -34,7 +34,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [ReadOnly(true)]
-        [XmlElement("Caption")]
+        [XmlAttribute("Caption")]
         public string Caption
         {
             get { return caption; }
@@ -42,7 +42,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [ReadOnly(true)]
-        [XmlElement("Description")]
+        [XmlAttribute("Description")]
         public string Description
         {
             get { return description; }
@@ -59,7 +59,7 @@ namespace EasyGenerator.Studio.Model
         [UiNodeAttribute()]
         [ReadOnly(true)]
         [XmlElement("Dialogs")]
-        public ContextObjectDictionary<string, Dialog> Dialogs
+        public List<Dialog> Dialogs
         {
             get { return dialogs; }
             set { dialogs = value; }

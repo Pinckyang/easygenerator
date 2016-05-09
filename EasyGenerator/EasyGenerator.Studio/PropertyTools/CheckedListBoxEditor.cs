@@ -32,13 +32,13 @@ namespace EasyGenerator.Studio.PropertyTools
             {
                 Project project = contextObject as Project;
                 TableInfo entityInfo;
-                project.Database.Tables.TryGetValue(control.LookupTable, out entityInfo);
+                entityInfo= project.Database.Tables.Find(e=>e.Name==control.LookupTable);
                 if (entityInfo == null)
                 {
                     return null;
                 }
 
-                foreach (ColumnInfo column in entityInfo.Columns.Values)
+                foreach (ColumnInfo column in entityInfo.Columns)
                 {
                     if (checkeditems.Contains(column.Name))
                     {

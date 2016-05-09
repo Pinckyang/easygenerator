@@ -21,7 +21,7 @@ namespace EasyGenerator.Studio.Model
 
         public Dialog()
         {
-            Entities = new ContextObjectDictionary<string, EntityInfo>(this);
+            Entities = new ContextObjectList<EntityInfo>(this);
             
         }
 
@@ -64,7 +64,7 @@ namespace EasyGenerator.Studio.Model
         [BrowsableAttribute(false)]
         [ReadOnly(true)]
         [XmlElement("Entities")]
-        public ContextObjectDictionary<string, EntityInfo> Entities
+        public List<EntityInfo> Entities
         {
             get;
             set;

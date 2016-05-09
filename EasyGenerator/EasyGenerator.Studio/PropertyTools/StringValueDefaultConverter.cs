@@ -31,9 +31,9 @@ namespace EasyGenerator.Studio.PropertyTools
 
             if (!column.IsPrimaryKey && column.References.Count>0)
             {
-                foreach (KeyValuePair<string, ReferenceInfo> kv in column.References)
+                foreach (ReferenceInfo kv in column.References)
                 {
-                    list.Add("$"+kv.Value.ReferenceTable.Name+"."+kv.Value.ReferenceColumnName);
+                    list.Add("$"+kv.ReferenceTable.Name+"."+kv.ReferenceColumnName);
                 }
             }            
             return new StandardValuesCollection(list.ToArray());

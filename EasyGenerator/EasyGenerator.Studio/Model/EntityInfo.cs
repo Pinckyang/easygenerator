@@ -16,75 +16,106 @@ namespace EasyGenerator.Studio.Model
     [XmlInclude(typeof(ViewInfo))]
     public abstract class EntityInfo : ContextObject
     {
-        private string name;
-        private string caption;
-        private string schema="dbo";
+        public EntityInfo()
+        {
+            Columns= new ContextObjectList<ColumnInfo>(this);
+            this.Schema = "dbo";
+        }
+
+
+        [CategoryAttribute("数据库")]
+        [DefaultValueAttribute("")]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("Name")]
+        public virtual string Name
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [DefaultValueAttribute("")]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("Caption")]
+        public virtual string Caption
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [DefaultValueAttribute("")]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("Schema")]
+        public string Schema
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        [BrowsableAttribute(false)]
+        [XmlElement("Columns")]
+        public virtual List<ColumnInfo> Columns
+        {
+            get;
+            set;
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
+    }
+
+    [Serializable()]
+    [DefaultPropertyAttribute("Name")]
+    [XmlInclude(typeof(UITableInfo))]
+    [XmlInclude(typeof(UIViewInfo))]
+    public abstract class UIEntityInfo : ContextObject
+    {
+        private EntityInfo entityInfo;
         private DBViewControlType dbViewControlType = DBViewControlType.DBGridView;
         private DBViewControl dbViewControl = new DBGridView();
 
-        public EntityInfo()
+        UIEntityInfo()
         {
             dbViewControl.Owner = this;
-            Columns= new ContextObjectDictionary<string, ColumnInfo>(this);
         }
 
-
-        [CategoryAttribute("数据库"), DefaultValueAttribute(""), ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        public string Name
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        public EntityInfo EntityInfo
         {
-            get { return name; }
-            set
-            {
-                name = value;
-                if (!string.IsNullOrEmpty(name) && dbViewControl != null)
-                {
-                    dbViewControl.Name = NomenclatureHelper.ConvertToPascalCase(name);
-                }
-
-                NotifyPropertyChanged(this, "Name");
-            }
-        }
-
-        [CategoryAttribute("数据库"), DefaultValueAttribute("")]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        public string Caption
-        {
-            get { return caption; }
-            set 
-            {
-                caption = value;
-                if (!string.IsNullOrEmpty(caption) && dbViewControl != null)
-                {
-                    dbViewControl.Caption = value;
-                }
-
-                NotifyPropertyChanged(this, "Caption");
-            }
-        }
-
-        [CategoryAttribute("数据库"), DefaultValueAttribute(""), ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        public string Schema
-        {
-            get { return schema; }
+            get { return entityInfo; }
             set 
             { 
-                schema = value;
-                NotifyPropertyChanged(this, "Schema");
+                entityInfo = value;
+
+                if (!string.IsNullOrEmpty(entityInfo.Name) && dbViewControl != null)
+                {
+                    dbViewControl.Name = NomenclatureHelper.ConvertToPascalCase(entityInfo.Name);
+                }
+
+                if (!string.IsNullOrEmpty(entityInfo.Caption) && dbViewControl != null)
+                {
+                    dbViewControl.Caption = entityInfo.Caption;
+                }
             }
         }
 
         [CategoryAttribute("显示")]
-        [DbNodeInvisibleAttribute()]
         [UiNodeInvisibleAttribute()]
+        [XmlAttribute("DBViewControlType")]
         public DBViewControlType DBViewControlType
         {
             get { return dbViewControlType; }
-            set { 
+            set
+            {
                 dbViewControlType = value;
 
                 DBViewControl control = this.dbViewControl;
@@ -95,12 +126,11 @@ namespace EasyGenerator.Studio.Model
                 dbViewControl.Name = control.Name;
                 dbViewControl.Description = control.Description;
                 dbViewControl.Owner = this;
-
-                NotifyPropertyChanged(this, "DBViewControlType");
             }
         }
 
-        [CategoryAttribute("显示"), TypeConverterAttribute(typeof(ExpandableObjectConverter))]
+        [CategoryAttribute("显示")]
+        [TypeConverterAttribute(typeof(ExpandableObjectConverter))]
         [DbNodeInvisibleAttribute()]
         [UiNodeInvisibleAttribute()]
         [XmlElement(Type = typeof(DBGridView), ElementName = "DBGridView")]
@@ -111,22 +141,7 @@ namespace EasyGenerator.Studio.Model
             set
             {
                 dbViewControl = value;
-                NotifyPropertyChanged(this, "DBViewControl");
             }
-        }
-
-        [BrowsableAttribute(false)]
-        [ReadOnly(true)]
-       // [XmlElement(Type = typeof(ContextObjectDictionary<string,PrimaryColumnInfo>), ElementName = "PrimaryColumnInfo")]
-        public ContextObjectDictionary<string, ColumnInfo> Columns
-        {
-            get;
-            set;
-        }
-
-        public override string ToString()
-        {
-            return this.Name;
         }
     }
 }

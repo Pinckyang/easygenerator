@@ -78,20 +78,20 @@ namespace TestEasyGenerator
             project.Name = "TEST";
             TableInfo tableInfo1 = new TableInfo();
             tableInfo1.Name = "table1";
-            tableInfo1.Columns.Add("column1", new ColumnInfo() { Caption = "Column1", Name = "column1", SqlType = SqlType.Varchar });
-            tableInfo1.Columns.Add("column2", new ColumnInfo() { Caption = "Column2", Name = "column2", SqlType = SqlType.Varchar });
+            tableInfo1.Columns.Add(new ColumnInfo() { Caption = "Column1", Name = "column1", SqlType = SqlType.Varchar });
+            tableInfo1.Columns.Add(new ColumnInfo() { Caption = "Column2", Name = "column2", SqlType = SqlType.Varchar });
             TableInfo tableInfo2 = new TableInfo();
             tableInfo2.Name = "table2";
-            tableInfo2.Columns.Add("column1", new ColumnInfo() { Caption = "Column1", Name = "column1", SqlType = SqlType.Varchar });
-            tableInfo2.Columns.Add("column2", new ColumnInfo() { Caption = "Column2", Name = "column2", SqlType = SqlType.Varchar });
+            tableInfo2.Columns.Add(new ColumnInfo() { Caption = "Column1", Name = "column1", SqlType = SqlType.Varchar });
+            tableInfo2.Columns.Add(new ColumnInfo() { Caption = "Column2", Name = "column2", SqlType = SqlType.Varchar });
             ViewInfo viewInfo1 = new ViewInfo();
             viewInfo1.Name = "view1";
             ViewInfo viewInfo2 = new ViewInfo();
             viewInfo2.Name = "view2";
-            project.Database.Tables.Add("table1", tableInfo1);
-            project.Database.Tables.Add("table2", tableInfo2);
-            project.Database.Views.Add("view1", viewInfo1);
-            project.Database.Views.Add("view2", viewInfo2);
+            project.Database.Tables.Add(tableInfo1);
+            project.Database.Tables.Add(tableInfo2);
+            project.Database.Views.Add(viewInfo1);
+            project.Database.Views.Add(viewInfo2);
             GeneratorEngine target = new GeneratorEngine(project); // TODO: 初始化为适当的值
             string test = Environment.CurrentDirectory;
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -103,7 +103,7 @@ namespace TestEasyGenerator
         }
 
         /// <summary>
-        ///GenorateFiles 的测试
+        ///GenerateFiles 的测试
         ///</summary>
         [TestMethod()]
         public void GenorateFilesTest()
@@ -112,20 +112,20 @@ namespace TestEasyGenerator
             project.Name = "TEST";
             TableInfo tableInfo1 = new TableInfo();
             tableInfo1.Name = "table1";
-            tableInfo1.Columns.Add("column1", new ColumnInfo() { Caption = "Column1", Name = "column1", SqlType = SqlType.Varchar });
-            tableInfo1.Columns.Add("column2", new ColumnInfo() { Caption = "Column2", Name = "column2", SqlType = SqlType.Varchar });
+            tableInfo1.Columns.Add(new ColumnInfo() { Caption = "Column1", Name = "column1", SqlType = SqlType.Varchar });
+            tableInfo1.Columns.Add(new ColumnInfo() { Caption = "Column2", Name = "column2", SqlType = SqlType.Varchar });
             TableInfo tableInfo2 = new TableInfo();
             tableInfo2.Name = "table2";
-            tableInfo2.Columns.Add("column1", new ColumnInfo() { Caption = "Column1", Name = "column1", SqlType = SqlType.Varchar });
-            tableInfo2.Columns.Add("column2", new ColumnInfo() { Caption = "Column2", Name = "column2", SqlType = SqlType.Varchar });
+            tableInfo2.Columns.Add(new ColumnInfo() { Caption = "Column1", Name = "column1", SqlType = SqlType.Varchar });
+            tableInfo2.Columns.Add(new ColumnInfo() { Caption = "Column2", Name = "column2", SqlType = SqlType.Varchar });
             ViewInfo viewInfo1 = new ViewInfo();
             viewInfo1.Name = "view1";
             ViewInfo viewInfo2 = new ViewInfo();
             viewInfo2.Name = "view2";
-            project.Database.Tables.Add("table1", tableInfo1);
-            project.Database.Tables.Add("table2", tableInfo2);
-            project.Database.Views.Add("view1", viewInfo1);
-            project.Database.Views.Add("view2", viewInfo2);
+            project.Database.Tables.Add(tableInfo1);
+            project.Database.Tables.Add(tableInfo2);
+            project.Database.Views.Add(viewInfo1);
+            project.Database.Views.Add(viewInfo2);
             GeneratorEngine target = new GeneratorEngine(project); // TODO: 初始化为适当的值
             string test = Environment.CurrentDirectory;
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -136,7 +136,7 @@ namespace TestEasyGenerator
             string outputPath = baseDirectory + "\\GenerateCode";
             Directory.CreateDirectory(outputPath);
             target.OnGeneratingFile += new GeneratingFile(target_OnGeneratingFile);
-            target.GenorateFiles(baseDirectory + "\\GenerateCode");
+            target.GenerateFiles(baseDirectory + "\\GenerateCode");
 
         }
 

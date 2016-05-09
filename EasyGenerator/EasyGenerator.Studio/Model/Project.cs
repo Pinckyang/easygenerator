@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.ComponentModel;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using EasyGenerator.Studio.PropertyTools;
 using System.Xml.Serialization;
 
@@ -30,7 +26,7 @@ namespace EasyGenerator.Studio.Model
 
         [CategoryAttribute("设计"),DefaultValueAttribute("")]
         [UiNodeInvisible()]
-        [XmlElement("Name")]
+        [XmlAttribute("Name")]
         public string Name
         {
             get { return name; }
@@ -43,7 +39,7 @@ namespace EasyGenerator.Studio.Model
 
         [CategoryAttribute("设计"), DefaultValueAttribute("")]
         [UiNodeInvisible()]
-        [XmlElement("Caption")]
+        [XmlAttribute("Caption")]
         public string Caption
         {
             get { return caption; }
@@ -57,7 +53,7 @@ namespace EasyGenerator.Studio.Model
         
         [CategoryAttribute("设计"), DefaultValueAttribute("")]
         [UiNodeInvisible()]
-        [XmlElement("Description")]
+        [XmlAttribute("Description")]
         public string Description
         {
             get { return description; }

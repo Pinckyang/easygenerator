@@ -6,6 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.ComponentModel;
 using EasyGenerator.Studio.PropertyTools;
 using EasyGenerator.Studio.Utils;
+using System.Xml.Serialization;
 
 namespace EasyGenerator.Studio.Model
 {
@@ -13,19 +14,20 @@ namespace EasyGenerator.Studio.Model
     [DefaultPropertyAttribute("Name")]
     public class SystemModule : ContextObject,ICloneable
     {
-        //private ContextObjectDictionary<string, Module> modules = null;
+        //private List<Module> modules = null;
         private string name = "SystemModule";
         private string caption = "功能模块";
         private string description = "功能模块";
 
         public SystemModule()
         {
-           Modules= new ContextObjectDictionary<string, Module>(this);
+           Modules= new ContextObjectList<Module>(this);
         }
 
         [CategoryAttribute("界面")]
         [UiNodeInvisibleAttribute()]
         [ReadOnly(true)]
+        [XmlAttribute("Name")]
         public string Name
         {
             get { return name; }
@@ -35,6 +37,7 @@ namespace EasyGenerator.Studio.Model
         [CategoryAttribute("界面")]
         [UiNodeInvisibleAttribute()]
         [ReadOnly(true)]
+        [XmlAttribute("Caption")]
         public string Caption
         {
             get { return caption; }
@@ -44,6 +47,7 @@ namespace EasyGenerator.Studio.Model
         [CategoryAttribute("界面")]
         [UiNodeInvisibleAttribute()]
         [ReadOnly(true)]
+        [XmlAttribute("Description")]
         public string Description
         {
             get { return description; }
@@ -52,7 +56,8 @@ namespace EasyGenerator.Studio.Model
 
         [BrowsableAttribute(false)]
         [ReadOnly(true)]
-        public ContextObjectDictionary<string, Module> Modules
+        [XmlElement("Description")]
+        public List<Module> Modules
         {
             get;// { return modules; }
             set;// { modules = value ; }

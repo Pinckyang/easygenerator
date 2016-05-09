@@ -12,7 +12,7 @@ namespace EasyGenerator.Studio.Model
     [Serializable()]
     [DefaultPropertyAttribute("Name")]
     [DbNodeAttribute(ImageIndex = 2)]
-    [UiNodeAttribute(ImageIndex = 5)]
+    
     public class TableInfo :EntityInfo,ICloneable
     {
         public override string ToString()
@@ -23,6 +23,23 @@ namespace EasyGenerator.Studio.Model
         public object Clone()
         {
             return this.MemberwiseClone();
+        }
+    }
+    [Serializable()]
+    [DefaultPropertyAttribute("Name")]
+    [UiNodeAttribute(ImageIndex = 5)]
+    public class UITableInfo :UIEntityInfo
+    {
+
+        public TableInfo TableInfo
+        {
+            get { return (TableInfo)base.EntityInfo; }
+            set { base.EntityInfo = value; }
+        }
+
+        public override string ToString()
+        {
+            return TableInfo.ToString();
         }
     }
 }

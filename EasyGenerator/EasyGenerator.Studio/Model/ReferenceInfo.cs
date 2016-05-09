@@ -14,201 +14,234 @@ namespace EasyGenerator.Studio.Model
 {
     [Serializable()]
     [DefaultPropertyAttribute("Name")]
-    [XmlInclude(typeof(PrimaryKeyReferenceInfo))]
-    [XmlInclude(typeof(ForeignKeyReferenceInfo))]
-    public abstract class ReferenceInfo : ContextObject, ICloneable, IXmlSerializable
+    [XmlInclude(typeof(ReferencedInfo))]
+    [XmlInclude(typeof(ReferencingInfo))]
+    public abstract class ReferenceInfo : ContextObject, ICloneable
     {
-        private string name;
-        private string tableName;
-        private string columnName;
-        private EntityInfo referenceTable=null;
-        private string referenceTableName;
-        private string referenceColumnName;
-
-
-
-        [CategoryAttribute("数据库"), BrowsableAttribute(true), ReadOnly(true)]
+        [CategoryAttribute("数据库")]
+        [BrowsableAttribute(true)]
+        [ReadOnly(true)]
         [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        [XmlElement("Name")]
+        [XmlAttribute("Name")]
         public string Name
         {
-            get { return name; }
-            set 
-            {
-                name = value;
-                NotifyPropertyChanged(this, "Name");
-            }
+            get;
+            set;
         }
 
-        [CategoryAttribute("数据库"), BrowsableAttribute(true), ReadOnly(true)]
+        [CategoryAttribute("数据库")]
+        [BrowsableAttribute(true)]
+        [ReadOnly(true)]
         [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        [XmlElement("TableName")]
+        [XmlAttribute("TableName")]
         public string TableName
         {
-            get { return tableName; }
-            set 
-            { 
-                tableName = value;
-                NotifyPropertyChanged(this, "TableName");
-            }
+            get;
+            set;
         }
 
-        [CategoryAttribute("数据库"), BrowsableAttribute(true), ReadOnly(true)]
+        [CategoryAttribute("数据库")]
+        [BrowsableAttribute(true)]
+        [ReadOnly(true)]
         [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        [XmlElement("ColumnName")]
+        [XmlAttribute("ColumnName")]
         public string ColumnName
         {
-            get { return columnName; }
-            set 
-            { 
-                columnName = value;
-                NotifyPropertyChanged(this, "ColumnName");
-            }
+            get;
+            set;
         }
-
-        [CategoryAttribute("数据库"), BrowsableAttribute(false), ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [XmlIgnore]
-        public virtual EntityInfo ReferenceTable
-        {
-            get { return referenceTable; }
-            set 
-            {
-                referenceTable = value;
-                referenceTable.Owner = this;
-                NotifyPropertyChanged(this, "ReferenceTable");
-            }
-        }
-
-        [CategoryAttribute("数据库"), BrowsableAttribute(true), ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        [XmlElement("ReferenceTableName")]
-        public string ReferenceTableName
-        {
-            get { return referenceTableName; }
-            set 
-            { 
-                referenceTableName = value;
-                NotifyPropertyChanged(this, "ReferenceTableName");
-            }
-        }
-
-        [CategoryAttribute("数据库"), BrowsableAttribute(true), ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        [XmlElement("ReferenceColumnName")]
-        public string ReferenceColumnName
-        {
-            get { return referenceColumnName; }
-            set 
-            { 
-                referenceColumnName = value;
-                NotifyPropertyChanged(this, "ReferenceColumnName");
-            }
-        }
-
-        public virtual XmlSchema GetSchema()
-        {
-            return null;
-        }
-
-        public virtual void ReadXml(XmlReader reader)
-        {
-            //Type type = Type.GetType(reader.GetAttribute("xsi:type"));
-           // reader.Read();
-           //// reader.ReadAttributeValue(
-           // this.Name = reader.ReadElementString("Name");
-           // this.ColumnName = reader.ReadElementString("ColumnName");
-           // this.ReferenceTableName = reader.ReadElementString("ReferenceTableName");
-           // this.ReferenceColumnName = reader.ReadElementString("ReferenceColumnName");
-        }
-
-        public virtual void WriteXml(XmlWriter writer)
-        {
-
-            writer.WriteElementString("Name", this.Name);
-            writer.WriteElementString("ColumnName", this.ColumnName);
-            writer.WriteElementString("ReferenceTableName", this.ReferenceTableName);
-            writer.WriteElementString("ReferenceColumnName", this.ReferenceColumnName);
-        }
-
         public abstract object Clone();
     }
 
+    /// <summary>
+    /// 外键关联referencing table
+    /// </summary>
     [Serializable()]
     [DefaultPropertyAttribute("Name")]
     [DbNodeAttribute(ImageIndex = 7)]
-    [UiNodeAttribute(ImageIndex = 9)]
-   // [XmlRoot(ElementName = "Reference", Namespace = "http://foo.bar")]
-    [XmlType(TypeName = "ForeignKeyReferenceInfo")]
-    public class ForeignKeyReferenceInfo : ReferenceInfo, ICloneable//,IXmlSerializable
+    //[UiNodeAttribute(ImageIndex = 9)]
+    [XmlType(TypeName = "ReferencingInfo")]
+    public class ReferencingInfo : ReferenceInfo, ICloneable
     {
-        [CategoryAttribute("数据库"), BrowsableAttribute(false), ReadOnly(true)]
-        [UiNodeInvisibleAttribute()]
-        public override EntityInfo ReferenceTable
+
+        [CategoryAttribute("数据库")]
+        [BrowsableAttribute(false)]
+        [ReadOnly(true)]
+        [XmlIgnore]
+        public virtual EntityInfo ReferencingTable
         {
-            get { return base.ReferenceTable; }
-            set 
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [BrowsableAttribute(true)]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("ReferencingTableName")]
+        public string ReferencingTableName
+        {
+            get{ return ReferencingTable.Name; }
+        }
+
+        [CategoryAttribute("数据库")]
+        [BrowsableAttribute(true)]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("ReferencingKey")]
+        public string ReferencingKey
+        {
+            get 
             { 
-                base.ReferenceTable = value;
-                
-                NotifyPropertyChanged(this, "ReferenceTable");
+                foreach(ColumnInfo column in ReferencingTable.Columns)
+                {
+                    if (column.IsPrimaryKey && column.Referenced.Find(e => e.Name == this.Name) != null)
+                    {
+                        return column.Name;
+                    }
+                }
+                return string.Empty;
             }
         }
 
-        
-       
-
         public override string ToString()
         {
-            return string.Format("{0}({1}->[{2}:{3}])", this.Name, "Master", this.ReferenceTableName,this.ReferenceColumnName);
+            return string.Format("{0}({1}->[{2}:{3}])", this.Name, "Master", this.ReferencingTableName,this.ReferencingKey);
         }
         public override object Clone()
         {
             return this.MemberwiseClone();
         }
-
-
-
-
-
-        public override XmlSchema GetSchema()
-        {
-            return null;
-        }
-
-        public  override void ReadXml(XmlReader reader)
-        {
-            //Debug.WriteLine("======================");
-            //reader.Read();
-            //this.Name = reader.ReadElementString("Name");
-            //this.ColumnName = reader.ReadElementString("ColumnName");
-            //this.ReferenceTableName = reader.ReadElementString("ReferenceTableName");
-            //this.ReferenceColumnName = reader.ReadElementString("ReferenceColumnName");
-        }
-
-        public override void WriteXml(XmlWriter writer)
-        {
-           // writer.WriteAttributeString("xsi:type", "ForeignKeyReferenceInfo");
-            writer.WriteAttributeString("xsi", "type", "http://www.w3.org/2001/XMLSchema-instance", this.GetType().Name);
-            base.WriteXml(writer);
-        }
     }
 
+    /// <summary>
+    ///主键被关联 referenced table
+    /// </summary>
     [Serializable()]
     [DefaultPropertyAttribute("Name")]
     [DbNodeAttribute(ImageIndex = 6)]
-    [UiNodeAttribute(ImageIndex = 8)]
-    [XmlType(TypeName = "PrimaryKeyReferenceInfo")]
-    public class PrimaryKeyReferenceInfo : ReferenceInfo, ICloneable
+   // [UiNodeAttribute(ImageIndex = 8)]
+    [XmlType(TypeName = "ReferencedInfo")]
+    public class ReferencedInfo : ReferenceInfo, ICloneable
     {
+        [CategoryAttribute("数据库")]
+        [BrowsableAttribute(false)]
+        [ReadOnly(true)]
+        [XmlIgnore]
+        public virtual EntityInfo ReferencedTable
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [BrowsableAttribute(true)]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute]
+        public string ReferencedTableName
+        {
+            get { return ReferencedTable.Name; }
+        }
+
+        [CategoryAttribute("数据库")]
+        [BrowsableAttribute(true)]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute]
+        public string ReferencedKey
+        {
+            get
+            {
+                foreach (ColumnInfo column in ReferencedTable.Columns)
+                {
+                    if (column.IsForeignKey && column.Referenced.Find(e => e.Name == this.Name) != null)
+                    {
+                        return column.Name;
+                    }
+                }
+                return string.Empty;
+            }
+        }
+
         public override string ToString()
         {
-            return string.Format("{0}({1}->[{2}:{3}])", this.Name, "Detail", this.ReferenceTableName, this.ReferenceColumnName);
+            return string.Format("{0}({1}->[{2}:{3}])", this.Name, "Detail", this.ReferencedTableName, this.ReferencedKey);
+        }
+        public override object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+    }
+
+        /// <summary>
+    /// 外键关联referencing table
+    /// </summary>
+    [Serializable()]
+    [UiNodeAttribute(ImageIndex = 9)]
+    [XmlType(TypeName = "UIReferencingInfo")]
+    public class UIReferencingInfo:ContextObject
+    {
+        private ReferencingInfo referencingInfo;
+
+        public ReferencingInfo ReferencingInfo
+        {
+            get { return referencingInfo; }
+            set { referencingInfo = value; }
+        }
+    }
+
+    /// <summary>
+    ///主键被关联 referenced table
+    /// </summary>
+    [Serializable()]
+    [UiNodeAttribute(ImageIndex = 8)]
+    [XmlType(TypeName = "UIReferencedInfo")]
+    public class UIReferencedInfo : ReferenceInfo, ICloneable
+    {
+        [CategoryAttribute("数据库")]
+        [BrowsableAttribute(false)]
+        [ReadOnly(true)]
+        [XmlIgnore]
+        public virtual EntityInfo ReferencedTable
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [BrowsableAttribute(true)]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute]
+        public string ReferencedTableName
+        {
+            get { return ReferencedTable.Name; }
+        }
+
+        [CategoryAttribute("数据库")]
+        [BrowsableAttribute(true)]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute]
+        public string ReferencedKey
+        {
+            get
+            {
+                foreach (ColumnInfo column in ReferencedTable.Columns)
+                {
+                    if (column.IsForeignKey && column.Referenced.Find(e => e.Name == this.Name) != null)
+                    {
+                        return column.Name;
+                    }
+                }
+                return string.Empty;
+            }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}({1}->[{2}:{3}])", this.Name, "Detail", this.ReferencedTableName, this.ReferencedKey);
         }
         public override object Clone()
         {

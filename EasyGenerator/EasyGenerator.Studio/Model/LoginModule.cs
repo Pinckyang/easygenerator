@@ -22,7 +22,7 @@ namespace EasyGenerator.Studio.Model
         private string passwordField;
 
         [CategoryAttribute("界面")]
-        [XmlElement("Name")]
+        [XmlAttribute("Name")]
         [ReadOnly(true)]
         public string Name
         {
@@ -31,7 +31,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("界面")]
-        [XmlElement("Caption")]
+        [XmlAttribute("Caption")]
         [ReadOnly(true)]
         public string Caption
         {
@@ -40,7 +40,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("界面")]
-        [XmlElement("Description")]
+        [XmlAttribute("Description")]
         [ReadOnly(true)]
         public string Description
         {
@@ -51,7 +51,7 @@ namespace EasyGenerator.Studio.Model
         [CategoryAttribute("关联表")]
         [UiNodeInvisibleAttribute()]
         [TypeConverter(typeof(TablesConverter))]
-        [XmlElement("TableName")]
+        [XmlAttribute("TableName")]
         public string TableName
         {
             get { return tableName; }
@@ -61,7 +61,7 @@ namespace EasyGenerator.Studio.Model
         [CategoryAttribute("关联字段")]
         [UiNodeInvisibleAttribute()]
         [TypeConverter(typeof(ColumnsFromTableNameConverter))]
-        [XmlElement("AccountField")]
+        [XmlAttribute("AccountField")]
         public string AccountField
         {
             get { return accountField; }
@@ -70,7 +70,7 @@ namespace EasyGenerator.Studio.Model
          [CategoryAttribute("关联字段")]
         [UiNodeInvisibleAttribute()]
         [TypeConverter(typeof(ColumnsFromTableNameConverter))]
-        [XmlElement("PasswordField")]
+        [XmlAttribute("PasswordField")]
         public string PasswordField
         {
             get { return passwordField; }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using EasyGenerator.Studio.PropertyTools;
+using System.Xml.Serialization;
 
 namespace EasyGenerator.Studio.Model
 {
@@ -20,6 +21,7 @@ namespace EasyGenerator.Studio.Model
         //private object owner;
 
         [CategoryAttribute("显示"), DefaultValueAttribute("")]
+        [XmlAttribute("Name")]
         public string Name
         {
             get { return name; }
@@ -31,6 +33,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), DefaultValueAttribute("")]
+        [XmlAttribute("Caption")]
         public string Caption
         {
             get { return caption; }
@@ -41,6 +44,7 @@ namespace EasyGenerator.Studio.Model
             }
         }
         [CategoryAttribute("显示"), DefaultValueAttribute("")]
+        [XmlAttribute("Description")]
         public string Description
         {
             get { return description; }
@@ -52,15 +56,16 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), DefaultValue(false)]
+        [XmlAttribute("AllowAdd")]
         public bool AllowAdd
         {
             get { return allowAdd; }
             set 
             {
                 allowAdd = value;
-                foreach (KeyValuePair<string, ColumnInfo> entity in ((EntityInfo)this.Owner).Columns)
+                foreach (ColumnInfo entity in ((EntityInfo)this.Owner).Columns)
                 {
-                    entity.Value.DBControl.AllowAdd = value;
+                    entity.DBControl.AllowAdd = value;
 
                     //foreach (KeyValuePair<string, ReferenceInfo> reference in entity.Caption.References)
                     //{
@@ -75,15 +80,16 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), DefaultValue(false)]
+        [XmlAttribute("AllowEdit")]
         public bool AllowEdit
         {
             get { return allowEdit; }
             set 
             { 
                 allowEdit = value;
-                foreach (KeyValuePair<string, ColumnInfo> entity in ((EntityInfo)this.Owner).Columns)
+                foreach (ColumnInfo entity in ((EntityInfo)this.Owner).Columns)
                 {
-                    entity.Value.DBControl.AllowEdit = value;
+                    entity.DBControl.AllowEdit = value;
 
                     //foreach (KeyValuePair<string, ReferenceInfo> reference in entity.Caption.References)
                     //{
@@ -99,6 +105,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"),DefaultValue(false)]
+        [XmlAttribute("AllowDelete")]
         public bool AllowDelete
         {
             get { return allowDelete; }
@@ -163,6 +170,7 @@ namespace EasyGenerator.Studio.Model
         
 
         [CategoryAttribute("数据库"), DefaultValueAttribute(""),TypeConverter(typeof(ClientTreeViewStringConverter))]
+        [XmlAttribute("KeyField")]
         public string KeyField
         {
             get { return keyField; }
@@ -174,6 +182,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("数据库"), DefaultValueAttribute(""), TypeConverter(typeof(ClientTreeViewStringConverter))]
+        [XmlAttribute("ParentField")]
         public string ParentField
         {
             get { return parentField; }
@@ -184,6 +193,7 @@ namespace EasyGenerator.Studio.Model
             }
         }
         [CategoryAttribute("数据库"), DefaultValueAttribute("")]
+        [XmlAttribute("RootValue")]
         public string RootValue
         {
             get { return rootValue; }
@@ -203,11 +213,6 @@ namespace EasyGenerator.Studio.Model
 
         public object Clone()
         {
-            //MemoryStream stream = new MemoryStream();
-            //BinaryFormatter formatter = new BinaryFormatter();
-            //formatter.Serialize(stream, this);
-            //stream.Position = 0;
-            //return formatter.Deserialize(stream);
             return this.MemberwiseClone();
         }
     }

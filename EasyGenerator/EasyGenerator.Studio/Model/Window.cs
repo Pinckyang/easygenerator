@@ -27,7 +27,7 @@ namespace EasyGenerator.Studio.Model
 
         public Window()
         {
-            Entities = new ContextObjectDictionary<string, EntityInfo>(this);
+            Entities = new ContextObjectList<EntityInfo>(this);
         }
 
 
@@ -51,9 +51,9 @@ namespace EasyGenerator.Studio.Model
             set 
             { 
                 caption = value;
-                foreach (KeyValuePair<string, EntityInfo> kv in Entities)
+                foreach (EntityInfo entity in Entities)
                 {
-                    kv.Value.Caption = Caption;
+                    entity.Caption = Caption;
                 }
 
                 NotifyPropertyChanged(this, "Caption");
@@ -75,7 +75,7 @@ namespace EasyGenerator.Studio.Model
         [BrowsableAttribute(false)]
         [ReadOnly(true)]
         [XmlElement("Entities")]
-        public ContextObjectDictionary<string, EntityInfo> Entities
+        public List<EntityInfo> Entities
         {
             get;
             set;
@@ -89,9 +89,9 @@ namespace EasyGenerator.Studio.Model
             set 
             {
                 allowAdd = value;
-                foreach (KeyValuePair<string, EntityInfo> entity in Entities)
+                foreach (EntityInfo entity in Entities)
                 {
-                    entity.Value.DBViewControl.AllowAdd = value;
+                    entity.DBViewControl.AllowAdd = value;
                 }
 
                 NotifyPropertyChanged(this, "AllowAdd");
@@ -106,9 +106,9 @@ namespace EasyGenerator.Studio.Model
             set 
             { 
                 allowEdit = value;
-                foreach (KeyValuePair<string, EntityInfo> entity in Entities)
+                foreach (EntityInfo entity in Entities)
                 {
-                    entity.Value.DBViewControl.AllowEdit = value;
+                    entity.DBViewControl.AllowEdit = value;
                 }
 
                 NotifyPropertyChanged(this, "AllowEdit");
@@ -123,9 +123,9 @@ namespace EasyGenerator.Studio.Model
             set 
             {
                 allowDelete = value;
-                foreach (KeyValuePair<string, EntityInfo> entity in Entities)
+                foreach (EntityInfo entity in Entities)
                 {
-                    entity.Value.DBViewControl.AllowDelete = value;
+                    entity.DBViewControl.AllowDelete = value;
                 }
 
                 NotifyPropertyChanged(this, "AllowDelete");

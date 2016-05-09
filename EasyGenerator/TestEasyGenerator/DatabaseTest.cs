@@ -4,6 +4,7 @@ using System;
 using EasyGenerator.Studio.Utils;
 using System.Xml.Serialization;
 using System.IO;
+using System.Collections.Generic;
 
 namespace TestEasyGenerator
 {
@@ -96,8 +97,8 @@ namespace TestEasyGenerator
             columnInfo.SqlType = SqlType.Int;
             columnInfo.Visible = true;
             columnInfo.DBControlType = DBControlType.DBText;
-            tableInfo.Columns.Add("column1", columnInfo);
-            target.Tables.Add("Table1",tableInfo );
+            tableInfo.Columns.Add(columnInfo);
+            target.Tables.Add(tableInfo );
 
             XmlSerializer xmlSerializer = new XmlSerializer(target.GetType());
             StringWriter writer = new StringWriter();
@@ -137,8 +138,8 @@ namespace TestEasyGenerator
         public void TablesTest()
         {
             Database target = new Database(); 
-            ContextObjectDictionary<string, TableInfo> expected = null; 
-            ContextObjectDictionary<string, TableInfo> actual;
+            List<TableInfo> expected = null; 
+            List<TableInfo> actual;
             target.Tables = expected;
             actual = target.Tables;
             Assert.AreEqual(expected, actual);
@@ -151,8 +152,8 @@ namespace TestEasyGenerator
         public void ViewsTest()
         {
             Database target = new Database();
-            ContextObjectDictionary<string, ViewInfo> expected = null; 
-            ContextObjectDictionary<string, ViewInfo> actual;
+            List<ViewInfo> expected = null; 
+            List<ViewInfo> actual;
             target.Views = expected;
             actual = target.Views;
             Assert.AreEqual(expected, actual);

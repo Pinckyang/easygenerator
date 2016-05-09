@@ -39,8 +39,8 @@ namespace EasyGenerator.Studio
         {
             this.txtName.Text = this.cmbEntity.SelectedItem.ToString();
 
-            TableInfo entity=null;
-            this.project.Database.Tables.TryGetValue(this.txtName.Text, out entity);
+
+            TableInfo entity = this.project.Database.Tables.Find(o=>o.Name==this.txtName.Text.Trim());
 
             if(entity==null)
             {
@@ -49,10 +49,10 @@ namespace EasyGenerator.Studio
 
             this.cmbAccountField.Items.Clear();
             this.cmbPasswordField.Items.Clear();
-            foreach (KeyValuePair<string, ColumnInfo> kv in entity.Columns)
+            foreach (ColumnInfo item in entity.Columns)
             {
-                this.cmbAccountField.Items.Add(kv.Key);
-                this.cmbPasswordField.Items.Add(kv.Key);
+                this.cmbAccountField.Items.Add(item);
+                this.cmbPasswordField.Items.Add(item);
             }
 
             this.cmbAccountField.SelectedIndex = 0;

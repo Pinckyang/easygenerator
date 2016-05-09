@@ -10,17 +10,27 @@ namespace EasyGenerator.Studio.Model
 {
     [Serializable()]
     [DbNodeAttribute(ImageIndex = 3)]
-    [UiNodeAttribute(ImageIndex = 6)]
     public class ViewInfo : EntityInfo,ICloneable
     {
         public object Clone()
         {
-            //MemoryStream stream = new MemoryStream();
-            //BinaryFormatter formatter = new BinaryFormatter();
-            //formatter.Serialize(stream, this);
-            //stream.Position = 0;
-            //return formatter.Deserialize(stream);
             return this.MemberwiseClone();
+        }
+    }
+
+    [Serializable()]
+    [UiNodeAttribute(ImageIndex = 6)]
+    public class UIViewInfo : UIEntityInfo
+    {
+        public TableInfo TableInfo
+        {
+            get { return (TableInfo)base.EntityInfo; }
+            set { base.EntityInfo = value; }
+        }
+
+        public override string ToString()
+        {
+            return TableInfo.ToString();
         }
     }
 }

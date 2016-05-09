@@ -1,2 +1,0 @@
-Developed with EasyGenerator.Templates.Core Libraries
-Fix the ConnectionString in ...\Demo\DataAccess\BaseDAL.cs

@@ -31,6 +31,7 @@ namespace EasyGenerator.Studio.Model
 
 
         [CategoryAttribute("显示"),DefaultValue(1),Description("控件列跨度，默认为1.")]
+        [XmlAttribute("ColSpan")]
         public virtual int ColSpan
         {
             get { return colSpan; }
@@ -42,6 +43,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), DefaultValue(1), Description("控件行跨度，默认为1.")]
+        [XmlAttribute("RowSpan")]
         public virtual int RowSpan
         {
             get { return rowSpan; }
@@ -53,6 +55,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), DefaultValue(TextAlign.RightToLeft)]
+        [XmlAttribute("LabelAlign")]
         public TextAlign LabelAlign
         {
             get { return labelAlign; }
@@ -63,6 +66,7 @@ namespace EasyGenerator.Studio.Model
             }
         }
         [CategoryAttribute("显示")]
+        [XmlAttribute("Name")]
         public string Name
         {
             get { return name; }
@@ -74,6 +78,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), DefaultValueAttribute("")]
+        [XmlAttribute("Caption")]
         public string Caption
         {
             get { return caption; }
@@ -85,6 +90,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), DefaultValueAttribute("")]
+        [XmlAttribute("Description")]
         public string Description
         {
             get { return description; }
@@ -96,6 +102,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), DefaultValue(false)]
+        [XmlAttribute("AllowAdd")]
         public bool AllowAdd
         {
             get { return allowAdd; }
@@ -108,6 +115,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), DefaultValue(false)]
+        [XmlAttribute("AllowEdit")]
         public bool AllowEdit
         {
             get { return allowEdit; }
@@ -120,6 +128,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), DefaultValue(false)]
+        [XmlAttribute("AllowSearch")]
         public bool AllowSearch
         {
             get { return allowSearch; }
@@ -131,6 +140,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), TypeConverter(typeof(StringValueDefaultConverter))]
+        [XmlAttribute("DefaultAddValue")]
         public virtual string DefaultAddValue
         {
             get { return defaultAddValue; }
@@ -143,6 +153,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), TypeConverter(typeof(StringValueDefaultConverter))]
+        [XmlAttribute("DefaultEditValue")]
         public virtual string DefaultEditValue
         {
             get { return defaultEditValue; }
@@ -154,6 +165,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), TypeConverter(typeof(StringValueDefaultConverter))]
+        [XmlAttribute("DefaultSearchValue")]
         public virtual string DefaultSearchValue
         {
             get { return defaultSearchValue; }
@@ -242,6 +254,7 @@ namespace EasyGenerator.Studio.Model
         /// <summary>
         /// 在此预定义值
         /// </summary>
+        [XmlElement("Fields")]
         public List<OptionItem> Fields
         {
             get { return fields; }
@@ -269,6 +282,7 @@ namespace EasyGenerator.Studio.Model
         /// <summary>
         /// 外键表
         /// </summary>
+        [XmlAttribute("LookupTable")]
         public string LookupTable
         {
             get { return lookupTable; }
@@ -283,6 +297,7 @@ namespace EasyGenerator.Studio.Model
         /// 显示的列
         /// </summary>
         [Editor(typeof(CheckedListFromLookupTableEditor), typeof(UITypeEditor))]
+        [XmlElement("LookupFields")]
         public List<string> LookupFields
         {
             get { return lookupFields; }
@@ -296,6 +311,7 @@ namespace EasyGenerator.Studio.Model
         /// 键值
         /// </summary>
          [Editor(typeof(ListColumnsFromLookupTableEditor), typeof(UITypeEditor))]
+         [XmlAttribute("LookupKeyField")]
         public string LookupKeyField
         {
             get { return lookupKeyField; }
@@ -326,6 +342,7 @@ namespace EasyGenerator.Studio.Model
         private string lookupRootValue="-";
         private string lookupDisplayField;
 
+        [XmlAttribute("LookupTable")]
         public string LookupTable
         {
             get { return lookupTable; }
@@ -336,6 +353,7 @@ namespace EasyGenerator.Studio.Model
             }
         }
         [Editor(typeof(ListColumnsFromLookupTableEditor), typeof(UITypeEditor))]
+        [XmlAttribute("LookupKeyField")]
         public string LookupKeyField
         {
             get { return lookupKeyField; }
@@ -346,6 +364,7 @@ namespace EasyGenerator.Studio.Model
             }
         }
         [Editor(typeof(ListColumnsFromLookupTableEditor), typeof(UITypeEditor))]
+        [XmlAttribute("LookupParentField")]
         public string LookupParentField
         {
             get { return lookupParentField; }
@@ -357,6 +376,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [DefaultValue("-")]
+        [XmlAttribute("LookupRootValue")]
         public string LookupRootValue
         {
             get { return lookupRootValue; }
@@ -367,6 +387,7 @@ namespace EasyGenerator.Studio.Model
             }
         }
         [Editor(typeof(ListColumnsFromLookupTableEditor), typeof(UITypeEditor))]
+        [XmlAttribute("LookupDisplayField")]
         public string LookupDisplayField
         {
             get { return lookupDisplayField; }
@@ -397,6 +418,7 @@ namespace EasyGenerator.Studio.Model
             RowSpan=2;
         }
         [DefaultValue(2)]
+        [XmlAttribute("ColSpan")]
         public override int ColSpan
         {
             get
@@ -410,6 +432,7 @@ namespace EasyGenerator.Studio.Model
             }
         }
         [DefaultValue(2)]
+        [XmlAttribute("RowSpan")]
         public override int RowSpan
         {
             get
@@ -441,6 +464,7 @@ namespace EasyGenerator.Studio.Model
 
 
         [CategoryAttribute("显示"), Browsable(true), TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("DefaultAddValue")]
         public override string DefaultAddValue
         {
             get { return base.DefaultAddValue; }
@@ -448,6 +472,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), Browsable(true), TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("DefaultEditValue")]
         public override string DefaultEditValue
         {
             get
@@ -461,6 +486,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"),Browsable(true), TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("DefaultSearchValue")]
         public override string DefaultSearchValue
         {
             get
@@ -480,6 +506,7 @@ namespace EasyGenerator.Studio.Model
         [CategoryAttribute("显示")]
         [DbNodeInvisibleAttribute()]
         [UiNodeInvisibleAttribute()]
+        [XmlAttribute("SearchMode")]
         public SearchMode SearchMode
         {
             get { return searchMode; }
@@ -524,6 +551,7 @@ namespace EasyGenerator.Studio.Model
         private SearchModeControl searchModeControl = new SearchDateSingleControl();
 
         [CategoryAttribute("显示"), Browsable(true), TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("DefaultAddValue")]
         public override string DefaultAddValue
         {
             get { return base.DefaultAddValue; }
@@ -531,6 +559,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), Browsable(true), TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("DefaultEditValue")]
         public override string DefaultEditValue
         {
             get
@@ -544,6 +573,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), Browsable(true), TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("DefaultSearchValue")]
         public override string DefaultSearchValue
         {
             get
@@ -559,6 +589,7 @@ namespace EasyGenerator.Studio.Model
         /// <summary>
         /// 当选择查询模式时
         /// </summary>
+        [XmlAttribute("SearchMode")]
         public SearchMode SearchMode
         {
             get { return searchMode; }
@@ -601,6 +632,7 @@ namespace EasyGenerator.Studio.Model
         private string defaultSearchToTimeValue = "";
 
         [CategoryAttribute("显示"), Browsable(true), TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("DefaultAddValue")]
         public override string DefaultAddValue
         {
             get { return base.DefaultAddValue; }
@@ -608,6 +640,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), Browsable(true), TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("DefaultEditValue")]
         public override string DefaultEditValue
         {
             get
@@ -621,6 +654,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [CategoryAttribute("显示"), Browsable(true), TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("DefaultSearchValue")]
         public override string DefaultSearchValue
         {
             get
@@ -633,6 +667,7 @@ namespace EasyGenerator.Studio.Model
             }
         }
         [Browsable(false), TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("DefaultSearchFromTimeValue")]
         public string DefaultSearchFromTimeValue
         {
             get 
@@ -646,12 +681,14 @@ namespace EasyGenerator.Studio.Model
         }
 
         [Browsable(false), TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("DefaultSearchToTimeValue")]
         public string DefaultSearchToTimeValue
         {
             get { return defaultSearchToTimeValue; }
             set { defaultSearchToTimeValue = value; }
         }
 
+        [XmlAttribute("SearchMode")]
         public SearchMode SearchMode
         {
             get { return searchMode; }
@@ -681,6 +718,7 @@ namespace EasyGenerator.Studio.Model
             RowSpan = 2;
         }
         [DefaultValue(1)]
+        [XmlAttribute("ColSpan")]
         public override int ColSpan
         {
             get
@@ -694,6 +732,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [DefaultValue(2)]
+        [XmlAttribute("RowSpan")]
         public override int RowSpan
         {
             get
@@ -725,6 +764,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [DefaultValue(2)]
+        [XmlAttribute("ColSpan")]
         public override int ColSpan
         {
             get
@@ -738,6 +778,7 @@ namespace EasyGenerator.Studio.Model
         }
 
         [DefaultValue(1)]
+        [XmlAttribute("RowSpan")]
         public override int RowSpan
         {
             get
@@ -781,6 +822,7 @@ namespace EasyGenerator.Studio.Model
     {
         private List<OptionItem> radios = new List<OptionItem>();
 
+        [XmlElement("Radios")]
         public List<OptionItem> Radios
         {
             get { return radios; }

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 using EasyGenerator.Studio.PropertyTools;
+using System.Xml.Serialization;
 
 namespace EasyGenerator.Studio.Model
 {
     public class SearchModeControl:ContextObject
     {
+        [XmlIgnore]
         public override ContextObject Owner
         {
             get
@@ -30,6 +32,7 @@ namespace EasyGenerator.Studio.Model
         private string datetime;
 
         [TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("Datetime")]
         public string Datetime
         {
             get { return datetime; }
@@ -49,6 +52,7 @@ namespace EasyGenerator.Studio.Model
 
         [PropertyOrder(1)]
         [TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("StartDatetime")]
         public string StartDatetime
         {
             get { return startDatetime; }
@@ -58,6 +62,7 @@ namespace EasyGenerator.Studio.Model
 
         [PropertyOrder(2)]
         [TypeConverter(typeof(DateTimeDefaultConverter))]
+        [XmlAttribute("EndDatetime")]
         public string EndDatetime
         {
             get { return endDatetime; }

@@ -110,32 +110,32 @@ namespace EasyGenerator.Studio.Engine
                 {
                     if (matchFolder.Value.ToUpper() == "[TABLES]")
                     {
-                        foreach (EntityInfo entity in project.Database.Tables.Values)
+                        foreach (EntityInfo entity in project.Database.Tables)
                         {
                             GenerateChildTempates(folder, "\\[TABLES\\]", entity.Name, charset, tempNative);
                         }
                     }
                     else if (matchFolder.Value.ToUpper() == "[VIEWS]")
                     {
-                        foreach (EntityInfo entity in project.Database.Views.Values)
+                        foreach (EntityInfo entity in project.Database.Views)
                         {
                             GenerateChildTempates(folder, "\\[VIEWS\\]", entity.Name, tempCharset, tempNative);
                         }
                     }
                     else if (matchFolder.Value.ToUpper() == "[ENTITIES]")
                     {
-                        foreach (EntityInfo entity in project.Database.Tables.Values)
+                        foreach (EntityInfo entity in project.Database.Tables)
                         {
                             GenerateChildTempates(folder, "\\[ENTITIES\\]", entity.Name, tempCharset, tempNative);
                         }
-                        foreach (EntityInfo entity in project.Database.Views.Values)
+                        foreach (EntityInfo entity in project.Database.Views)
                         {
                             GenerateChildTempates(folder, "\\[ENTITIES\\]", entity.Name, tempCharset, tempNative);
                         }
                     }
                     else if (matchFolder.Value.ToUpper() == "[MODULES]")
                     {
-                        foreach (Model.Module module in project.Ui.SystemModule.Modules.Values)
+                        foreach (Model.Module module in project.Ui.SystemModule.Modules)
                         {
                             GenerateChildTempates(folder, "\\[MODULES\\]", module.Name, tempCharset, tempNative);
                         }
@@ -145,12 +145,12 @@ namespace EasyGenerator.Studio.Engine
                     {
                         if (pattern == "\\[MODULES\\]" && matchValue != string.Empty)
                         {
-                            Model.Module module = null;
-                            project.Ui.SystemModule.Modules.TryGetValue(matchValue, out module);
+
+                            Model.Module module = project.Ui.SystemModule.Modules.Find(e=>e.Name==matchValue);
 
                             if (module != null)
                             {
-                                foreach (Window window in module.Windows.Values)
+                                foreach (Window window in module.Windows)
                                 {
                                     GenerateChildTempates(folder, "\\[WINDOWS\\]", window.Name, tempCharset, tempNative);
                                 }
@@ -159,9 +159,9 @@ namespace EasyGenerator.Studio.Engine
                         }
                         else
                         {
-                            foreach (Model.Module module in project.Ui.SystemModule.Modules.Values)
+                            foreach (Model.Module module in project.Ui.SystemModule.Modules)
                             {
-                                foreach (Window window in module.Windows.Values)
+                                foreach (Window window in module.Windows)
                                 {
                                     GenerateChildTempates(folder, "\\[WINDOWS\\]", window.Name, tempCharset, tempNative);
                                 }
@@ -170,7 +170,7 @@ namespace EasyGenerator.Studio.Engine
                     }
                     else if (matchFolder.Value.ToUpper() == "[DIALOGS]")
                     {
-                        foreach (Dialog dialog in project.Ui.CommonModule.Dialogs.Values)
+                        foreach (Dialog dialog in project.Ui.CommonModule.Dialogs)
                         {
                             GenerateChildTempates(folder, "\\[DIALOGS\\]", dialog.Name, tempCharset, tempNative);
                         }
@@ -272,7 +272,7 @@ namespace EasyGenerator.Studio.Engine
                 {
                     if (match.Value.ToUpper() == "[TABLES]")
                     {
-                        foreach (EntityInfo entity in pro.Database.Tables.Values)
+                        foreach (EntityInfo entity in pro.Database.Tables)
                         {
                             OutputFile outputFile = new PageModel();
                             outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[TABLES\\]", entity.Name, RegexOptions.IgnoreCase));
@@ -288,7 +288,7 @@ namespace EasyGenerator.Studio.Engine
                     }
                     else if (match.Value.ToUpper() == "[VIEWS]")
                     {
-                        foreach (EntityInfo entity in pro.Database.Views.Values)
+                        foreach (EntityInfo entity in pro.Database.Views)
                         {
                             OutputFile outputFile = new PageModel();
                             outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[VIEWS\\]", entity.Name, RegexOptions.IgnoreCase));
@@ -303,7 +303,7 @@ namespace EasyGenerator.Studio.Engine
                     }
                     else if (match.Value.ToUpper() == "[ENTITIES]")
                     {
-                        foreach (EntityInfo entity in pro.Database.Tables.Values)
+                        foreach (EntityInfo entity in pro.Database.Tables)
                         {
                             OutputFile outputFile = new PageModel();
                             outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[ENTITIES\\]", entity.Name, RegexOptions.IgnoreCase));
@@ -316,7 +316,7 @@ namespace EasyGenerator.Studio.Engine
                             outputFileList.Add(outputFile);
                         }
 
-                        foreach (EntityInfo entity in pro.Database.Views.Values)
+                        foreach (EntityInfo entity in pro.Database.Views)
                         {
                             OutputFile outputFile = new PageModel();
                             outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[ENTITIES\\]", entity.Name, RegexOptions.IgnoreCase));
@@ -331,7 +331,7 @@ namespace EasyGenerator.Studio.Engine
                     }
                     else if (match.Value.ToUpper() == "[MODULES]")
                     {
-                        foreach (Model.Module module in pro.Ui.SystemModule.Modules.Values)
+                        foreach (Model.Module module in pro.Ui.SystemModule.Modules)
                         {
                             OutputFile outputFile = new PageModel();
                             outputFile.FileName =NomenclatureHelper.ConvertToPascalCase( Regex.Replace(fileName, "\\[MODULES\\]", module.Name, RegexOptions.IgnoreCase));
@@ -348,12 +348,12 @@ namespace EasyGenerator.Studio.Engine
                     {
                         if (matchValue != string.Empty)
                         {
-                            Model.Module module = null;
-                            pro.Ui.SystemModule.Modules.TryGetValue(matchValue, out module);
+
+                            Model.Module module = pro.Ui.SystemModule.Modules.Find(e=>e.Name==matchValue);
 
                             if (module != null)
                             {
-                                foreach (Window window in module.Windows.Values)
+                                foreach (Window window in module.Windows)
                                 {
                                     OutputFile outputFile = new PageModel();
                                     outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[WINDOWS\\]", window.Name, RegexOptions.IgnoreCase));
@@ -370,9 +370,9 @@ namespace EasyGenerator.Studio.Engine
                         }
                         else
                         {
-                            foreach (Model.Module module in pro.Ui.SystemModule.Modules.Values)
+                            foreach (Model.Module module in pro.Ui.SystemModule.Modules)
                             {
-                                foreach (Window window in module.Windows.Values)
+                                foreach (Window window in module.Windows)
                                 {
                                     OutputFile outputFile = new PageModel();
                                     outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[WINDOWS\\]", window.Name, RegexOptions.IgnoreCase));
@@ -389,7 +389,7 @@ namespace EasyGenerator.Studio.Engine
                     }
                     else if (match.Value.ToUpper() == "[DIALOGS]")
                     {
-                        foreach (Dialog dialog in pro.Ui.CommonModule.Dialogs.Values)
+                        foreach (Dialog dialog in pro.Ui.CommonModule.Dialogs)
                         {
                             OutputFile outputFile = new PageModel();
                             outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[DIALOGS\\]", dialog.Name, RegexOptions.IgnoreCase));
@@ -404,8 +404,8 @@ namespace EasyGenerator.Studio.Engine
                     }
                     else if (match.Value.ToUpper() == "[TABLE]")
                     {
-                        TableInfo entityInfo=null;
-                        pro.Database.Tables.TryGetValue(matchValue,out entityInfo);
+
+                        TableInfo entityInfo = pro.Database.Tables.Find(e=>e.Name==matchValue);
 
                         OutputFile outputFile = new PageModel();
                         outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[TABLE\\]", matchValue, RegexOptions.IgnoreCase));
@@ -419,8 +419,8 @@ namespace EasyGenerator.Studio.Engine
                     }
                     else if (match.Value.ToUpper() == "[VIEW]")
                     {
-                        ViewInfo entityInfo = null;
-                        pro.Database.Views.TryGetValue(matchValue, out entityInfo);
+
+                        ViewInfo entityInfo = pro.Database.Views.Find(e=>e.Name==matchValue);
 
                         OutputFile outputFile = new PageModel();
                         outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[VIEW\\]", matchValue, RegexOptions.IgnoreCase));
@@ -435,14 +435,14 @@ namespace EasyGenerator.Studio.Engine
                     else if (match.Value.ToUpper() == "[ENTITY]")
                     {
                         EntityInfo entityInfo = null;
-                        TableInfo tableInfo = null;
+                        
                         ViewInfo viewInfo = null;
-                        pro.Database.Tables.TryGetValue(matchValue, out tableInfo);
+                        TableInfo tableInfo = pro.Database.Tables.Find(e=>e.Name==matchValue);
                         entityInfo = tableInfo;
 
                         if (entityInfo == null)
                         {
-                            pro.Database.Views.TryGetValue(matchValue, out viewInfo);
+                            viewInfo = pro.Database.Views.Find(e=>e.Name==matchValue);
                             entityInfo = viewInfo;
                         }
 
@@ -458,8 +458,8 @@ namespace EasyGenerator.Studio.Engine
                     }
                     else if (match.Value.ToUpper() == "[MODULE]")
                     {
-                        Model.Module module = null;
-                        pro.Ui.SystemModule.Modules.TryGetValue(matchValue, out module);
+
+                        Model.Module module = pro.Ui.SystemModule.Modules.Find(e=>e.Name==matchValue);
 
                         OutputFile outputFile = new PageModel();
                         outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[MODULE\\]", matchValue, RegexOptions.IgnoreCase));
@@ -474,9 +474,9 @@ namespace EasyGenerator.Studio.Engine
                     else if (match.Value.ToUpper() == "[WINDOW]")
                     {
                         Window window = null;
-                        foreach (Model.Module module in pro.Ui.SystemModule.Modules.Values)
+                        foreach (Model.Module module in pro.Ui.SystemModule.Modules)
                         {
-                            module.Windows.TryGetValue(matchValue, out window);
+                            window = module.Windows.Find(e=>e.Name==matchValue);
                             if (window != null)
                             {
                                 break;
@@ -496,8 +496,7 @@ namespace EasyGenerator.Studio.Engine
                     else if (match.Value.ToUpper() == "[DIALOG]")
                     {
 
-                        Dialog dialog = null;
-                        pro.Ui.CommonModule.Dialogs.TryGetValue(matchValue, out dialog);
+                        Dialog dialog = pro.Ui.CommonModule.Dialogs.Find(e=>e.Name==matchValue);
 
                         OutputFile outputFile = new PageModel();
                         outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[DIALOG\\]", matchValue, RegexOptions.IgnoreCase));
@@ -529,7 +528,7 @@ namespace EasyGenerator.Studio.Engine
             return outputFileList;
         }
 
-        public void GenorateFiles(string outputDir)
+        public void GenerateFiles(string outputDir)
         {
             this.outputDir = outputDir;
             foreach (OutputFile file in outputFiles)

@@ -19,9 +19,9 @@ namespace EasyGenerator.Studio.PropertyTools
             if (entity != null)
             {
                 List<string> list = new List<string>();
-                foreach (KeyValuePair<string, ColumnInfo> kv in entity.Columns)
+                foreach (ColumnInfo column in entity.Columns)
                 {
-                    list.Add(kv.Key);
+                    list.Add(column.Name);
                 }
 
                 return new StandardValuesCollection(list.ToArray());

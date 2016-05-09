@@ -27,6 +27,12 @@ namespace EasyGenerator.Studio.Model
             }
         }
 
+        //public string Name
+        //{
+        //    get;
+        //    set;
+        //}
+
         public ContextObject GetRoot()
         {
             if (this.owner != null)

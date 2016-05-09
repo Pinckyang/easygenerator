@@ -1,1 +1,0 @@
--- Entity Customers does not have a search by assigned property.

@@ -176,53 +176,53 @@ namespace EasyGenerator.Studio
 
             DbTreeNode databaseRootNode = new DbTreeNode(this.CurrentProject.Database);
             uiTvExplorer.Nodes.Add(databaseRootNode);
-            /*
-             ExplorerTreeNode databaseRootNode = new ExplorerTreeNode(this.CurrentProject.Database.Connection.InitialCatalog, 0, 0,this.CurrentProject.Database, TreeNodeType.Column);
-            uiTvExplorer.Nodes.Add(databaseRootNode);
+            
+            // ExplorerTreeNode databaseRootNode = new ExplorerTreeNode(this.CurrentProject.Database.Connection.InitialCatalog, 0, 0,this.CurrentProject.Database, TreeNodeType.Column);
+            //uiTvExplorer.Nodes.Add(databaseRootNode);
 
-            TreeNode tablesNode = new TreeNode("Tables", 1, 1);
-            tablesNode.Tag = "Tables";
+            //TreeNode tablesNode = new TreeNode("Tables", 1, 1);
+            //tablesNode.Tag = "Tables";
 
-            TreeNode viewsNode = new TreeNode("Views", 1, 1);
-            viewsNode.Tag = "Views";
+            //TreeNode viewsNode = new TreeNode("Views", 1, 1);
+            //viewsNode.Tag = "Views";
 
-            databaseRootNode.Nodes.Add(tablesNode);
-            databaseRootNode.Nodes.Add(viewsNode);
-            uiTvExplorer.ExpandAll();
+            //databaseRootNode.Nodes.Add(tablesNode);
+            //databaseRootNode.Nodes.Add(viewsNode);
+            //uiTvExplorer.ExpandAll();
 
-            foreach (KeyValuePair<string, EntityInfo> table in this.CurrentProject.Database.Tables)
-            {
-                ExplorerTreeNode newTableNode = new ExplorerTreeNode(table.Value, 2, 2, table.Caption, TreeNodeType.Table);
-                tablesNode.Nodes.Add(newTableNode);
+            //foreach (EntityInfo table in this.CurrentProject.Database.Tables)
+            //{
+            //    ExplorerTreeNode newTableNode = new ExplorerTreeNode(table, 2, 2, table.Caption, TreeNodeType.Table);
+            //    tablesNode.Nodes.Add(newTableNode);
 
-                foreach (KeyValuePair<string, ColumnInfo> column in table.Caption.Columns)
-                {
-                    ExplorerTreeNode columnNode = new ExplorerTreeNode(column.Value, column.Caption.IsPrimaryKey ? 5 : 4, column.Caption.IsPrimaryKey ? 5 : 4, column.Caption, TreeNodeType.Column);
-                    newTableNode.Nodes.Add(columnNode);
+            //    foreach (KeyValuePair<string, ColumnInfo> column in table.Caption.Columns)
+            //    {
+            //        ExplorerTreeNode columnNode = new ExplorerTreeNode(column.Value, column.Caption.IsPrimaryKey ? 5 : 4, column.Caption.IsPrimaryKey ? 5 : 4, column.Caption, TreeNodeType.Column);
+            //        newTableNode.Nodes.Add(columnNode);
 
-                    foreach (KeyValuePair<string, ReferenceInfo> reference in column.Caption.References)
-                    {
+            //        foreach (KeyValuePair<string, ReferenceInfo> reference in column.Caption.References)
+            //        {
 
-                        int imageIndex = (reference.Caption is PrimaryKeyReferenceInfo) ? 6 : 7;
-                        ExplorerTreeNode referenceNode = new ExplorerTreeNode(reference.Caption.ToString(), imageIndex, imageIndex, reference.Caption, TreeNodeType.Reference);
-                        columnNode.Nodes.Add(referenceNode);
-                    }
-                }
-            }
+            //            int imageIndex = (reference.Caption is PrimaryKeyReferenceInfo) ? 6 : 7;
+            //            ExplorerTreeNode referenceNode = new ExplorerTreeNode(reference.Caption.ToString(), imageIndex, imageIndex, reference.Caption, TreeNodeType.Reference);
+            //            columnNode.Nodes.Add(referenceNode);
+            //        }
+            //    }
+            //}
 
-            foreach (KeyValuePair<string, EntityInfo> view in this.CurrentProject.Database.Views)
-            {
-                ExplorerTreeNode newViewNode = new ExplorerTreeNode(view.Value, 3, 3, view.Caption, TreeNodeType.View);
-                viewsNode.Nodes.Add(newViewNode);
+            //foreach (EntityInfo view in this.CurrentProject.Database.Views)
+            //{
+            //    ExplorerTreeNode newViewNode = new ExplorerTreeNode(view, 3, 3, view.Caption, TreeNodeType.View);
+            //    viewsNode.Nodes.Add(newViewNode);
 
-                foreach (KeyValuePair<string, ColumnInfo> column in view.Caption.Columns)
-                {
-                    ExplorerTreeNode columnNode = new ExplorerTreeNode(column.Value, 4, 4, column.Caption, TreeNodeType.Column);
-                    newViewNode.Nodes.Add(columnNode);
+            //    foreach (ColumnInfo column in view.Caption.Columns)
+            //    {
+            //        ExplorerTreeNode columnNode = new ExplorerTreeNode(column.Value, 4, 4, column.Caption, TreeNodeType.Column);
+            //        newViewNode.Nodes.Add(columnNode);
 
 
-                }
-            }*/
+            //    }
+            //}
         }
 
         /// <summary>
@@ -605,7 +605,7 @@ namespace EasyGenerator.Studio
                 module.Caption = dlg.txtCaption.Text.Trim();
                 module.Name = dlg.txtName.Text.Trim();
                 module.Description = dlg.txtDescription.Text.Trim();
-                systemModule.Modules.Add(module.Name, module);
+                systemModule.Modules.Add(module);
 
                 UiTreeNode moduleNode = new UiTreeNode(module);
                 node.Nodes.Add(moduleNode);
@@ -631,7 +631,7 @@ namespace EasyGenerator.Studio
                 return;
             }
 
-            systemModule.Modules.Remove(module.Name);
+            systemModule.Modules.RemoveAll(o=>o.Name==module.Name);
             systemModuleNode.Nodes.Remove(node);
 
 
@@ -679,9 +679,9 @@ namespace EasyGenerator.Studio
             LoginWindowDlg dlg = new LoginWindowDlg();
             dlg.Project = this.project;
             dlg.Text = "添加登录窗口";
-            foreach (KeyValuePair<string, TableInfo> kv in this.project.Database.Tables)
+            foreach (TableInfo entity in this.project.Database.Tables)
             {
-                dlg.cmbEntity.Items.Add(kv.Key);
+                dlg.cmbEntity.Items.Add(entity);
             }
 
             dlg.cmbEntity.SelectedIndex = 0;
@@ -694,8 +694,8 @@ namespace EasyGenerator.Studio
                     return;
                 }
 
-                TableInfo entityInfo = null;
-                this.project.Database.Tables.TryGetValue(dlg.cmbEntity.SelectedItem.ToString(), out entityInfo);
+
+                TableInfo entityInfo = this.project.Database.Tables.Find(e=>e.Name==dlg.cmbEntity.SelectedItem.ToString());
 
                 if (entityInfo == null)
                 {
@@ -719,13 +719,13 @@ namespace EasyGenerator.Studio
 
             WindowDlg dlg = new WindowDlg();
             dlg.Text = "添加窗口信息";
-            foreach (KeyValuePair<string, TableInfo> kv in this.project.Database.Tables)
+            foreach (TableInfo table in this.project.Database.Tables)
             {
-                dlg.cmbEntity.Items.Add(kv.Key);
+                dlg.cmbEntity.Items.Add(table);
             }
-            foreach (KeyValuePair<string, ViewInfo> kv in this.project.Database.Views)
+            foreach (ViewInfo view in this.project.Database.Views)
             {
-                dlg.cmbEntity.Items.Add(kv.Key);
+                dlg.cmbEntity.Items.Add(view);
             }
 
             dlg.cmbEntity.SelectedIndex = 0;
@@ -741,12 +741,12 @@ namespace EasyGenerator.Studio
                 window.Caption = dlg.txtCaption.Text.Trim();
                 window.Name = dlg.txtName.Text.Trim();
                 window.Description = dlg.txtDescription.Text.Trim();
-                module.Dialogs.Add(window.Name, window);
+                module.Dialogs.Add(window);
 
                 EntityInfo entityInfo = null;
                 TableInfo tableInfo = null;
                 ViewInfo viewInfo = null;
-                this.project.Database.Tables.TryGetValue(dlg.cmbEntity.SelectedItem.ToString(), out tableInfo);
+                tableInfo= this.project.Database.Tables.Find(e=>e.Name==dlg.cmbEntity.SelectedItem.ToString());
                 entityInfo = tableInfo;
 
                 if (entityInfo != null)
@@ -755,12 +755,12 @@ namespace EasyGenerator.Studio
                 }
                 else
                 {
-                    this.project.Database.Views.TryGetValue(dlg.cmbEntity.SelectedItem.ToString(), out viewInfo);
+                    viewInfo = this.project.Database.Views.Find(e=>e.Name == dlg.cmbEntity.SelectedItem.ToString());
                     entityInfo = viewInfo;
                     entityInfo = (EntityInfo)((ViewInfo)entityInfo).Clone();
                 }
                 
-                window.Entities.Add(entityInfo.Name, entityInfo);
+                window.Entities.Add(entityInfo);
                 window.ResultTableName = entityInfo.Name;
 
                 BuildEntities(entityInfo);
@@ -779,13 +779,13 @@ namespace EasyGenerator.Studio
             }
             WindowDlg dlg = new WindowDlg();
             dlg.Text = "添加窗口信息";
-            foreach (KeyValuePair<string, TableInfo> kv in this.project.Database.Tables)
+            foreach (TableInfo item in this.project.Database.Tables)
             {
-                dlg.cmbEntity.Items.Add(kv.Key);
+                dlg.cmbEntity.Items.Add(item);
             }
-            foreach (KeyValuePair<string, ViewInfo> kv in this.project.Database.Views)
+            foreach (ViewInfo item in this.project.Database.Views)
             {
-                dlg.cmbEntity.Items.Add(kv.Key);
+                dlg.cmbEntity.Items.Add(item);
             }
 
             dlg.cmbEntity.SelectedIndex = 0;
@@ -801,25 +801,25 @@ namespace EasyGenerator.Studio
                 window.Caption = dlg.txtCaption.Text.Trim();
                 window.Name = dlg.txtName.Text.Trim();
                 window.Description = dlg.txtDescription.Text.Trim();
-                module.Windows.Add(window.Name, window);
+                module.Windows.Add(window);
 
                 EntityInfo entityInfo = null;
                 TableInfo tableInfo = null;
                 ViewInfo viewInfo = null;
-                this.project.Database.Tables.TryGetValue(dlg.cmbEntity.SelectedItem.ToString(), out tableInfo);
+                tableInfo=this.project.Database.Tables.Find(e=>e.Name==dlg.cmbEntity.SelectedItem.ToString());
                 entityInfo = tableInfo;
 
                 if (entityInfo != null)
                 {
                     entityInfo = (EntityInfo)((TableInfo)entityInfo).Clone();
-                    window.Entities.Add(entityInfo.Name, entityInfo);
+                    window.Entities.Add(entityInfo);
                 }
                 else
                 {
-                    this.project.Database.Views.TryGetValue(dlg.cmbEntity.SelectedItem.ToString(), out viewInfo);
+                    viewInfo=this.project.Database.Views.Find(e=>e.Name==dlg.cmbEntity.SelectedItem.ToString());
                     entityInfo = viewInfo;
                     entityInfo = (EntityInfo)((ViewInfo)entityInfo).Clone();
-                    window.Entities.Add(entityInfo.Name, entityInfo);
+                    window.Entities.Add(entityInfo);
                 }
 
                 BuildEntities(entityInfo);
@@ -831,37 +831,37 @@ namespace EasyGenerator.Studio
         
         private void BuildEntities(EntityInfo entityInfo)
         {
-            foreach (KeyValuePair<string, ColumnInfo> column in entityInfo.Columns)
+            foreach ( ColumnInfo column in entityInfo.Columns)
             {
-                foreach (KeyValuePair<string, ReferenceInfo> reference in column.Value.References)
+                foreach (ReferenceInfo reference in column.References)
                 {
-                    if (reference.Value is PrimaryKeyReferenceInfo)
+                    if (reference is PrimaryKeyReferenceInfo)
                     {
                         TableInfo referTable = null;
-                        this.CurrentProject.Database.Tables.TryGetValue(reference.Value.ReferenceTableName, out referTable);
+                        referTable=this.CurrentProject.Database.Tables.Find(e=>e.Name==reference.ReferenceTableName );
                         if (referTable != null && referTable is TableInfo)
                         {
-                            reference.Value.ReferenceTable = (TableInfo)((TableInfo)referTable).Clone();
-                            if (reference.Value.TableName != reference.Value.ReferenceTableName)
+                            reference.ReferenceTable = (TableInfo)((TableInfo)referTable).Clone();
+                            if (reference.TableName != reference.ReferenceTableName)
                             {
-                                BuildEntities(reference.Value.ReferenceTable);
+                                BuildEntities(reference.ReferenceTable);
                             }
                         }
                     }
-                    else if (reference.Value is ForeignKeyReferenceInfo)
+                    else if (reference is ForeignKeyReferenceInfo)
                     {
                         TableInfo referTable = null;
-                        this.CurrentProject.Database.Tables.TryGetValue(reference.Value.ReferenceTableName, out referTable);
+                        referTable=this.CurrentProject.Database.Tables.Find(e=>e.Name==reference.ReferenceTableName);
                         if (referTable != null && referTable is TableInfo)
                         {
-                            reference.Value.ReferenceTable = (TableInfo)((TableInfo)referTable).Clone();
+                            reference.ReferenceTable = (TableInfo)((TableInfo)referTable).Clone();
 
-                            column.Value.DBControlType = DBControlType.DBLookupListBox;
-                            DBLookupListBox lookupGridBox = column.Value.DBControl as DBLookupListBox;
+                            column.DBControlType = DBControlType.DBLookupListBox;
+                            DBLookupListBox lookupGridBox = column.DBControl as DBLookupListBox;
                             if (lookupGridBox != null)
                             {
-                                lookupGridBox.LookupTable = reference.Value.ReferenceTableName;
-                                lookupGridBox.LookupKeyField = reference.Value.ReferenceColumnName;
+                                lookupGridBox.LookupTable = reference.ReferenceTableName;
+                                lookupGridBox.LookupKeyField = reference.ReferenceColumnName;
                             }
                         }
                     }
@@ -888,7 +888,7 @@ namespace EasyGenerator.Studio
                 return;
             }
 
-            module.Windows.Remove(window.Name);
+            module.Windows.RemoveAll(o=>o.Name==window.Name);
             moduleNode.Nodes.Remove(node);
         }
 
@@ -903,13 +903,13 @@ namespace EasyGenerator.Studio
 
             TableDlg dlg = new TableDlg();
             dlg.Text = "添加表/视图信息";
-            foreach (KeyValuePair<string, TableInfo> kv in this.project.Database.Tables)
+            foreach (TableInfo item in this.project.Database.Tables)
             {
-                dlg.cmbEntity.Items.Add(kv.Key);
+                dlg.cmbEntity.Items.Add(item);
             }
-            foreach (KeyValuePair<string, ViewInfo> kv in this.project.Database.Views)
+            foreach (ViewInfo item in this.project.Database.Views)
             {
-                dlg.cmbEntity.Items.Add(kv.Key);
+                dlg.cmbEntity.Items.Add(item);
             }
 
             dlg.cmbEntity.SelectedIndex = 0;
@@ -922,18 +922,18 @@ namespace EasyGenerator.Studio
                 }
 
                 TableInfo entityInfo = null;
-                this.project.Database.Tables.TryGetValue(dlg.cmbEntity.SelectedItem.ToString(), out entityInfo);
+                entityInfo = this.project.Database.Tables.Find(o=>o.Name==dlg.cmbEntity.SelectedItem.ToString() );
 
                 if (entityInfo != null)
                 {
-                    window.Entities.Add(entityInfo.Name, (EntityInfo)((TableInfo)entityInfo).Clone());
+                    window.Entities.Add((EntityInfo)((TableInfo)entityInfo).Clone());
                 }
                 else
                 {
                     ViewInfo viewInfo = null;
-                    this.project.Database.Views.TryGetValue(dlg.cmbEntity.SelectedItem.ToString(), out viewInfo);
+                    viewInfo=this.project.Database.Views.Find(o=>o.Name==dlg.cmbEntity.SelectedItem.ToString());
 
-                    window.Entities.Add(entityInfo.Name, (EntityInfo)((ViewInfo)viewInfo).Clone());
+                    window.Entities.Add((EntityInfo)((ViewInfo)viewInfo).Clone());
                 }
 
                 BuildEntities(entityInfo);

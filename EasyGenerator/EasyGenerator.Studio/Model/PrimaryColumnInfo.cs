@@ -33,9 +33,9 @@ namespace EasyGenerator.Studio.Model
             this.Precision=column.Precision;
             this.Owner = column.Owner;
 
-            foreach (KeyValuePair<string,ReferenceInfo> reference in column.References)
+            foreach (ReferenceInfo reference in column.References)
             {
-                this.References.Add(reference.Key,(ReferenceInfo)reference.Value.Clone());
+                this.References.Add((ReferenceInfo)reference.Clone());
             }
             this.Scale=column.Scale;
             this.SqlType=column.SqlType;

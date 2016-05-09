@@ -19,15 +19,15 @@ namespace EasyGenerator.Studio.Model
     {
         private Connection connection=new Connection();
         private DatabaseType databaseType = DatabaseType.SQLServer2000;
-        //private ContextObjectDictionary<string, EntityInfo> tables = null;
-        //private ContextObjectDictionary<string, EntityInfo> views = null;
+       // private List<TableInfo> tables = null;
+        //private List<EntityInfo> views = null;
 
         public Database()
         {
             connection.Owner = this;
 
-            Tables = new ContextObjectDictionary<string, TableInfo>(this);
-            Views = new ContextObjectDictionary<string, ViewInfo>(this);
+            Tables = new ContextObjectList<TableInfo>(this);
+            Views = new ContextObjectList<ViewInfo>(this);
         }
 
         [CategoryAttribute("设计"), DefaultValueAttribute("")]
@@ -60,17 +60,17 @@ namespace EasyGenerator.Studio.Model
         [DbNodeAttribute(Text = "Tables", ImageIndex = 1)]
         [XmlElement("Tables")]
         [ReadOnly(true)]
-        public ContextObjectDictionary<string, TableInfo> Tables
+        public List<TableInfo> Tables
         {
-            get;// { return tables; }
-            set;// { tables = value; }
+            get{ return tables; }
+            set{ tables = value; }
         }
 
         [BrowsableAttribute(false)]
         [DbNodeAttribute(Text="Views",ImageIndex=1)]
         [XmlElement("Views")]
         [ReadOnly(true)]
-        public ContextObjectDictionary<string, ViewInfo> Views
+        public List<ViewInfo> Views
         {
             get;// { return views; }
             set;// { views = value; }

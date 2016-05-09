@@ -35,12 +35,7 @@ namespace EasyGenerator.Studio.DbHelper
 
             netDataTypes = new Hashtable();
 
-            //netDataTypes.Add(SqlType.AnsiText, "System.String");
-            //netDataTypes.Add(SqlType.AnsiChar, "System.String");
-            //netDataTypes.Add(SqlType.AnsiVarChar, "System.String");
-            //netDataTypes.Add(SqlType.AnsiVarCharMax, "System.String");
             netDataTypes.Add(SqlType.Byte, "System.Byte");
-            //netDataTypes.Add(SqlType.Binary, "System.Byte[]");
             netDataTypes.Add(SqlType.Boolean, "System.Boolean");
             netDataTypes.Add(SqlType.Char, "System.String");
             netDataTypes.Add(SqlType.DateTime, "System.DateTime");
@@ -88,7 +83,7 @@ namespace EasyGenerator.Studio.DbHelper
                     }
 
                    // column.Owner = tableEntity;
-                    tableEntity.Columns.Add(column.Name,column);
+                    tableEntity.Columns.Add(column);
                 }
 
 
@@ -98,7 +93,10 @@ namespace EasyGenerator.Studio.DbHelper
 
                 foreach (string key in keys)
                 {
-                    tableEntity.Columns[key] = new PrimaryColumnInfo(tableEntity.Columns[key]);//.IsPrimaryKey = true;
+                    int index = tableEntity.Columns.FindIndex(0, tableEntity.Columns.Count, e => e.Name == key);
+                    ColumnInfo column=tableEntity.Columns.Find(e => e.Name == key);
+                    tableEntity.Columns.RemoveAll(e=>e.Name==key);
+                    tableEntity.Columns.Insert(index, new PrimaryColumnInfo(column));//.IsPrimaryKey = true;
                 }
 
                 ArrayList referencelist = (ArrayList)referenceEntities[table];
@@ -108,10 +106,11 @@ namespace EasyGenerator.Studio.DbHelper
 
                     foreach (ReferenceInfo reference in references)
                     {
-                        tableEntity.Columns[reference.ColumnName].References.Add(reference.Name, reference);
+                        tableEntity.Columns.Find(e => e.Name == reference.ColumnName).References.Add(reference);
+                       // tableEntity.Columns[reference.ColumnName].References.Add(reference.Name, reference);
                         if (reference is ForeignKeyReferenceInfo)
                         {
-                            tableEntity.Columns[reference.ColumnName].IsForeignKey = true;
+                            tableEntity.Columns.Find(e => e.Name == reference.ColumnName).IsForeignKey = true;
 
                             if (reference.ReferenceTableName == reference.TableName)
                             {
@@ -124,7 +123,7 @@ namespace EasyGenerator.Studio.DbHelper
                     }
                 }
 
-                project.Database.Tables.Add(table, tableEntity);
+                project.Database.Tables.Add(tableEntity);
             }
 
             foreach (string view in views)
@@ -136,46 +135,17 @@ namespace EasyGenerator.Studio.DbHelper
 
                 foreach (ColumnInfo column in columns)
                 {
-                    //column.Owner = viewEntity;
-                    viewEntity.Columns.Add(column.Name,column);
+                    viewEntity.Columns.Add(column);
                 }
-                project.Database.Views.Add(view, viewEntity);
+                project.Database.Views.Add(viewEntity);
             }
 
         }
         public abstract string[] GetAllTables();
         public abstract string[] GetAllViews();
-        ///// <summary>
-        ///// Gets a list of all essential tables from the database.
-        ///// </summary>
-        ///// <returns>An array of strings containing view names.</returns>
-        //public abstract string[] GetAllTables();
 
-        ///// <summary>
-        ///// Gets a list of all essential views from the database.
-        ///// </summary>
-        ///// <returns>An array of strings containing table names.</returns>
-        //public abstract string[] GetAllViews();
-
-        /// <summary>
-        /// Gets a list of all columns from the specified table.
-        /// </summary>
-        /// <param name="tableName">The name of the table to extract columns information from.</param>
-        /// <returns>An array of <see cref="ColumnProperties"/> objects describing all columns.</returns>
         public abstract Hashtable GetEntites();
-
-        /// <summary>
-        /// Get all constraint properties from the specified table.
-        /// </summary>
-        /// <param name="tableName">The name of the table to extract constraint from.</param>
-        /// <returns>An array of ConstraintInfo objects describing all the constraints.</returns>
         public abstract Hashtable GetConstraints();
-
-        /// <summary>
-        /// Get all keys from the specified table.
-        /// </summary>
-        /// <param name="tableName"></param>
-        /// <returns></returns>
         public abstract Hashtable GetAllPrimaryKeys();
 
         protected virtual IDbCommand CreateCommand()

@@ -16,228 +16,208 @@ namespace EasyGenerator.Studio.Model
     [Serializable()]
     [DefaultPropertyAttribute("Name")]
     [DbNodeAttribute(ImageIndex = 4)]
-    [UiNodeAttribute(ImageIndex = 10)]
     [TypeConverter(typeof(PropertySorter))]
     [XmlInclude(typeof(PrimaryColumnInfo))]
     public class ColumnInfo : ContextObject,ICloneable
     {
-        private string name = "";
-        private string caption="";
-        private bool isPrimaryKey = false;
-        private bool isForeignKey = false;
-        private bool isIdentity = false;
-        private bool isRequire = true;//是否为空
-        private SqlType sqlType = SqlType.Varchar;
-        private int length = 0;
-        private int precision = 0;
-        private int scale = 0;
-        private string groupCaption = "";
-        private bool visible = true;
-        //private string imprintField;
-        //private string imprintForeignField;
-        private DBControlType dbControlType = DBControlType.DBEdit;
-        private DBControl dbControl = new DBEdit();
-        //private ContextObjectDictionary<string, ReferenceInfo> references = null;
-
-
         public ColumnInfo()
         {
-            dbControl.Owner = this;
-            References= new ContextObjectDictionary<string, ReferenceInfo>(this);
+            Referencing= new ContextObjectList<ReferencingInfo>(this);
+            Referenced = new ContextObjectList<ReferencedInfo>(this);
         }
 
-        [CategoryAttribute("数据库"), DefaultValueAttribute(""),ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        public string Name
-        {
-            get { return name; }
-            set {
-                name = value;
-                if (!string.IsNullOrEmpty(name) && dbControl!=null)
-                {
-                    dbControl.Name =NomenclatureHelper.ConvertToPascalCase(name);
-                }
-
-                NotifyPropertyChanged(this, "Name");
-            }
-        }
-
-        [CategoryAttribute("数据库"), DefaultValueAttribute("")]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        public string Caption
-        {
-            get { return caption; }
-            set
-            {
-                caption = value;
-                this.groupCaption = value;
-                if (!string.IsNullOrEmpty(caption) && dbControl != null)
-                {
-                    dbControl.Caption = value;
-                }
-                NotifyPropertyChanged(this, "Caption");
-            }
-        }
-
-        [CategoryAttribute("数据库"), DefaultValueAttribute(false), ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        public bool IsPrimaryKey
-        {
-            get { return isPrimaryKey; }
-            set {
-                isPrimaryKey = value;
-                NotifyPropertyChanged(this, "IsPrimaryKey");
-            }
-        }
-
-        [CategoryAttribute("数据库"), DefaultValueAttribute(false), ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        public bool IsForeignKey
-        {
-            get { return isForeignKey; }
-            set {
-                //if (!isForeignKey && caption)
-                //{
-                //    PropertyHelper.SetPropertyDefaultValue(this, "IsForeignKey", caption);
-                //}
-                isForeignKey = value;
-                NotifyPropertyChanged(this, "IsForeignKey");
-            }
-        }
-
-        [CategoryAttribute("数据库"), DefaultValueAttribute(false), ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        public bool IsIdentity
-        {
-            get { return isIdentity; }
-            set 
-            {
-                //if (!isIdentity && caption)
-                //{
-                //    PropertyHelper.SetPropertyDefaultValue(this, "IsIdentity", caption);
-                //}
-                isIdentity = value;
-                NotifyPropertyChanged(this, "IsIdentity");
-            }
-        }
-
-        [CategoryAttribute("数据库"), DefaultValueAttribute(false), ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        public bool IsRequire
-        {
-            get { return isRequire; }
-            set { 
-                isRequire = value;
-                //if (!isRequire && caption)
-                //{
-                //    PropertyHelper.SetPropertyDefaultValue(this, "IsRequire", caption);
-                //}
-            }
-        }
-
-        [CategoryAttribute("数据库"), ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        public SqlType SqlType
-        {
-            get { return sqlType; }
-            set {
-                sqlType = value;
-                NotifyPropertyChanged(this, "SqlType");
-            }
-        }
-
-
-
-        [CategoryAttribute("数据库"), DefaultValueAttribute(0), ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        public int Length
-        {
-            get { return length; }
-            set {
-                //if (length==0 && caption>0)
-                //{
-                    PropertyHelper.SetPropertyDefaultValue(this, "Length", value);
-                //}
-                length = value;
-                NotifyPropertyChanged(this, "Length");
-            }
-        }
-
-        [CategoryAttribute("数据库"), DefaultValueAttribute(0), ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        public int Precision
-        {
-            get { return precision; }
-            set {
-                //if (precision == 0 && caption > 0)
-                //{
-                    PropertyHelper.SetPropertyDefaultValue(this, "Precision", value);
-                //}
-                precision = value;
-                NotifyPropertyChanged(this, "Precision");
-            }
-        }
-
-        [CategoryAttribute("数据库"), DefaultValueAttribute(0), ReadOnly(true)]
-        [DbNodeInvisibleAttribute()]
-        [UiNodeInvisibleAttribute()]
-        public int Scale
-        {
-            get { return scale; }
-            set {
-                //if (scale == 0 && caption > 0)
-                //{
-                    PropertyHelper.SetPropertyDefaultValue(this, "Scale", value);
-                //}
-                scale = value;
-                NotifyPropertyChanged(this, "Scale");
-            }
-        }
-
-        [BrowsableAttribute(false)]
+        [CategoryAttribute("数据库")]
         [ReadOnly(true)]
-        public ContextObjectDictionary<string, ReferenceInfo> References
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("Name")]
+        public string Name
         {
             get;
             set;
-            //get { return references; }
-            // set { references = caption; }
         }
 
-        [CategoryAttribute("显示")]
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        [DefaultValueAttribute("")]
         [DbNodeInvisibleAttribute()]
+        [XmlAttribute("Caption")]
+        public string Caption
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("IsPrimaryKey")]
+        public bool IsPrimaryKey
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("IsForeignKey")]
+        public bool IsForeignKey
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("IsIdentity")]
+        public bool IsIdentity
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("IsRequire")]
+        public bool IsRequire
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("SqlType")]
+        public SqlType SqlType
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("Length")]
+        public int Length
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("Precision")]
+        public int Precision
+        {
+            get;
+            set;
+        }
+
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        [DbNodeInvisibleAttribute()]
+        [XmlAttribute("Scale")]
+        public int Scale
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 外键关不错
+        /// </summary>
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        [BrowsableAttribute(false)]
+        [XmlElement("Referencing")]
+        public ReferencingInfo Referencing
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 明细表关联
+        /// </summary>
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        [BrowsableAttribute(false)]
+        [XmlElement("Referenced")]
+        public List<ReferencedInfo> Referenced
+        {
+            get;
+            set;
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+    }
+
+
+    [Serializable()]
+    [DefaultPropertyAttribute("Name")]
+    [UiNodeAttribute(ImageIndex = 10)]
+    [TypeConverter(typeof(PropertySorter))]
+    [XmlInclude(typeof(PrimaryColumnInfo))]
+    public class UIColumnInfo : ColumnInfo
+    {
+        private string groupCaption = "";
+        private bool visible = true;
+        private DBControlType dbControlType = DBControlType.DBEdit;
+        private DBControl dbControl = new DBEdit();
+        private ColumnInfo columnInfo;
+
+
+        public UIColumnInfo()
+        {
+            dbControl.Owner = this;
+        }
+
+        [CategoryAttribute("数据库")]
+        [ReadOnly(true)]
+        public ColumnInfo ColumnInfo
+        {
+            get { return columnInfo; }
+            set { columnInfo = value; }
+        }
+
+
+        [CategoryAttribute("显示")]
         [UiNodeInvisibleAttribute()]
+        [XmlAttribute("DBControlType")]
         public DBControlType DBControlType
         {
             get { return dbControlType; }
             set
             {
-                if (value == (Model.DBControlType.DBLookupListBox) || (value== Model.DBControlType.DBLookupTreeBox))
-                {
-                    int count = 0;
-                    foreach (ReferenceInfo reference in References.Values)
-                    {
-                        if (reference is ForeignKeyReferenceInfo)
-                        {
-                            count++;
-                            continue;
-                        }
-                    }
-                    if(count<1)
-                    {
-                        throw new ArgumentException("当前数据库此字段未定义外键,无法使用此控件！");
+                //if (value == (Model.DBControlType.DBLookupListBox) || (value== Model.DBControlType.DBLookupTreeBox))
+                //{
+                //    //int count = 0;
+                //    //foreach (ReferencingInfo reference in columnInfo.Referencing)
+                //    //{
+                //    //    if (reference is ForeignKeyReferenceInfo)
+                //    //    {
+                //    //        count++;
+                //    //        continue;
+                //    //    }
+                //    //}
+                //    //if(count<1)
+                //    //{
+                //    //    throw new ArgumentException("当前数据库此字段未定义外键,无法使用此控件！");
 
-                    }
-                }
+                //    //}
+                //}
 
 
 
@@ -249,12 +229,11 @@ namespace EasyGenerator.Studio.Model
                 DBControl.Name = control.Name;
                 DBControl.Description = control.Description;
                 DBControl.Owner = this;
-
-                NotifyPropertyChanged(this, "DBControlType");
             }
         }
 
-        [CategoryAttribute("显示"), TypeConverterAttribute(typeof(ExpandableObjectConverter))]
+        [CategoryAttribute("显示")]
+        [TypeConverterAttribute(typeof(ExpandableObjectConverter))]
         [DbNodeInvisibleAttribute()]
         [UiNodeInvisibleAttribute()]
         [XmlElement(Type = typeof(DBBinaryImage), ElementName = "DBBinaryImage")]
@@ -281,18 +260,12 @@ namespace EasyGenerator.Studio.Model
 
                 if (dbControl is DBLookupListBox)
                 {
-                    foreach (ReferenceInfo reference in References.Values)
-                    {
-                        if (reference is ForeignKeyReferenceInfo)
-                        {
-                            (dbControl as DBLookupListBox).LookupTable = reference.ReferenceTableName;
-                            (dbControl as DBLookupListBox).LookupKeyField = reference.ReferenceColumnName;
-                        }
-                    }
+                    (dbControl as DBLookupListBox).LookupTable = columnInfo.Referencing.ReferencingTableName;
+                    (dbControl as DBLookupListBox).LookupKeyField = columnInfo.Referencing.ReferencingKey;
                 }
                 if (dbControl is DBLookupTreeBox)
                 {
-                    foreach (ReferenceInfo reference in References.Values)
+                    foreach (ReferenceInfo reference in References)
                     {
                         if (reference is ForeignKeyReferenceInfo)
                         {
@@ -309,22 +282,32 @@ namespace EasyGenerator.Studio.Model
         }
 
         //显示分组标头，默认分组标头等于caption
-        [CategoryAttribute("显示"), DefaultValueAttribute(""),DescriptionAttribute("对此列信息进行分组！")]
-        [DbNodeInvisibleAttribute()]
+        [CategoryAttribute("显示")]
+        [DefaultValueAttribute("")]
+        [DescriptionAttribute("对此列信息进行分组！")]
         [UiNodeInvisibleAttribute()]
+        [XmlAttribute("GroupCaption")]
         public string GroupCaption
         {
-            get { return groupCaption; }
+            get 
+            {
+                if (string.IsNullOrEmpty(this.groupCaption))
+                {
+                    groupCaption = this.Caption;
+                }
+                return groupCaption; 
+            }
             set 
             { 
-                groupCaption = value;
-                NotifyPropertyChanged(this, "GroupCaption");
+                GroupCaption = value;
             }
         }
 
-        [CategoryAttribute("显示"), DefaultValueAttribute(true), DescriptionAttribute("查询列表是否显示此列")]
-        [DbNodeInvisibleAttribute()]
+        [CategoryAttribute("显示")]
+        [DefaultValueAttribute(true)]
+        [DescriptionAttribute("查询列表是否显示此列")]
         [UiNodeInvisibleAttribute()]
+        [XmlAttribute("Visible")]
         public bool Visible
         {
             get { return visible; }
@@ -334,24 +317,6 @@ namespace EasyGenerator.Studio.Model
                 NotifyPropertyChanged(this, "Visible");
             }
         }
-
-        //[CategoryAttribute("显示"), DescriptionAttribute("印随本表(或视图)的某个字段，当字段值发生变化时会根据外键表自己修改当前字段值！")]
-        //[DbNodeInvisibleAttribute()]
-        //[UiNodeInvisibleAttribute()]
-        //public string ImprintField
-        //{
-        //    get { return imprintField; }
-        //    set { imprintField = value; }
-        //}
-
-        //[CategoryAttribute("显示"), DescriptionAttribute("印随本表(或视图)的外键表某个字段，当外键值发生变化时，本字段值也会跟着变化！")]
-        //[DbNodeInvisibleAttribute()]
-        //[UiNodeInvisibleAttribute()]
-        //public string ImprintForeignField
-        //{
-        //    get { return imprintForeignField; }
-        //    set { imprintForeignField = value; }
-        //}
 
         public override string ToString()
         {

@@ -47,9 +47,9 @@ namespace EasyGenerator.Studio.Controls
                 this.ImageIndex = attribute.ImageIndex;
                 this.SelectedImageIndex = attribute.ImageIndex;
             }
-            if (contextObject is IDictionary)
+            if (contextObject is IList)
             {
-                ICollection values = (contextObject as IDictionary).Values;
+                ICollection values = contextObject as IList;
                 foreach (object value in values)
                 {
                     this.Nodes.Add(new DbTreeNode((ContextObject)value));
@@ -87,10 +87,10 @@ namespace EasyGenerator.Studio.Controls
                 else if (attributeNode == null || attributeNode.Length <1)
                 {
                     object propertyValue = propertyInfo.GetValue(this.contextObject, null);
-                    if (propertyValue is IDictionary)
+                    if (propertyValue is IList)
                     {
 
-                        ICollection values = (propertyValue as IDictionary).Values;
+                        ICollection values = propertyValue as IList;
                         foreach (object value in values)
                         {
                             this.Nodes.Add(new DbTreeNode((ContextObject)value));

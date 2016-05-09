@@ -25,7 +25,7 @@ namespace EasyGenerator.Studio.PropertyTools
 
             Project project = rootContextObject as Project;
             List<string> list = new List<string>();
-            foreach (ColumnInfo column in project.Database.Tables[tableName].Columns.Values)
+            foreach (ColumnInfo column in project.Database.Tables.Find(e=>e.Name==tableName).Columns)
             {
                 list.Add(column.Name);
             }

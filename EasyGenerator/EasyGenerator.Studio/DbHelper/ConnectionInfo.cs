@@ -21,7 +21,7 @@ namespace EasyGenerator.Studio.DbHelper
 
         internal ConnectionInfo()
         {
-           // this.tables = new List<Table>();
+           // this.tables = new ContextObjectList<Table>();
         }
 
         public ConnectionInfo(string location)

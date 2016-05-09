@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace EasyGenerator.Studio.Model
 {
+    [Serializable()]
     public struct OptionItem
     {
         private string value;
 
+        [XmlAttribute("Value")]
         public string Value
         {
             get { return value; }

@@ -50,7 +50,7 @@ namespace EasyGenerator.Studio.Builder
             //clientProfile = new Image();
             //this.controls.Add(clientProfile.Name, clientProfile);
 
-            //clientProfile = new ListBox();
+            //clientProfile = new ContextObjectListBox();
             //this.controls.Add(clientProfile.Name, clientProfile);
 
             //clientProfile = new OptionButton();

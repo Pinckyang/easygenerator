@@ -57,7 +57,7 @@ namespace EasyGenerator.Studio.AssemblyCache
             //{
             //    if (libraryInfo != null && libraryInfo is LibraryInfo)
             //    {
-            //        ListViewItem li = new ListViewItem(((LibraryInfo)libraryInfo).AssemblyName);
+            //        ListViewItem li = new ContextObjectListViewItem(((LibraryInfo)libraryInfo).AssemblyName);
             //        li.Tag = libraryInfo;
             //        this.uiLvGAC.Items.Add(li);
             //    }

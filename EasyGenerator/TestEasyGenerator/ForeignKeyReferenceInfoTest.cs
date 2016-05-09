@@ -115,7 +115,7 @@ namespace TestEasyGenerator
             column.Scale = 0;
             column.SqlType = SqlType.NVarchar;
             column.Visible = true;
-            column.References.Add("Reference1", target);
+            column.References.Add(target);
 
             try
             {

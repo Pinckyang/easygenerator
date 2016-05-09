@@ -23,7 +23,7 @@ namespace EasyGenerator.Studio.PropertyTools
 
             Project project = rootContextObject as Project;
             List<string> list = new List<string>();
-            foreach (EntityInfo entity in project.Database.Tables.Values)
+            foreach (EntityInfo entity in project.Database.Tables)
             {
                 list.Add(entity.Name);
             }

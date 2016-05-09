@@ -19,11 +19,11 @@ namespace EasyGenerator.Studio.Model
         private string name;
         private string caption;
         private string description;
-        //private ContextObjectDictionary<string, Window> windows = null;
+        //private List<Window> windows = null;
 
         public Module()
         {
-            Windows=new ContextObjectDictionary<string, Window>(this);
+            Windows=new ContextObjectList<Window>(this);
         }
 
         [CategoryAttribute("界面")]
@@ -68,7 +68,7 @@ namespace EasyGenerator.Studio.Model
         [BrowsableAttribute(false)]
         [ReadOnly(true)]
         [XmlElement("Windows")]
-        public ContextObjectDictionary<string, Window> Windows
+        public List<Window> Windows
         {
             get;
             set;
