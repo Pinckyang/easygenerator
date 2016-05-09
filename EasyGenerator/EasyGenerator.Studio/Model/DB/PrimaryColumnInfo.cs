@@ -6,7 +6,7 @@ using EasyGenerator.Studio.PropertyTools;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace EasyGenerator.Studio.Model
+namespace EasyGenerator.Studio.Model.Db
 {
     [Serializable()]
     [DefaultPropertyAttribute("Name")]

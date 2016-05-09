@@ -8,7 +8,7 @@ using EasyGenerator.Studio.PropertyTools;
 using EasyGenerator.Studio.Utils;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model
+namespace EasyGenerator.Studio.Model.Ui
 {
     [Serializable()]
     [DefaultPropertyAttribute("Name")]

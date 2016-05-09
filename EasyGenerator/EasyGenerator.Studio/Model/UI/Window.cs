@@ -8,7 +8,7 @@ using System.ComponentModel;
 using System.Xml.Serialization;
 using EasyGenerator.Studio.Utils;
 
-namespace EasyGenerator.Studio.Model
+namespace EasyGenerator.Studio.Model.Ui
 {
     [Serializable()]
     [UiNode(ImageIndex = 4)]

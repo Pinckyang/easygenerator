@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasyGenerator.Studio.Model
+namespace EasyGenerator.Studio.Model.Db
 {
     public enum SqlType
     {

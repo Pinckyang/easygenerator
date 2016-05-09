@@ -6,8 +6,9 @@ using System.ComponentModel;
 using EasyGenerator.Studio.PropertyTools;
 using System.Xml.Serialization;
 using EasyGenerator.Studio.Utils;
+using EasyGenerator.Studio.Model.Db;
 
-namespace EasyGenerator.Studio.Model
+namespace EasyGenerator.Studio.Model.Ui
 {
 
     [Serializable()]

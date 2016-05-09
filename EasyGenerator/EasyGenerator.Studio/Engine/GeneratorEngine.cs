@@ -11,6 +11,8 @@ using RazorEngine;
 using RazorEngine.Templating;
 using System.CodeDom.Compiler;
 using EasyGenerator.Studio.Utils;
+using EasyGenerator.Studio.Model.Db;
+using EasyGenerator.Studio.Model.Ui;
 
 namespace EasyGenerator.Studio.Engine
 {
@@ -135,7 +137,7 @@ namespace EasyGenerator.Studio.Engine
                     }
                     else if (matchFolder.Value.ToUpper() == "[MODULES]")
                     {
-                        foreach (Model.Module module in project.Ui.SystemModule.Modules)
+                        foreach (var module in project.Ui.SystemModule.Modules)
                         {
                             GenerateChildTempates(folder, "\\[MODULES\\]", module.Name, tempCharset, tempNative);
                         }
@@ -146,7 +148,7 @@ namespace EasyGenerator.Studio.Engine
                         if (pattern == "\\[MODULES\\]" && matchValue != string.Empty)
                         {
 
-                            Model.Module module = project.Ui.SystemModule.Modules.Find(e=>e.Name==matchValue);
+                            var  module = project.Ui.SystemModule.Modules.Find(e=>e.Name==matchValue);
 
                             if (module != null)
                             {
@@ -159,7 +161,7 @@ namespace EasyGenerator.Studio.Engine
                         }
                         else
                         {
-                            foreach (Model.Module module in project.Ui.SystemModule.Modules)
+                            foreach (var module in project.Ui.SystemModule.Modules)
                             {
                                 foreach (Window window in module.Windows)
                                 {
@@ -331,7 +333,7 @@ namespace EasyGenerator.Studio.Engine
                     }
                     else if (match.Value.ToUpper() == "[MODULES]")
                     {
-                        foreach (Model.Module module in pro.Ui.SystemModule.Modules)
+                        foreach (var module in pro.Ui.SystemModule.Modules)
                         {
                             OutputFile outputFile = new PageModel();
                             outputFile.FileName =NomenclatureHelper.ConvertToPascalCase( Regex.Replace(fileName, "\\[MODULES\\]", module.Name, RegexOptions.IgnoreCase));
@@ -349,7 +351,7 @@ namespace EasyGenerator.Studio.Engine
                         if (matchValue != string.Empty)
                         {
 
-                            Model.Module module = pro.Ui.SystemModule.Modules.Find(e=>e.Name==matchValue);
+                            var module = pro.Ui.SystemModule.Modules.Find(e=>e.Name==matchValue);
 
                             if (module != null)
                             {
@@ -370,7 +372,7 @@ namespace EasyGenerator.Studio.Engine
                         }
                         else
                         {
-                            foreach (Model.Module module in pro.Ui.SystemModule.Modules)
+                            foreach (var module in pro.Ui.SystemModule.Modules)
                             {
                                 foreach (Window window in module.Windows)
                                 {
@@ -459,7 +461,7 @@ namespace EasyGenerator.Studio.Engine
                     else if (match.Value.ToUpper() == "[MODULE]")
                     {
 
-                        Model.Module module = pro.Ui.SystemModule.Modules.Find(e=>e.Name==matchValue);
+                        var module = pro.Ui.SystemModule.Modules.Find(e=>e.Name==matchValue);
 
                         OutputFile outputFile = new PageModel();
                         outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[MODULE\\]", matchValue, RegexOptions.IgnoreCase));
@@ -474,7 +476,7 @@ namespace EasyGenerator.Studio.Engine
                     else if (match.Value.ToUpper() == "[WINDOW]")
                     {
                         Window window = null;
-                        foreach (Model.Module module in pro.Ui.SystemModule.Modules)
+                        foreach (var module in pro.Ui.SystemModule.Modules)
                         {
                             window = module.Windows.Find(e=>e.Name==matchValue);
                             if (window != null)

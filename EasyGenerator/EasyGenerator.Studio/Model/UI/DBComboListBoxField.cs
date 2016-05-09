@@ -7,7 +7,7 @@ using System.ComponentModel;
 using EasyGenerator.Studio.PropertyTools;
 using System.Drawing.Design;
 
-namespace EasyGenerator.Studio.Model
+namespace EasyGenerator.Studio.Model.Ui
 {
     [Serializable()]
     public class DBComboListBoxField : UIColumnInfo, ICloneable

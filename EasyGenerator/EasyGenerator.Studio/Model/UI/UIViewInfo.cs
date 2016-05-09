@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EasyGenerator.Studio.PropertyTools;
+using EasyGenerator.Studio.Model.Db;
 
-namespace EasyGenerator.Studio.Model
+namespace EasyGenerator.Studio.Model.Ui
 {
     [Serializable()]
     [UiNodeAttribute(ImageIndex = 6)]

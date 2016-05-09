@@ -5,7 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model
+namespace EasyGenerator.Studio.Model.Ui
 {
     [Serializable()]
     public class DBFileUploadField : UIColumnInfo, ICloneable

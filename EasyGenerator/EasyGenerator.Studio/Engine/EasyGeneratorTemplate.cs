@@ -5,6 +5,7 @@ using System.Text;
 using RazorEngine.Templating;
 using EasyGenerator.Studio.Utils;
 using EasyGenerator.Studio.Model;
+using EasyGenerator.Studio.Model.Db;
 
 namespace EasyGenerator.Studio.Engine
 {

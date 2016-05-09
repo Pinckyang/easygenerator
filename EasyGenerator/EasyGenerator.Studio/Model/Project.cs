@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using EasyGenerator.Studio.PropertyTools;
 using System.Xml.Serialization;
+using EasyGenerator.Studio.Model.Db;
+using EasyGenerator.Studio.Model.Ui;
 
 namespace EasyGenerator.Studio.Model
 {

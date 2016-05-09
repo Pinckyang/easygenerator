@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 using System.ComponentModel;
 using EasyGenerator.Studio.PropertyTools;
 
-namespace EasyGenerator.Studio.Model
+namespace EasyGenerator.Studio.Model.Ui
 {
     [Serializable()]
     public class DBTimePickerField : UIColumnInfo, ICloneable

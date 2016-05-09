@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model
+namespace EasyGenerator.Studio.Model.Db
 {
     
     [Serializable()]

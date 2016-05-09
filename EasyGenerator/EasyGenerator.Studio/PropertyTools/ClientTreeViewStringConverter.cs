@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 using EasyGenerator.Studio.Model;
+using EasyGenerator.Studio.Model.Ui;
 
 namespace EasyGenerator.Studio.PropertyTools
 {
@@ -15,7 +16,7 @@ namespace EasyGenerator.Studio.PropertyTools
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             DBTreeView treeView = context.Instance as DBTreeView;
-            EntityInfo entity = treeView.Owner as EntityInfo;
+            EntityInfo entity = treeView. as EntityInfo;
             if (entity != null)
             {
                 List<string> list = new List<string>();

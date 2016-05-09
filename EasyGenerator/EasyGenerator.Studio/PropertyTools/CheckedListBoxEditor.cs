@@ -6,6 +6,8 @@ using System.Windows.Forms.Design;
 using System.ComponentModel;
 using System.Windows.Forms;
 using EasyGenerator.Studio.Model;
+using EasyGenerator.Studio.Model.Ui;
+using EasyGenerator.Studio.Model.Db;
 
 namespace EasyGenerator.Studio.PropertyTools
 {
@@ -26,7 +28,7 @@ namespace EasyGenerator.Studio.PropertyTools
             listBox.CheckOnClick = true;
             List<string> checkeditems = value as List<string>;
 
-            DBLookupListBox control= context.Instance as DBLookupListBox;
+            DBComboListBoxField control = context.Instance as DBComboListBoxField;
             ContextObject contextObject=control.GetRoot();
             if (contextObject is Project)
             {

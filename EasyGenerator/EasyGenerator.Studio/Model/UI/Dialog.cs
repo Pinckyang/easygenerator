@@ -5,8 +5,9 @@ using System.ComponentModel;
 using EasyGenerator.Studio.PropertyTools;
 using EasyGenerator.Studio.Utils;
 using System.Xml.Serialization;
+using EasyGenerator.Studio.Model.Db;
 
-namespace EasyGenerator.Studio.Model
+namespace EasyGenerator.Studio.Model.Ui
 {
     [UiNode(ImageIndex = 4)]
     [XmlRoot("Dialog")]

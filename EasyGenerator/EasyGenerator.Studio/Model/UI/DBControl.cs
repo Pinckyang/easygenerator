@@ -9,7 +9,7 @@ using EasyGenerator.Studio.Utils;
 using System.Drawing.Design;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model
+namespace EasyGenerator.Studio.Model.Ui
 {
     /*[Serializable()]
     [TypeConverter(typeof(PropertySorter))]
@@ -221,31 +221,5 @@ namespace EasyGenerator.Studio.Model
 
 
 
-    [Serializable()]
-    public class DBRadioGroupField : UIColumnInfo, ICloneable
-    {
-        private List<OptionItem> radios = new List<OptionItem>();
-
-        public DBRadioGroupField(ContextObject owner)
-            : base(owner)
-        {
-        }
-
-        [XmlElement("Radios")]
-        public List<OptionItem> Radios
-        {
-            get { return radios; }
-            set { radios = value; }
-        }
-
-        object ICloneable.Clone()
-        {
-            return this.Clone();
-        }
-
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
-    }
+ 
 }

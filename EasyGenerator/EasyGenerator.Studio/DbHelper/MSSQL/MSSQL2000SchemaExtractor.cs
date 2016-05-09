@@ -16,6 +16,7 @@ using System.Data;
 using System.Data.SqlClient;
 using EasyGenerator.Studio.DbHelper.Info;
 using EasyGenerator.Studio.Model;
+using EasyGenerator.Studio.Model.Db;
 
 namespace EasyGenerator.Studio.DbHelper.MSSQL
 {

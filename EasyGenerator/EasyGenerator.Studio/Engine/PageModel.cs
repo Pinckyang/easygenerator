@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EasyGenerator.Studio.Model;
+using EasyGenerator.Studio.Model.Db;
 
 namespace EasyGenerator.Studio.Engine
 {

@@ -19,6 +19,8 @@ using System.Diagnostics;
 using EasyGenerator.Studio.DbHelper.Info;
 using EasyGenerator.Studio.Model;
 using System.Xml.Serialization;
+using EasyGenerator.Studio.Model.Db;
+using EasyGenerator.Studio.Model.Ui;
 
 
 namespace EasyGenerator.Studio

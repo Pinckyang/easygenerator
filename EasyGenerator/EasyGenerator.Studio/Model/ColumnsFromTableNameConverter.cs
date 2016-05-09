@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 using EasyGenerator.Studio.Model;
+using EasyGenerator.Studio.Model.Db;
+using EasyGenerator.Studio.Model.Ui;
 
 namespace EasyGenerator.Studio.PropertyTools
 {

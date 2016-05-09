@@ -6,146 +6,17 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using EasyGenerator.Studio.PropertyTools;
 using System.Xml.Serialization;
+using EasyGenerator.Studio.Model.Db;
+using EasyGenerator.Studio.Model.UI;
 
-namespace EasyGenerator.Studio.Model
+namespace EasyGenerator.Studio.Model.Ui
 {
-    [Serializable()]
-    public class DBViewControl:ContextObject,ICloneable
-    {
-        private string name;
-        private string caption;
-        private string description;
-        private bool allowAdd=false;
-        private bool allowEdit=false;
-        private bool allowDelete=false;
-        //private object owner;
+   
 
-        [CategoryAttribute("显示"), DefaultValueAttribute("")]
-        [XmlAttribute("Name")]
-        public string Name
-        {
-            get { return name; }
-            set 
-            { 
-                name = value;
-                NotifyPropertyChanged(this, "Name");
-            }
-        }
-
-        [CategoryAttribute("显示"), DefaultValueAttribute("")]
-        [XmlAttribute("Caption")]
-        public string Caption
-        {
-            get { return caption; }
-            set 
-            { 
-                caption = value;
-                NotifyPropertyChanged(this, "Caption");
-            }
-        }
-        [CategoryAttribute("显示"), DefaultValueAttribute("")]
-        [XmlAttribute("Description")]
-        public string Description
-        {
-            get { return description; }
-            set 
-            { 
-                description = value;
-                NotifyPropertyChanged(this, "Description");
-            }
-        }
-
-        [CategoryAttribute("显示"), DefaultValue(false)]
-        [XmlAttribute("AllowAdd")]
-        public bool AllowAdd
-        {
-            get { return allowAdd; }
-            set 
-            {
-                allowAdd = value;
-                foreach (ColumnInfo entity in ((EntityInfo)this.Owner).Columns)
-                {
-                    //TODO:entity.DBControl.AllowAdd = value;
-                }
-                NotifyPropertyChanged(this, "AllowAdd");
-            }
-        }
-
-        [CategoryAttribute("显示"), DefaultValue(false)]
-        [XmlAttribute("AllowEdit")]
-        public bool AllowEdit
-        {
-            get { return allowEdit; }
-            set 
-            { 
-                allowEdit = value;
-                foreach (ColumnInfo entity in ((EntityInfo)this.Owner).Columns)
-                {
-                    //TODO:entity.DBControl.AllowEdit = value;
-                }
-
-                NotifyPropertyChanged(this, "AllowEdit");
-            }
-        }
-
-        [CategoryAttribute("显示"),DefaultValue(false)]
-        [XmlAttribute("AllowDelete")]
-        public bool AllowDelete
-        {
-            get { return allowDelete; }
-            set 
-            {
-                allowDelete = value;
-
-                //foreach (KeyValuePair<string, ColumnInfo> entity in ((EntityInfo)this.Owner).Columns)
-                //{
-                //    foreach (KeyValuePair<string, ReferenceInfo> reference in entity.Caption.References)
-                //    {
-                //        if (reference.Caption.ReferenceTable != null)
-                //        {
-                //            reference.Caption.ReferenceTable.DBViewControl.AllowDelete = caption;
-                //        }
-                //    }
-                //}
-                NotifyPropertyChanged(this, "AllowDelete");
-            }
-        }
-
-        public DBViewControl(ContextObject owner)
-            :base(owner)
-        {
-        }
-
-        public override string ToString()
-        {
-            return string.Empty;
-        }
-
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
-    }
+   
 
     [Serializable()]
-    public class DBGridView : DBViewControl,ICloneable
-    {
-        public DBGridView(ContextObject owner)
-            :base(owner)
-        {
-        }
-        public override string ToString()
-        {
-            return string.Empty;
-        }
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
-    }
-
-    [Serializable()]
-    public class DBTreeView : DBViewControl,ICloneable
+    public class DBTreeView : DBView,ICloneable
     {
         private string keyField;
         private string parentField;
