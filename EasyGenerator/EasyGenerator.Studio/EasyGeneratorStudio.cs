@@ -811,15 +811,17 @@ namespace EasyGenerator.Studio
 
                 if (entityInfo != null)
                 {
-                    entityInfo = (EntityInfo)((TableInfo)entityInfo).Clone();
-                    window.Entities.Add(entityInfo);
+                    UITableInfo uiTable = new UITableInfo(window);
+                    uiTable.EntityInfo = (EntityInfo)((TableInfo)entityInfo).Clone();
+                    window.MasterViews.Add(uiTable);
                 }
                 else
                 {
+                    UITableInfo uiTable = new UITableInfo(window);
                     viewInfo = this.project.Database.Views.Find(e => e.Name == dlg.cmbEntity.SelectedItem.ToString());
-                    entityInfo = viewInfo;
-                    entityInfo = (EntityInfo)((ViewInfo)entityInfo).Clone();
-                    window.Entities.Add(entityInfo);
+
+                    uiTable.EntityInfo = (EntityInfo)((ViewInfo)entityInfo).Clone();
+                    window.MasterViews.Add(uiTable);
                 }
 
                 BuildEntities(entityInfo);
@@ -928,14 +930,16 @@ namespace EasyGenerator.Studio
 
                 if (entityInfo != null)
                 {
-                    window.Entities.Add((EntityInfo)((TableInfo)entityInfo).Clone());
+                    UITableInfo uiTable = new UITableInfo(window);
+                    uiTable.EntityInfo = (EntityInfo)((TableInfo)entityInfo).Clone();
+                    window.MasterViews.Add(uiTable);
                 }
                 else
                 {
-                    ViewInfo viewInfo = null;
-                    viewInfo = this.project.Database.Views.Find(o => o.Name == dlg.cmbEntity.SelectedItem.ToString());
+                    UITableInfo uiTable = new UITableInfo(window);
+                    uiTable.EntityInfo = (ViewInfo)this.project.Database.Views.Find(o => o.Name == dlg.cmbEntity.SelectedItem.ToString()).Clone();
 
-                    window.Entities.Add((EntityInfo)((ViewInfo)viewInfo).Clone());
+                    window.MasterViews.Add(uiTable);
                 }
 
                 BuildEntities(entityInfo);

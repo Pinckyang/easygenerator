@@ -11,9 +11,9 @@ namespace EasyGenerator.Studio.Model
     [XmlRoot("Project")]
     public class Project:ContextObject,ICloneable
     {
-        private string name;
-        private string caption;
-        private string description;
+        //private string name;
+        //private string caption;
+        //private string description;
 
         public Project()
             :base(null)
@@ -28,17 +28,13 @@ namespace EasyGenerator.Studio.Model
              Ui=new UI(this);
         }
 
-        [CategoryAttribute("设计"),DefaultValueAttribute("")]
+        [CategoryAttribute("设计"), DefaultValueAttribute("")]
         [UiNodeInvisible()]
         [XmlAttribute("Name")]
         public string Name
         {
-            get { return name; }
-            set
-            { 
-                name = value;
-                NotifyPropertyChanged(this, "Name");
-            }
+            get;
+            set;
         }
 
         [CategoryAttribute("设计"), DefaultValueAttribute("")]
@@ -46,26 +42,18 @@ namespace EasyGenerator.Studio.Model
         [XmlAttribute("Caption")]
         public string Caption
         {
-            get { return caption; }
-            set 
-            { 
-                caption = value;
-                NotifyPropertyChanged(this, "Caption");
-            }
+            get;
+            set;
         }
 
-        
+
         [CategoryAttribute("设计"), DefaultValueAttribute("")]
         [UiNodeInvisible()]
         [XmlAttribute("Description")]
         public string Description
         {
-            get { return description; }
-            set 
-            { 
-                description = value;
-                NotifyPropertyChanged(this, "Description");
-            }
+            get;
+            set;
         }
 
         [XmlElement("Database")]
