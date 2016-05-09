@@ -19,8 +19,6 @@ namespace EasyGenerator.Studio.Model
     {
         private Connection connection=new Connection();
         private DatabaseType databaseType = DatabaseType.SQLServer2000;
-       // private List<TableInfo> tables = null;
-        //private List<EntityInfo> views = null;
 
         public Database()
         {
@@ -62,8 +60,8 @@ namespace EasyGenerator.Studio.Model
         [ReadOnly(true)]
         public List<TableInfo> Tables
         {
-            get{ return tables; }
-            set{ tables = value; }
+            get;
+            set;
         }
 
         [BrowsableAttribute(false)]
@@ -72,8 +70,8 @@ namespace EasyGenerator.Studio.Model
         [ReadOnly(true)]
         public List<ViewInfo> Views
         {
-            get;// { return views; }
-            set;// { views = value; }
+            get;
+            set;
         }
 
         public override string ToString()

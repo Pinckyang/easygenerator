@@ -331,18 +331,13 @@ namespace EasyGenerator.Studio.DbHelper.MSSQL
                     ArrayList freferences = (ArrayList)entities[tableName];
 
 
-                    ReferenceInfo foreignInfo = new ForeignKeyReferenceInfo();
+                    ReferencingInfo foreignInfo = new ReferencingInfo();
                     foreignInfo.Name = (string)reader[1];
                     foreignInfo.TableName = (string)reader[0];
                     foreignInfo.ColumnName = (string)reader[4];
 
-                    //constraintInfo.OnDeleteCascade = reader[2].ToString().StartsWith("CASCADE");
-                    //constraintInfo.OnUpdateCascade = reader[3].ToString().StartsWith("CASCADE");
-
-                    //String constraintKeys = (string)reader[4];
-                    //constraintInfo.Columns = constraintKeys.Split(",".ToCharArray());
-                    foreignInfo.ReferenceColumnName = (string)reader[6];
-                    foreignInfo.ReferenceTableName = (string)reader[5];
+                    //TODO:foreignInfo.ReferencingKey = (string)reader[6];
+                    //TODO:foreignInfo.ReferenceTableName = (string)reader[5];
 
                     freferences.Add(foreignInfo);
 
@@ -354,18 +349,13 @@ namespace EasyGenerator.Studio.DbHelper.MSSQL
 
                     ArrayList preferences = (ArrayList)entities[primaryTableName];
 
-                    ReferenceInfo primaryInfo = new PrimaryKeyReferenceInfo();
+                    ReferencedInfo primaryInfo = new ReferencedInfo();
                     primaryInfo.Name = (string)reader[1];
                     primaryInfo.TableName = (string)reader[5];
                     primaryInfo.ColumnName = (string)reader[6]; 
 
-                    //constraintInfo.OnDeleteCascade = reader[2].ToString().StartsWith("CASCADE");
-                    //constraintInfo.OnUpdateCascade = reader[3].ToString().StartsWith("CASCADE");
-
-                    //String constraintKeys = (string)reader[4];
-                    //constraintInfo.Columns = constraintKeys.Split(",".ToCharArray());
-                    primaryInfo.ReferenceColumnName = (string)reader[4];
-                    primaryInfo.ReferenceTableName = (string)reader[0];
+                    //TODO:primaryInfo.ReferenceColumnName = (string)reader[4];
+                    //TODO:primaryInfo.ReferenceTableName = (string)reader[0];
 
                     preferences.Add(primaryInfo);
                 }

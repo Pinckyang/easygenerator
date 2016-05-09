@@ -35,7 +35,7 @@ namespace EasyGenerator.Studio
         public EasyGeneratorStudio()
         {
             InitializeComponent();
-            outputDirectory=Configuration.OutputPath;
+            outputDirectory = Configuration.OutputPath;
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             templateDirectory = baseDirectory + "Templates\\";
         }
@@ -61,7 +61,7 @@ namespace EasyGenerator.Studio
             this.tvUI.Nodes.Clear();
             // ExplorerTreeNode
             UiTreeNode uiRootNode = new UiTreeNode(this.CurrentProject);
-           // uiRootNode.Name = "ProjectRoot";
+            // uiRootNode.Name = "ProjectRoot";
             tvUI.Nodes.Add(uiRootNode);
 
             //DbTreeNode loginModuleNode = new DbTreeNode(this.project.Ui.LoadModule.ToString(), 1, 1, this.project.Ui.LoadModule, TreeNodeType.LoginModule);
@@ -93,7 +93,7 @@ namespace EasyGenerator.Studio
         private void tvUI_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             UiTreeNode node = (UiTreeNode)e.Node;
-            uiPGNamedObject.SelectedObject=node.ContextObject;
+            uiPGNamedObject.SelectedObject = node.ContextObject;
             uiPGNamedObject.Refresh();
             if (node.ContextObject is SystemModule)
             {
@@ -151,7 +151,7 @@ namespace EasyGenerator.Studio
                 return;
             }
 
-            if (node.ContextObject  is ReferenceInfo)
+            if (node.ContextObject is ReferenceInfo)
             {
                 tbnModuleAdd.Enabled = false;
                 tbnModuleDelete.Enabled = false;
@@ -176,7 +176,7 @@ namespace EasyGenerator.Studio
 
             DbTreeNode databaseRootNode = new DbTreeNode(this.CurrentProject.Database);
             uiTvExplorer.Nodes.Add(databaseRootNode);
-            
+
             // ExplorerTreeNode databaseRootNode = new ExplorerTreeNode(this.CurrentProject.Database.Connection.InitialCatalog, 0, 0,this.CurrentProject.Database, TreeNodeType.Column);
             //uiTvExplorer.Nodes.Add(databaseRootNode);
 
@@ -259,9 +259,9 @@ namespace EasyGenerator.Studio
             this.viewLibrariesToolStripMenuItem.Enabled = enabled;
             this.generateToolStripMenuItem.Enabled = enabled;
             this.uiBtnSave.Enabled = enabled;
-           // this.uiBtnSaveAs.Enabled = enabled;
-        //    this.uiBtnAddLibraries.Enabled = enabled;
-       //     this.uiBtnLibrarySetting.Enabled = enabled;
+            // this.uiBtnSaveAs.Enabled = enabled;
+            //    this.uiBtnAddLibraries.Enabled = enabled;
+            //     this.uiBtnLibrarySetting.Enabled = enabled;
             this.uiBtnGenerate.Enabled = enabled;
             this.refreshProjectToolStripMenuItem.Enabled = enabled;
             this.addControlToolStripMenuItem.Enabled = enabled;
@@ -292,7 +292,7 @@ namespace EasyGenerator.Studio
 
         private void uiTvExplorer_AfterSelect(object sender, TreeViewEventArgs e)
         {
-           // this.uiTxtCaption.Text = string.Empty;
+            // this.uiTxtCaption.Text = string.Empty;
             this.currentNode = ((TreeView)sender).SelectedNode as DbTreeNode;
             this.CleanPanel();
             if (currentNode == null)
@@ -344,7 +344,7 @@ namespace EasyGenerator.Studio
             if (node is DbTreeNode)
             {
                 this.uiPGNamedObject.Dock = DockStyle.Fill;
-               // this.uiPGNamedObject.Visible = true;
+                // this.uiPGNamedObject.Visible = true;
             }
         }
 
@@ -399,15 +399,15 @@ namespace EasyGenerator.Studio
             }
 
         }
-      
-        private void GenerateCode(string templateDir,string outputDir)
+
+        private void GenerateCode(string templateDir, string outputDir)
         {
             using (CodeGenerationDlg codeGenerationDlg = new CodeGenerationDlg(this.project, templateDir, outputDir))
             {
-                if (codeGenerationDlg.ShowDialog(this)== DialogResult.OK)
+                if (codeGenerationDlg.ShowDialog(this) == DialogResult.OK)
                 {
                     MessageBox.Show("代码生成完成，请浏览目标文件夹！");
-                    Process.Start("explorer.exe",this.outputDirectory);
+                    Process.Start("explorer.exe", this.outputDirectory);
                 }
             }
         }
@@ -459,7 +459,7 @@ namespace EasyGenerator.Studio
             dlg.txtOutputFolder.Text = outputDirectory;
             dlg.ProjectName = this.project.Name;
             dlg.TemplateDirectory = this.templateDirectory;
-            
+
 
             if (dlg.ShowDialog(this) == DialogResult.OK)
             {
@@ -489,48 +489,48 @@ namespace EasyGenerator.Studio
 
         private void OnDeleteObject_Click(object sender, EventArgs e)
         {
-           /* if (this.currentNode != null)
-            {
-                uiTBDeleteObject.Enabled = false;
+            /* if (this.currentNode != null)
+             {
+                 uiTBDeleteObject.Enabled = false;
 
-                Column column = this.currentNode.Tag as Column;
-                if (column != null)
-                {
-                    Table table = this.currentNode.Parent.Tag as Table;
-                    if (table.RemoveColumn(column))
-                    {
-                        return;
-                    }
-                }
+                 Column column = this.currentNode.Tag as Column;
+                 if (column != null)
+                 {
+                     Table table = this.currentNode.Parent.Tag as Table;
+                     if (table.RemoveColumn(column))
+                     {
+                         return;
+                     }
+                 }
 
-                Reference reference = this.currentNode.Tag as Reference;
-                if (reference != null)
-                {
-                    Table table = this.currentNode.Parent.Tag as Table;
-                    if (table.RemoveOutReference(reference))
-                    {
-                        return;
-                    }
-                }
-                ReferenceJoin join = this.currentNode.Tag as ReferenceJoin;
-                if (join != null)
-                {
-                    Reference refe = this.currentNode.Parent.Tag as Reference;
-                    if (refe.RemoveJoin(join))
-                    {
-                        return;
-                    }
-                }
+                 Reference reference = this.currentNode.Tag as Reference;
+                 if (reference != null)
+                 {
+                     Table table = this.currentNode.Parent.Tag as Table;
+                     if (table.RemoveOutReference(reference))
+                     {
+                         return;
+                     }
+                 }
+                 ReferenceJoin join = this.currentNode.Tag as ReferenceJoin;
+                 if (join != null)
+                 {
+                     Reference refe = this.currentNode.Parent.Tag as Reference;
+                     if (refe.RemoveJoin(join))
+                     {
+                         return;
+                     }
+                 }
 
-                //Table selectedTable = this.currentNode.Tag as Table;
-                //if (selectedTable != null)
-                //{
-                //    if (this.CurrentProject.Domain.RemoveTable(selectedTable))
-                //    {
-                //        return;
-                //    }
-                //}
-            }*/
+                 //Table selectedTable = this.currentNode.Tag as Table;
+                 //if (selectedTable != null)
+                 //{
+                 //    if (this.CurrentProject.Domain.RemoveTable(selectedTable))
+                 //    {
+                 //        return;
+                 //    }
+                 //}
+             }*/
         }
 
         private void RefreshExplorer()
@@ -631,7 +631,7 @@ namespace EasyGenerator.Studio
                 return;
             }
 
-            systemModule.Modules.RemoveAll(o=>o.Name==module.Name);
+            systemModule.Modules.RemoveAll(o => o.Name == module.Name);
             systemModuleNode.Nodes.Remove(node);
 
 
@@ -646,7 +646,7 @@ namespace EasyGenerator.Studio
             //    MessageBox.Show("请选择结点");
             //    return;
             //}
-            if(node==null)
+            if (node == null)
             {
                 return;
             }
@@ -662,7 +662,7 @@ namespace EasyGenerator.Studio
                 return;
             }
 
-            if(node.ContextObject is LoginModule)
+            if (node.ContextObject is LoginModule)
             {
                 CreateLoginModuleDialog(node);
                 return;
@@ -695,7 +695,7 @@ namespace EasyGenerator.Studio
                 }
 
 
-                TableInfo entityInfo = this.project.Database.Tables.Find(e=>e.Name==dlg.cmbEntity.SelectedItem.ToString());
+                TableInfo entityInfo = this.project.Database.Tables.Find(e => e.Name == dlg.cmbEntity.SelectedItem.ToString());
 
                 if (entityInfo == null)
                 {
@@ -746,7 +746,7 @@ namespace EasyGenerator.Studio
                 EntityInfo entityInfo = null;
                 TableInfo tableInfo = null;
                 ViewInfo viewInfo = null;
-                tableInfo= this.project.Database.Tables.Find(e=>e.Name==dlg.cmbEntity.SelectedItem.ToString());
+                tableInfo = this.project.Database.Tables.Find(e => e.Name == dlg.cmbEntity.SelectedItem.ToString());
                 entityInfo = tableInfo;
 
                 if (entityInfo != null)
@@ -755,11 +755,11 @@ namespace EasyGenerator.Studio
                 }
                 else
                 {
-                    viewInfo = this.project.Database.Views.Find(e=>e.Name == dlg.cmbEntity.SelectedItem.ToString());
+                    viewInfo = this.project.Database.Views.Find(e => e.Name == dlg.cmbEntity.SelectedItem.ToString());
                     entityInfo = viewInfo;
                     entityInfo = (EntityInfo)((ViewInfo)entityInfo).Clone();
                 }
-                
+
                 window.Entities.Add(entityInfo);
                 window.ResultTableName = entityInfo.Name;
 
@@ -806,7 +806,7 @@ namespace EasyGenerator.Studio
                 EntityInfo entityInfo = null;
                 TableInfo tableInfo = null;
                 ViewInfo viewInfo = null;
-                tableInfo=this.project.Database.Tables.Find(e=>e.Name==dlg.cmbEntity.SelectedItem.ToString());
+                tableInfo = this.project.Database.Tables.Find(e => e.Name == dlg.cmbEntity.SelectedItem.ToString());
                 entityInfo = tableInfo;
 
                 if (entityInfo != null)
@@ -816,7 +816,7 @@ namespace EasyGenerator.Studio
                 }
                 else
                 {
-                    viewInfo=this.project.Database.Views.Find(e=>e.Name==dlg.cmbEntity.SelectedItem.ToString());
+                    viewInfo = this.project.Database.Views.Find(e => e.Name == dlg.cmbEntity.SelectedItem.ToString());
                     entityInfo = viewInfo;
                     entityInfo = (EntityInfo)((ViewInfo)entityInfo).Clone();
                     window.Entities.Add(entityInfo);
@@ -828,44 +828,46 @@ namespace EasyGenerator.Studio
             }
         }
 
-        
+
         private void BuildEntities(EntityInfo entityInfo)
         {
-            foreach ( ColumnInfo column in entityInfo.Columns)
+            foreach (ColumnInfo column in entityInfo.Columns)
             {
-                foreach (ReferenceInfo reference in column.References)
+                foreach (ReferencedInfo referenced in column.Referenced)
                 {
-                    if (reference is PrimaryKeyReferenceInfo)
+                    //if (referenced is ReferencedInfo)
+                    //{
+                    TableInfo referTable = null;
+                    referTable = this.CurrentProject.Database.Tables.Find(e => e.Name == referenced.ReferencedTableName);
+                    if (referTable != null && referTable is TableInfo)
                     {
-                        TableInfo referTable = null;
-                        referTable=this.CurrentProject.Database.Tables.Find(e=>e.Name==reference.ReferenceTableName );
-                        if (referTable != null && referTable is TableInfo)
+                        referenced.ReferencedTable = (TableInfo)((TableInfo)referTable).Clone();
+                        if (referenced.TableName != referenced.ReferencedTableName)
                         {
-                            reference.ReferenceTable = (TableInfo)((TableInfo)referTable).Clone();
-                            if (reference.TableName != reference.ReferenceTableName)
-                            {
-                                BuildEntities(reference.ReferenceTable);
-                            }
-                        }
-                    }
-                    else if (reference is ForeignKeyReferenceInfo)
-                    {
-                        TableInfo referTable = null;
-                        referTable=this.CurrentProject.Database.Tables.Find(e=>e.Name==reference.ReferenceTableName);
-                        if (referTable != null && referTable is TableInfo)
-                        {
-                            reference.ReferenceTable = (TableInfo)((TableInfo)referTable).Clone();
-
-                            column.DBControlType = DBControlType.DBLookupListBox;
-                            DBLookupListBox lookupGridBox = column.DBControl as DBLookupListBox;
-                            if (lookupGridBox != null)
-                            {
-                                lookupGridBox.LookupTable = reference.ReferenceTableName;
-                                lookupGridBox.LookupKeyField = reference.ReferenceColumnName;
-                            }
+                            BuildEntities(referenced.ReferencedTable);
                         }
                     }
                 }
+                //}
+                //else if (reference is ForeignKeyReferenceInfo)
+                //{
+
+                TableInfo referencingTable = this.CurrentProject.Database.Tables.Find(e => e.Name == column.Referencing.ReferencingTableName);
+                if (referencingTable != null && referencingTable is TableInfo)
+                {
+                    column.Referencing.ReferencingTable = (TableInfo)((TableInfo)referencingTable).Clone();
+
+                    //TODO:
+                    //column.DBControlType = DBControlType.DBLookupListBox;
+                    //DBLookupListBox lookupGridBox = column.DBControl as DBLookupListBox;
+                    //if (lookupGridBox != null)
+                    //{
+                    //    lookupGridBox.LookupTable = reference.ReferenceTableName;
+                    //    lookupGridBox.LookupKeyField = reference.ReferenceColumnName;
+                    //}
+                }
+                //}
+                //}
             }
         }
 
@@ -888,7 +890,7 @@ namespace EasyGenerator.Studio
                 return;
             }
 
-            module.Windows.RemoveAll(o=>o.Name==window.Name);
+            module.Windows.RemoveAll(o => o.Name == window.Name);
             moduleNode.Nodes.Remove(node);
         }
 
@@ -922,7 +924,7 @@ namespace EasyGenerator.Studio
                 }
 
                 TableInfo entityInfo = null;
-                entityInfo = this.project.Database.Tables.Find(o=>o.Name==dlg.cmbEntity.SelectedItem.ToString() );
+                entityInfo = this.project.Database.Tables.Find(o => o.Name == dlg.cmbEntity.SelectedItem.ToString());
 
                 if (entityInfo != null)
                 {
@@ -931,7 +933,7 @@ namespace EasyGenerator.Studio
                 else
                 {
                     ViewInfo viewInfo = null;
-                    viewInfo=this.project.Database.Views.Find(o=>o.Name==dlg.cmbEntity.SelectedItem.ToString());
+                    viewInfo = this.project.Database.Views.Find(o => o.Name == dlg.cmbEntity.SelectedItem.ToString());
 
                     window.Entities.Add((EntityInfo)((ViewInfo)viewInfo).Clone());
                 }

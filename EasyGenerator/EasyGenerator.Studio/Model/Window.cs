@@ -91,7 +91,7 @@ namespace EasyGenerator.Studio.Model
                 allowAdd = value;
                 foreach (EntityInfo entity in Entities)
                 {
-                    entity.DBViewControl.AllowAdd = value;
+                    //TODO:entity.DBViewControl.AllowAdd = value;
                 }
 
                 NotifyPropertyChanged(this, "AllowAdd");
@@ -108,7 +108,7 @@ namespace EasyGenerator.Studio.Model
                 allowEdit = value;
                 foreach (EntityInfo entity in Entities)
                 {
-                    entity.DBViewControl.AllowEdit = value;
+                    //TODO:entity.DBViewControl.AllowEdit = value;
                 }
 
                 NotifyPropertyChanged(this, "AllowEdit");
@@ -125,7 +125,7 @@ namespace EasyGenerator.Studio.Model
                 allowDelete = value;
                 foreach (EntityInfo entity in Entities)
                 {
-                    entity.DBViewControl.AllowDelete = value;
+                    //TODO:entity.DBViewControl.AllowDelete = value;
                 }
 
                 NotifyPropertyChanged(this, "AllowDelete");

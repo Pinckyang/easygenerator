@@ -72,18 +72,16 @@ namespace EasyGenerator.Studio.DbHelper
 
                 foreach (ColumnInfo column in columns)
                 {
-                    //column.Owner = tableEntity;
-                    if (column.SqlType == SqlType.DateTime)
-                    {
-                        column.DBControlType = DBControlType.DBDatePicker;
-                    }else if(column.SqlType==  SqlType.NText)
-                    {
-                        column.DBControlType = DBControlType.DBRichEdit;
-                        column.DBControl.ColSpan = 2;
-                    }
-
-                   // column.Owner = tableEntity;
-                    tableEntity.Columns.Add(column);
+                    //TODO:
+                    //if (column.SqlType == SqlType.DateTime)
+                    //{
+                    //    column.DBControlType = DBControlType.DBDatePicker;
+                    //}else if(column.SqlType==  SqlType.NText)
+                    //{
+                    //    column.DBControlType = DBControlType.DBRichEdit;
+                    //    column.DBControl.ColSpan = 2;
+                    //}
+                    //tableEntity.Columns.Add(column);
                 }
 
 
@@ -106,20 +104,20 @@ namespace EasyGenerator.Studio.DbHelper
 
                     foreach (ReferenceInfo reference in references)
                     {
-                        tableEntity.Columns.Find(e => e.Name == reference.ColumnName).References.Add(reference);
-                       // tableEntity.Columns[reference.ColumnName].References.Add(reference.Name, reference);
-                        if (reference is ForeignKeyReferenceInfo)
-                        {
-                            tableEntity.Columns.Find(e => e.Name == reference.ColumnName).IsForeignKey = true;
+                        //TODO:
+                        //tableEntity.Columns.Find(e => e.Name == reference.ColumnName).Referencing.Add(reference);
+                        //if (reference is ForeignKeyReferenceInfo)
+                        //{
+                        //    tableEntity.Columns.Find(e => e.Name == reference.ColumnName).IsForeignKey = true;
 
-                            if (reference.ReferenceTableName == reference.TableName)
-                            {
-                                tableEntity.DBViewControlType = DBViewControlType.DBTreeView;
-                                DBTreeView treeView=tableEntity.DBViewControl as DBTreeView;
-                                treeView.ParentField = reference.ColumnName;
-                                treeView.KeyField = reference.ReferenceColumnName;
-                            }
-                        }
+                        //    if (reference.ReferenceTableName == reference.TableName)
+                        //    {
+                        //        tableEntity.DBViewControlType = DBViewControlType.DBTreeView;
+                        //        DBTreeView treeView=tableEntity.DBViewControl as DBTreeView;
+                        //        treeView.ParentField = reference.ColumnName;
+                        //        treeView.KeyField = reference.ReferenceColumnName;
+                        //    }
+                        //}
                     }
                 }
 

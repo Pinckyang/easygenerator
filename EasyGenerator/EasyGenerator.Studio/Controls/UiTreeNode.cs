@@ -78,10 +78,10 @@ namespace EasyGenerator.Studio.Controls
                 this.SelectedImageIndex = attribute.ImageIndex;
             }
 
-            if (contextObject is PrimaryKeyReferenceInfo)
+            if (contextObject is ReferencedInfo)
             {
-                ReferenceInfo referenceInfo = (ReferenceInfo)contextObject;
-                if (referenceInfo.TableName == referenceInfo.ReferenceTableName)
+                ReferencedInfo referenceInfo = (ReferencedInfo)contextObject;
+                if (referenceInfo.TableName == referenceInfo.ReferencedTableName)
                 {
                     return;
                 }

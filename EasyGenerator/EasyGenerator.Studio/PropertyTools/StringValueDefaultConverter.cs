@@ -29,11 +29,11 @@ namespace EasyGenerator.Studio.PropertyTools
             list.Add("DateTime.Now.Date.AddMinutes(-1)");
             list.Add("{IP}");
 
-            if (!column.IsPrimaryKey && column.References.Count>0)
+            if (!column.IsPrimaryKey && column.Referenced.Count>0)
             {
-                foreach (ReferenceInfo kv in column.References)
+                foreach (ReferencedInfo kv in column.Referenced)
                 {
-                    list.Add("$"+kv.ReferenceTable.Name+"."+kv.ReferenceColumnName);
+                    list.Add("$"+kv.ReferencedTable.Name+"."+kv.ReferencedKey);
                 }
             }            
             return new StandardValuesCollection(list.ToArray());

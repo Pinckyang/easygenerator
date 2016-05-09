@@ -22,7 +22,7 @@ namespace EasyGenerator.Studio.Model
     {
         public ColumnInfo()
         {
-            Referencing= new ContextObjectList<ReferencingInfo>(this);
+           // Referencing= new ReferencingInfo;
             Referenced = new ContextObjectList<ReferencedInfo>(this);
         }
 
@@ -265,16 +265,17 @@ namespace EasyGenerator.Studio.Model
                 }
                 if (dbControl is DBLookupTreeBox)
                 {
-                    foreach (ReferenceInfo reference in References)
-                    {
-                        if (reference is ForeignKeyReferenceInfo)
-                        {
-                            (dbControl as DBLookupTreeBox).LookupTable = reference.ReferenceTableName;
-                            (dbControl as DBLookupTreeBox).LookupKeyField = reference.ReferenceColumnName;
-                            (dbControl as DBLookupTreeBox).LookupDisplayField = reference.ReferenceColumnName;
-                            (dbControl as DBLookupTreeBox).LookupRootValue = "-";
-                        }
-                    }
+                    //TODO:
+                    //foreach (ReferenceInfo reference in References)
+                    //{
+                    //    if (reference is ForeignKeyReferenceInfo)
+                    //    {
+                    //        (dbControl as DBLookupTreeBox).LookupTable = reference.ReferenceTableName;
+                    //        (dbControl as DBLookupTreeBox).LookupKeyField = reference.ReferenceColumnName;
+                    //        (dbControl as DBLookupTreeBox).LookupDisplayField = reference.ReferenceColumnName;
+                    //        (dbControl as DBLookupTreeBox).LookupRootValue = "-";
+                    //    }
+                    //}
                 }
 
                 NotifyPropertyChanged(this, "DBControl");

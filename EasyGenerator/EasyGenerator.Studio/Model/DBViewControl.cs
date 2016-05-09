@@ -65,15 +65,7 @@ namespace EasyGenerator.Studio.Model
                 allowAdd = value;
                 foreach (ColumnInfo entity in ((EntityInfo)this.Owner).Columns)
                 {
-                    entity.DBControl.AllowAdd = value;
-
-                    //foreach (KeyValuePair<string, ReferenceInfo> reference in entity.Caption.References)
-                    //{
-                    //    if (reference.Caption.ReferenceTable != null)
-                    //    {
-                    //        reference.Caption.ReferenceTable.DBViewControl.AllowAdd = caption;
-                    //    }
-                    //}
+                    //TODO:entity.DBControl.AllowAdd = value;
                 }
                 NotifyPropertyChanged(this, "AllowAdd");
             }
@@ -89,15 +81,7 @@ namespace EasyGenerator.Studio.Model
                 allowEdit = value;
                 foreach (ColumnInfo entity in ((EntityInfo)this.Owner).Columns)
                 {
-                    entity.DBControl.AllowEdit = value;
-
-                    //foreach (KeyValuePair<string, ReferenceInfo> reference in entity.Caption.References)
-                    //{
-                    //    if (reference.Caption.ReferenceTable != null)
-                    //    {
-                    //        reference.Caption.ReferenceTable.DBViewControl.AllowEdit = caption;
-                    //    }
-                    //}
+                    //TODO:entity.DBControl.AllowEdit = value;
                 }
 
                 NotifyPropertyChanged(this, "AllowEdit");

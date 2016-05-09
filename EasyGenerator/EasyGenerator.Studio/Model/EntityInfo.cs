@@ -82,7 +82,7 @@ namespace EasyGenerator.Studio.Model
         private DBViewControlType dbViewControlType = DBViewControlType.DBGridView;
         private DBViewControl dbViewControl = new DBGridView();
 
-        UIEntityInfo()
+        public UIEntityInfo()
         {
             dbViewControl.Owner = this;
         }
