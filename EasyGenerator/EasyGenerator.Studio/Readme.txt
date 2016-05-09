@@ -1,11 +1,1 @@
-﻿->1、实现DBComboBox,点击Fields时弹出框并输入Key值和Value值。
-->2、实现DBLookupListBox,当确定LookupTable后，根据表名弹出LookupFields值，并选择LookupKeyField……
-->3、实现DBLookupTreeBox，当确定LookupTable后，根据表名选择LookupKey和LookupParentField和LookupDisplayField，并填写LookupRootValue。
-4、实现印随字段，如在添加修改时，其中一个字段需随着一个外键表的值变化而变化。
-5、实现定义对话框，对话框可返回当个值或多一值。
-6、定义通用对话框，当使用ButtonEdit控件时弹出对话框，在对话框里选择单个或多个值。
-7、定义登录界面，指定哪个是用户名哪个是密码。
-8、定义模板文件结构
-9、根据模板生成代码
-10、自动保存为项目文件
-11、编写一个网站模块
+﻿
