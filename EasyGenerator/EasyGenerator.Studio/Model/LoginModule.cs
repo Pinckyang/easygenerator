@@ -21,6 +21,11 @@ namespace EasyGenerator.Studio.Model
         private string accountField;
         private string passwordField;
 
+        public LoginModule(ContextObject owner)
+            :base(owner)
+        {
+        }
+
         [CategoryAttribute("界面")]
         [XmlAttribute("Name")]
         [ReadOnly(true)]

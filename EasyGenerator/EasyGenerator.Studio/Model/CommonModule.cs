@@ -20,7 +20,8 @@ namespace EasyGenerator.Studio.Model
         private string description = "通用模块";
         private List<Dialog> dialogs = null;
 
-        public CommonModule()
+        public CommonModule(ContextObject owner)
+            :base(owner)
         {
             dialogs = new ContextObjectList<Dialog>(this);
         }

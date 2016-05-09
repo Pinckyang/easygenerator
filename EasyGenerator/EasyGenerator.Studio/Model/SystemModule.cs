@@ -14,12 +14,12 @@ namespace EasyGenerator.Studio.Model
     [DefaultPropertyAttribute("Name")]
     public class SystemModule : ContextObject,ICloneable
     {
-        //private List<Module> modules = null;
         private string name = "SystemModule";
         private string caption = "功能模块";
         private string description = "功能模块";
 
-        public SystemModule()
+        public SystemModule(ContextObject owner)
+            :base(owner)
         {
            Modules= new ContextObjectList<Module>(this);
         }

@@ -29,6 +29,11 @@ namespace EasyGenerator.Studio.Model
         private string defaultSearchValue = "";
 
 
+        public DBControl(ContextObject owner)
+            :base(owner)
+        {
+        }
+
 
         [CategoryAttribute("显示"),DefaultValue(1),Description("控件列跨度，默认为1.")]
         [XmlAttribute("ColSpan")]
@@ -190,6 +195,10 @@ namespace EasyGenerator.Studio.Model
     [Serializable()]
     public class DBText : DBControl, ICloneable
     {
+        public DBText(ContextObject owner)
+            : base(owner)
+        {
+        }
 
         object ICloneable.Clone()
         {
@@ -201,6 +210,10 @@ namespace EasyGenerator.Studio.Model
     [Serializable()]
     public class DBEdit: DBControl,ICloneable
     {
+        public DBEdit(ContextObject owner)
+            : base(owner)
+        {
+        }
 
         object ICloneable.Clone()
         {
@@ -216,7 +229,10 @@ namespace EasyGenerator.Studio.Model
     [Serializable()]
     public class DBButtonEdit : DBControl, ICloneable
     {
-
+        public DBButtonEdit(ContextObject owner)
+            : base(owner)
+        {
+        }
         object ICloneable.Clone()
         {
             return this.Clone();
@@ -231,7 +247,10 @@ namespace EasyGenerator.Studio.Model
     [Serializable()]
     public class DBPassword: DBControl,ICloneable
     {
-
+        public DBPassword(ContextObject owner)
+            : base(owner)
+        {
+        }
         object ICloneable.Clone()
         {
             return this.Clone();
@@ -251,6 +270,10 @@ namespace EasyGenerator.Studio.Model
     {
         private List<OptionItem> fields = new List<OptionItem>();
 
+        public DBComboBox(ContextObject owner)
+            : base(owner)
+        {
+        }
         /// <summary>
         /// 在此预定义值
         /// </summary>
@@ -279,6 +302,11 @@ namespace EasyGenerator.Studio.Model
         private List<string> lookupFields = new List<string>();
         private string lookupKeyField;
 
+
+        public DBLookupListBox(ContextObject owner)
+            : base(owner)
+        {
+        }
         /// <summary>
         /// 外键表
         /// </summary>
@@ -341,6 +369,11 @@ namespace EasyGenerator.Studio.Model
         private string lookupParentField;
         private string lookupRootValue="-";
         private string lookupDisplayField;
+
+        public DBLookupTreeBox(ContextObject owner)
+            : base(owner)
+        {
+        }
 
         [XmlAttribute("LookupTable")]
         public string LookupTable
@@ -412,7 +445,8 @@ namespace EasyGenerator.Studio.Model
     [Serializable()]
     public class DBRichEdit: DBControl,ICloneable
     {
-        public DBRichEdit()
+        public DBRichEdit(ContextObject owner)
+            : base(owner)
         {
             ColSpan = 2;
             RowSpan=2;
@@ -460,8 +494,13 @@ namespace EasyGenerator.Studio.Model
     public class DBDatePicker: DBControl,ICloneable
     {
         private SearchMode searchMode = SearchMode.Single;
-        private SearchModeControl searchModeControl = new SearchDateSingleControl();
+        private SearchModeControl searchModeControl = null;
 
+        public DBDatePicker(ContextObject owner)
+            : base(owner)
+        {
+            SearchModeControl = new SearchDateSingleControl(this);
+        }
 
         [CategoryAttribute("显示"), Browsable(true), TypeConverter(typeof(DateTimeDefaultConverter))]
         [XmlAttribute("DefaultAddValue")]
@@ -548,7 +587,13 @@ namespace EasyGenerator.Studio.Model
     public class DBDateTimePicker: DBControl,ICloneable
     {
         private SearchMode searchMode = SearchMode.Single;
-        private SearchModeControl searchModeControl = new SearchDateSingleControl();
+        private SearchModeControl searchModeControl = null;
+
+        public DBDateTimePicker(ContextObject owner)
+            : base(owner)
+        {
+            searchModeControl = new SearchDateSingleControl(this);
+        }
 
         [CategoryAttribute("显示"), Browsable(true), TypeConverter(typeof(DateTimeDefaultConverter))]
         [XmlAttribute("DefaultAddValue")]
@@ -630,6 +675,11 @@ namespace EasyGenerator.Studio.Model
         private SearchMode searchMode = SearchMode.Single;
         private string defaultSearchFromTimeValue = "";
         private string defaultSearchToTimeValue = "";
+
+        public DBTimePicker(ContextObject owner)
+            : base(owner)
+        {
+        }
 
         [CategoryAttribute("显示"), Browsable(true), TypeConverter(typeof(DateTimeDefaultConverter))]
         [XmlAttribute("DefaultAddValue")]
@@ -713,7 +763,8 @@ namespace EasyGenerator.Studio.Model
     [Serializable()]
     public class DBBinaryImage: DBControl,ICloneable
     {
-        public DBBinaryImage()
+        public DBBinaryImage(ContextObject owner)
+            : base(owner)
         {
             RowSpan = 2;
         }
@@ -758,7 +809,8 @@ namespace EasyGenerator.Studio.Model
     [Serializable()]
     public class DBPathImage : DBControl, ICloneable
     {
-        public DBPathImage()
+        public DBPathImage(ContextObject owner)
+            : base(owner)
         {
             this.ColSpan = 2;
         }
@@ -806,6 +858,11 @@ namespace EasyGenerator.Studio.Model
     [Serializable()]
     public class DBCheckBox : DBControl,ICloneable
     {
+        public DBCheckBox(ContextObject owner)
+            : base(owner)
+        {
+        }
+
         object ICloneable.Clone()
         {
             return this.Clone();
@@ -821,6 +878,11 @@ namespace EasyGenerator.Studio.Model
     public class DBRadioGroup : DBControl, ICloneable
     {
         private List<OptionItem> radios = new List<OptionItem>();
+
+        public DBRadioGroup(ContextObject owner)
+            : base(owner)
+        {
+        }
 
         [XmlElement("Radios")]
         public List<OptionItem> Radios

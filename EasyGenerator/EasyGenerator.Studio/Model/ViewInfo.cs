@@ -12,6 +12,10 @@ namespace EasyGenerator.Studio.Model
     [DbNodeAttribute(ImageIndex = 3)]
     public class ViewInfo : EntityInfo,ICloneable
     {
+        public ViewInfo(ContextObject owner)
+            : base(owner)
+        {
+        }
         public object Clone()
         {
             return this.MemberwiseClone();
@@ -22,6 +26,10 @@ namespace EasyGenerator.Studio.Model
     [UiNodeAttribute(ImageIndex = 6)]
     public class UIViewInfo : UIEntityInfo
     {
+        public UIViewInfo(ContextObject owner)
+            : base(owner)
+        {
+        }
         public TableInfo TableInfo
         {
             get { return (TableInfo)base.EntityInfo; }

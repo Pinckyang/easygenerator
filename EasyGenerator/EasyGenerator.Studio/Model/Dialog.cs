@@ -19,7 +19,8 @@ namespace EasyGenerator.Studio.Model
         private bool multiSelect = false;
 
 
-        public Dialog()
+        public Dialog(ContextObject owner)
+            :base(owner)
         {
             Entities = new ContextObjectList<EntityInfo>(this);
             

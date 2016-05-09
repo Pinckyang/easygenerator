@@ -14,14 +14,18 @@ namespace EasyGenerator.Studio.Model
         private string name;
         private string caption;
         private string description;
-        private Database database=new Database();
-        private UI ui=new UI();
 
         public Project()
+            :base(null)
         {
-            database.Owner = this;
-            ui.Owner = this;
-           // ProjectAccesser.SetProject(this);
+
+        }
+
+        public Project(ContextObject owner)
+            :base(owner)
+        {
+             Database=new Database(this);
+             Ui=new UI(this);
         }
 
         [CategoryAttribute("设计"),DefaultValueAttribute("")]
@@ -64,21 +68,21 @@ namespace EasyGenerator.Studio.Model
             }
         }
 
-        [XmlElement("Database")] 
+        [XmlElement("Database")]
         [BrowsableAttribute(false)]
         [UiNodeInvisible()]
         public Database Database
         {
-            get { return database; }
-            set { database = value; }
+            get;
+            set;
         }
 
-        [XmlElement("Ui")] 
+        [XmlElement("Ui")]
         [BrowsableAttribute(false)]
         public UI Ui
         {
-            get { return ui; }
-            set { ui = value; }
+            get;
+            set;
         }
 
         public override string ToString()

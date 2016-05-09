@@ -18,6 +18,12 @@ namespace EasyGenerator.Studio.Model
     [XmlInclude(typeof(ReferencingInfo))]
     public abstract class ReferenceInfo : ContextObject, ICloneable
     {
+
+        public ReferenceInfo(ContextObject owner)
+            :base(owner)
+        {
+        }
+
         [CategoryAttribute("数据库")]
         [BrowsableAttribute(true)]
         [ReadOnly(true)]
@@ -63,6 +69,10 @@ namespace EasyGenerator.Studio.Model
     [XmlType(TypeName = "ReferencingInfo")]
     public class ReferencingInfo : ReferenceInfo, ICloneable
     {
+        public ReferencingInfo(ContextObject owner)
+            : base(owner)
+        {
+        }
 
         [CategoryAttribute("数据库")]
         [BrowsableAttribute(false)]
@@ -124,6 +134,10 @@ namespace EasyGenerator.Studio.Model
     [XmlType(TypeName = "ReferencedInfo")]
     public class ReferencedInfo : ReferenceInfo, ICloneable
     {
+        public ReferencedInfo(ContextObject owner)
+            : base(owner)
+        {
+        }
         [CategoryAttribute("数据库")]
         [BrowsableAttribute(false)]
         [ReadOnly(true)]
@@ -182,12 +196,17 @@ namespace EasyGenerator.Studio.Model
     [XmlType(TypeName = "UIReferencingInfo")]
     public class UIReferencingInfo:ContextObject
     {
-        private ReferencingInfo referencingInfo;
+        public UIReferencingInfo(ContextObject owner)
+            : base(owner)
+        {
+            ReferencingInfo = new ReferencingInfo(this);
+        }
+      
 
         public ReferencingInfo ReferencingInfo
         {
-            get { return referencingInfo; }
-            set { referencingInfo = value; }
+            get;
+            set;
         }
     }
 
@@ -199,6 +218,10 @@ namespace EasyGenerator.Studio.Model
     [XmlType(TypeName = "UIReferencedInfo")]
     public class UIReferencedInfo : ReferenceInfo, ICloneable
     {
+        public UIReferencedInfo(ContextObject owner)
+            : base(owner)
+        {
+        }
         [CategoryAttribute("数据库")]
         [BrowsableAttribute(false)]
         [ReadOnly(true)]

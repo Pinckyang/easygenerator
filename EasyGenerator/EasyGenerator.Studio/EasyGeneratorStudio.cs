@@ -601,7 +601,7 @@ namespace EasyGenerator.Studio
                     return;
                 }
 
-                Module module = new Module();
+                Module module = new Module(systemModule);
                 module.Caption = dlg.txtCaption.Text.Trim();
                 module.Name = dlg.txtName.Text.Trim();
                 module.Description = dlg.txtDescription.Text.Trim();
@@ -737,7 +737,7 @@ namespace EasyGenerator.Studio
                     return;
                 }
 
-                Dialog window = new Dialog();
+                Dialog window = new Dialog(this.project);
                 window.Caption = dlg.txtCaption.Text.Trim();
                 window.Name = dlg.txtName.Text.Trim();
                 window.Description = dlg.txtDescription.Text.Trim();
@@ -797,7 +797,7 @@ namespace EasyGenerator.Studio
                     return;
                 }
 
-                Window window = new Window();
+                Window window = new Window(null);
                 window.Caption = dlg.txtCaption.Text.Trim();
                 window.Name = dlg.txtName.Text.Trim();
                 window.Description = dlg.txtDescription.Text.Trim();

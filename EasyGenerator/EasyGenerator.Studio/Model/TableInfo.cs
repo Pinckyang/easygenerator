@@ -15,6 +15,10 @@ namespace EasyGenerator.Studio.Model
     
     public class TableInfo :EntityInfo,ICloneable
     {
+        public TableInfo(ContextObject owner)
+            : base(owner)
+        {
+        }
         public override string ToString()
         {
             return base.ToString();
@@ -30,7 +34,10 @@ namespace EasyGenerator.Studio.Model
     [UiNodeAttribute(ImageIndex = 5)]
     public class UITableInfo :UIEntityInfo
     {
-
+        public UITableInfo(ContextObject owner)
+            : base(owner)
+        {
+        }
         public TableInfo TableInfo
         {
             get { return (TableInfo)base.EntityInfo; }

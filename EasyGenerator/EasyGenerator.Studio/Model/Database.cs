@@ -17,12 +17,13 @@ namespace EasyGenerator.Studio.Model
     [XmlRoot("Database")]
     public class Database : ContextObject,ICloneable
     {
-        private Connection connection=new Connection();
+        //private Connection connection=new Connection(this);
         private DatabaseType databaseType = DatabaseType.SQLServer2000;
 
-        public Database()
+        public Database(ContextObject owner)
+            :base(owner)
         {
-            connection.Owner = this;
+            Connection = new Connection(this);
 
             Tables = new ContextObjectList<TableInfo>(this);
             Views = new ContextObjectList<ViewInfo>(this);
@@ -33,12 +34,8 @@ namespace EasyGenerator.Studio.Model
         [XmlElement("Connection")]
         public Connection Connection
         {
-            get { return connection; }
-            set
-            {
-                connection = value;
-
-            }
+            get;
+            set;
         }
 
         [CategoryAttribute("设计"), DefaultValueAttribute(DatabaseType.SQLServer2000)]
@@ -76,7 +73,7 @@ namespace EasyGenerator.Studio.Model
 
         public override string ToString()
         {
-            return connection.InitialCatalog+"/"+connection.DataSource;
+            return Connection.InitialCatalog+"/"+Connection.DataSource;
         }
 
         public object Clone()

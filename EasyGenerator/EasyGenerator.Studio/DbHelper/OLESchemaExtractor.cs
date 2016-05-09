@@ -65,7 +65,7 @@ namespace EasyGenerator.Studio.DbHelper
 
             foreach (string table in tables)
             {
-                TableInfo tableEntity = new TableInfo();
+                TableInfo tableEntity = new TableInfo(null);
                 tableEntity.Name = table;
                 ArrayList columnlist = (ArrayList)entities[table];
                 ColumnInfo[] columns = (ColumnInfo[])columnlist.ToArray(typeof(ColumnInfo));
@@ -126,7 +126,7 @@ namespace EasyGenerator.Studio.DbHelper
 
             foreach (string view in views)
             {
-                ViewInfo viewEntity = new ViewInfo();
+                ViewInfo viewEntity = new ViewInfo(null);
                 viewEntity.Name = view;
                 ArrayList list = (ArrayList)entities[view];
                 ColumnInfo[] columns= (ColumnInfo[])list.ToArray(typeof(ColumnInfo));

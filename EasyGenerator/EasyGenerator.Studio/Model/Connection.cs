@@ -19,6 +19,11 @@ namespace EasyGenerator.Studio.Model
         private string password;
         private bool integratedSecurity = true;
 
+        public Connection(ContextObject owner)
+            :base(owner)
+        {
+        }
+
         [CategoryAttribute("设计"), DefaultValueAttribute("")]
         [XmlAttribute("DataSource")]
         public string DataSource

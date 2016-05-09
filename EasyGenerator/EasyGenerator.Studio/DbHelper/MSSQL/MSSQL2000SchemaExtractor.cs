@@ -244,7 +244,7 @@ namespace EasyGenerator.Studio.DbHelper.MSSQL
 
                     ArrayList columns = (ArrayList)entities[tableName];
 
-                    ColumnInfo column = new ColumnInfo();
+                    ColumnInfo column = new ColumnInfo(null);
                     column.Name = ((string)reader["COLUMN_NAME"]);//.Replace(" ","").Replace("-","");
 
                     // SqlType detection
@@ -331,7 +331,7 @@ namespace EasyGenerator.Studio.DbHelper.MSSQL
                     ArrayList freferences = (ArrayList)entities[tableName];
 
 
-                    ReferencingInfo foreignInfo = new ReferencingInfo();
+                    ReferencingInfo foreignInfo = new ReferencingInfo(null);
                     foreignInfo.Name = (string)reader[1];
                     foreignInfo.TableName = (string)reader[0];
                     foreignInfo.ColumnName = (string)reader[4];
@@ -349,7 +349,7 @@ namespace EasyGenerator.Studio.DbHelper.MSSQL
 
                     ArrayList preferences = (ArrayList)entities[primaryTableName];
 
-                    ReferencedInfo primaryInfo = new ReferencedInfo();
+                    ReferencedInfo primaryInfo = new ReferencedInfo(null);
                     primaryInfo.Name = (string)reader[1];
                     primaryInfo.TableName = (string)reader[5];
                     primaryInfo.ColumnName = (string)reader[6]; 

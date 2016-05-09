@@ -15,48 +15,41 @@ namespace EasyGenerator.Studio.Model
     [XmlRoot("UI")]
     public class UI : ContextObject,ICloneable
     {
-        private LoginModule loginModule=new LoginModule();
+        public UI(ContextObject owner)
+            :base(owner)
+        {
+            LoginModule = new LoginModule(this);
+            CommonModule = new CommonModule(this);
+            SystemModule = new SystemModule(this);
+        }
 
         [CategoryAttribute("数据库")]
         [BrowsableAttribute(true)]
-        [UiNode(Text="登录模块",ImageIndex=2)]
+        [UiNode(Text = "登录模块", ImageIndex = 2)]
         [XmlElement("LoginModule")]
         public LoginModule LoginModule
         {
-            get { return loginModule; }
-            set { loginModule = value; }
+            get;
+            set;
         }
-        private CommonModule commonModule=new CommonModule();
 
         [BrowsableAttribute(true)]
         [UiNode(Text = "通用模块", ImageIndex = 2)]
         [XmlElement("CommonModule")]
         public CommonModule CommonModule
         {
-            get { return commonModule; }
-            set { commonModule = value; }
+            get;
+            set;
         }
-        private SystemModule systemModule=new SystemModule();
+
 
         [UiNode(Text = "功能模块", ImageIndex = 2)]
         [XmlElement("SystemModule")]
         public SystemModule SystemModule
         {
-            get { return systemModule; }
-            set { 
-                systemModule = value;
-                systemModule.Owner = this;
-                NotifyPropertyChanged(this, "SystemModule");
-            }
+            get;
+            set;
         }
-
-        public UI()
-        {
-            loginModule.Owner = this;
-            commonModule.Owner = this;
-            systemModule.Owner = this;
-        }
-
 
         public object Clone()
         {

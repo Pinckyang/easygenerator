@@ -20,9 +20,9 @@ namespace EasyGenerator.Studio.Model
     [XmlInclude(typeof(PrimaryColumnInfo))]
     public class ColumnInfo : ContextObject,ICloneable
     {
-        public ColumnInfo()
+        public ColumnInfo(ContextObject owner)
+            :base(owner)
         {
-           // Referencing= new ReferencingInfo;
             Referenced = new ContextObjectList<ReferencedInfo>(this);
         }
 
@@ -175,13 +175,13 @@ namespace EasyGenerator.Studio.Model
         private string groupCaption = "";
         private bool visible = true;
         private DBControlType dbControlType = DBControlType.DBEdit;
-        private DBControl dbControl = new DBEdit();
+        private DBControl dbControl = null;
         private ColumnInfo columnInfo;
 
-
-        public UIColumnInfo()
+        public UIColumnInfo(ContextObject owner)
+            :base(owner)
         {
-            dbControl.Owner = this;
+            DBControl = new DBEdit(this);
         }
 
         [CategoryAttribute("数据库")]

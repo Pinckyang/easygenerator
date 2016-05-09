@@ -9,6 +9,10 @@ namespace EasyGenerator.Studio.Model
 {
     public class SearchModeControl:ContextObject
     {
+        public SearchModeControl(ContextObject owner)
+            :base(owner)
+        {
+        }
         [XmlIgnore]
         public override ContextObject Owner
         {
@@ -31,6 +35,11 @@ namespace EasyGenerator.Studio.Model
     {
         private string datetime;
 
+        public SearchDateSingleControl(ContextObject owner)
+            : base(owner)
+        {
+        }
+
         [TypeConverter(typeof(DateTimeDefaultConverter))]
         [XmlAttribute("Datetime")]
         public string Datetime
@@ -49,6 +58,11 @@ namespace EasyGenerator.Studio.Model
     public class SearchDateRangeControl : SearchModeControl
     {
         private string startDatetime;
+
+        public SearchDateRangeControl(ContextObject owner)
+            : base(owner)
+        {
+        }
 
         [PropertyOrder(1)]
         [TypeConverter(typeof(DateTimeDefaultConverter))]

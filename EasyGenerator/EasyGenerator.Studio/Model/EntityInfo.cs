@@ -16,7 +16,8 @@ namespace EasyGenerator.Studio.Model
     [XmlInclude(typeof(ViewInfo))]
     public abstract class EntityInfo : ContextObject
     {
-        public EntityInfo()
+        public EntityInfo(ContextObject owner)
+            :base(owner)
         {
             Columns= new ContextObjectList<ColumnInfo>(this);
             this.Schema = "dbo";
@@ -80,11 +81,12 @@ namespace EasyGenerator.Studio.Model
     {
         private EntityInfo entityInfo;
         private DBViewControlType dbViewControlType = DBViewControlType.DBGridView;
-        private DBViewControl dbViewControl = new DBGridView();
+        private DBViewControl dbViewControl = null;
 
-        public UIEntityInfo()
+        public UIEntityInfo(ContextObject owner)
+            : base(owner)
         {
-            dbViewControl.Owner = this;
+            DBViewControl = new DBGridView(this);
         }
 
         [CategoryAttribute("数据库")]

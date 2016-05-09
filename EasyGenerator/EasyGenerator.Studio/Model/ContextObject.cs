@@ -10,9 +10,8 @@ using System.Xml;
 namespace EasyGenerator.Studio.Model
 {
     [Serializable()]
-    public class ContextObject : INotifyPropertyChanged//, IXmlSerializable
+    public abstract class ContextObject : INotifyPropertyChanged//, IXmlSerializable
     {
-        private ContextObject owner = null;
 
         [BrowsableAttribute(false)]
         [DbNodeInvisibleAttribute()]
@@ -20,24 +19,22 @@ namespace EasyGenerator.Studio.Model
         [XmlIgnore()]
         public virtual ContextObject Owner
         {
-            get { return owner; }
-            set
-            {
-                owner = value;
-            }
+            get;
+            set;
         }
-
-        //public string Name
+        //private ContextObject()
         //{
-        //    get;
-        //    set;
         //}
+        public ContextObject(ContextObject owner)
+        {
+            this.Owner = owner;
+        }
 
         public ContextObject GetRoot()
         {
-            if (this.owner != null)
+            if (this.Owner != null)
             {
-                return this.owner.GetRoot(); 
+                return this.Owner.GetRoot(); 
             }
             return this;
         }
@@ -52,20 +49,5 @@ namespace EasyGenerator.Studio.Model
                 PropertyChanged(obj, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        //public void ReadXml(XmlReader reader)
-        //{
-        //   // this.ReadXml(reader);
-        //}
-
-        //public void WriteXml(XmlWriter writer)
-        //{
-        //    //this.WriteXml(writer);  
-        //}
-
-        //public XmlSchema GetSchema()
-        //{
-        //    return null;
-        //}
     }
 }

@@ -19,9 +19,9 @@ namespace EasyGenerator.Studio.Model
         private string name;
         private string caption;
         private string description;
-        //private List<Window> windows = null;
 
-        public Module()
+        public Module(ContextObject owner)
+            : base(owner)
         {
             Windows=new ContextObjectList<Window>(this);
         }

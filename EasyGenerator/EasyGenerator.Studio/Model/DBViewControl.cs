@@ -111,6 +111,11 @@ namespace EasyGenerator.Studio.Model
             }
         }
 
+        public DBViewControl(ContextObject owner)
+            :base(owner)
+        {
+        }
+
         public override string ToString()
         {
             return string.Empty;
@@ -118,11 +123,6 @@ namespace EasyGenerator.Studio.Model
 
         public object Clone()
         {
-            //MemoryStream stream = new MemoryStream();
-            //BinaryFormatter formatter = new BinaryFormatter();
-            //formatter.Serialize(stream, this);
-            //stream.Position = 0;
-            //return formatter.Deserialize(stream);
             return this.MemberwiseClone();
         }
     }
@@ -130,17 +130,16 @@ namespace EasyGenerator.Studio.Model
     [Serializable()]
     public class DBGridView : DBViewControl,ICloneable
     {
+        public DBGridView(ContextObject owner)
+            :base(owner)
+        {
+        }
         public override string ToString()
         {
             return string.Empty;
         }
         public object Clone()
         {
-            //MemoryStream stream = new MemoryStream();
-            //BinaryFormatter formatter = new BinaryFormatter();
-            //formatter.Serialize(stream, this);
-            //stream.Position = 0;
-            //return formatter.Deserialize(stream);
             return this.MemberwiseClone();
         }
     }
@@ -151,6 +150,11 @@ namespace EasyGenerator.Studio.Model
         private string keyField;
         private string parentField;
         private string rootValue;
+
+        public DBTreeView(ContextObject owner)
+            : base(owner)
+        {
+        }
         
 
         [CategoryAttribute("数据库"), DefaultValueAttribute(""),TypeConverter(typeof(ClientTreeViewStringConverter))]

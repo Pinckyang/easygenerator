@@ -25,7 +25,8 @@ namespace EasyGenerator.Studio.Model
         private bool allowSearch=false;
         private bool allowPrint=false;
 
-        public Window()
+        public Window(ContextObject owner)
+            :base(owner)
         {
             Entities = new ContextObjectList<EntityInfo>(this);
         }
