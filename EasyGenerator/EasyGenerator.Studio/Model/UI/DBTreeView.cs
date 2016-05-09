@@ -8,6 +8,7 @@ using EasyGenerator.Studio.PropertyTools;
 
 namespace EasyGenerator.Studio.Model.UI
 {
+    [Serializable()]
     public class DBTreeView : DBView, ICloneable
     {
         private string keyField;
