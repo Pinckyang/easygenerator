@@ -1,13 +1,3 @@
-/*
- * Copyright ?2005-2006 Danilo Mendez <danilo.mendez@kontac.net>
- * Adolfo Socorro <ajs@esolutionspr.com>
- * www.kontac.net 
- * All rights reserved.
- * Released under both BSD license and Lesser GPL library license.
- * Whenever there is any discrepancy between the two licenses,
- * the BSD license will take precedence.
- */
-
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,15 +13,7 @@ namespace EasyGenerator.Studio.DbHelper.MSSQL
     public class MSSQL2000SchemaExtractor : OLESchemaExtractor
     {
         Hashtable sqlTypes;
-        //Hashtable allColumns;
-        //Hashtable allLookup;
-        //ArrayList allKeys;
-        //private Database database;
-        /// <summary>
-        /// Initializes a new instance of this class.
-        /// </summary>
-        /// <param name="driver">Driver to which this instance will be bound.</param>
-        /// <param name="connection">Connection through which this instance should operate.</param>
+
         public MSSQL2000SchemaExtractor(Driver driver, Project project)
             : base(driver, project)
         {
@@ -127,31 +109,19 @@ namespace EasyGenerator.Studio.DbHelper.MSSQL
 
         public override Hashtable GetConstraints()
         {
-            //if (this.allLookup == null)
             return  BuildLookup();
-
-           // ArrayList constraints = this.allLookup[tableName] as ArrayList;
-            //return (constraints == null ? new ConstraintInfo[0] : (ConstraintInfo[])constraints.ToArray(typeof(ConstraintInfo)));
-             //   return null;
         }
 
         public override Hashtable GetAllPrimaryKeys()
         {
-           // if (this.allKeys == null)
             return  BuildKeys();
-
-            //return (this.allKeys == null ? new KeyInfo[0] : (KeyInfo[])this.allKeys.ToArray(typeof(KeyInfo)));
-             //   return null;
         }
 
         private Hashtable BuildKeys()
         {
-           // this.allKeys = new ArrayList();
             string commandText = "";
 
-            //if (driver.ConnectionInfo.Provider == "mssql")
-            //{
-                commandText = "select kcu.TABLE_SCHEMA, kcu.TABLE_NAME, kcu.CONSTRAINT_NAME, tc.CONSTRAINT_TYPE, kcu.COLUMN_NAME, kcu.ORDINAL_POSITION " +
+            commandText = "select kcu.TABLE_SCHEMA, kcu.TABLE_NAME, kcu.CONSTRAINT_NAME, tc.CONSTRAINT_TYPE, kcu.COLUMN_NAME, kcu.ORDINAL_POSITION " +
                                  " from INFORMATION_SCHEMA.TABLE_CONSTRAINTS as tc " +
                                  " join INFORMATION_SCHEMA.KEY_COLUMN_USAGE as kcu " +
                                  "   on kcu.CONSTRAINT_SCHEMA = tc.CONSTRAINT_SCHEMA " +
@@ -197,21 +167,6 @@ namespace EasyGenerator.Studio.DbHelper.MSSQL
 
                     ArrayList references = (ArrayList)entities[tableName];
                     references.Add((string)reader["COLUMN_NAME"]);
-
-                    //ReferenceInfo constraintInfo = new PrimaryKeyReferenceInfo();
-                    //constraintInfo.Name = (string)reader[1];
-                    //constraintInfo.TableName = (string)reader[0];
-                    //constraintInfo.ColumnName = (string)reader[4];
-
-                    ////constraintInfo.OnDeleteCascade = reader[2].ToString().StartsWith("CASCADE");
-                    ////constraintInfo.OnUpdateCascade = reader[3].ToString().StartsWith("CASCADE");
-
-                    ////String constraintKeys = (string)reader[4];
-                    ////constraintInfo.Columns = constraintKeys.Split(",".ToCharArray());
-                    //constraintInfo.ReferenceColumnName = (string)reader[6];
-                    //constraintInfo.ReferenceTableName = (string)reader[5];
-
-                    //references.Add(constraintInfo);
                 }
             }
             return entities;

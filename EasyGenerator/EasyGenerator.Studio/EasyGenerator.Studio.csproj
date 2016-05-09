@@ -178,12 +178,15 @@
     <Compile Include="Model\UI\DBDateTimePickerField.cs" />
     <Compile Include="Model\UI\DBEditField.cs" />
     <Compile Include="Model\UI\DBFileUploadField.cs" />
+    <Compile Include="Model\UI\DBGridView.cs" />
     <Compile Include="Model\UI\DBPasswordField.cs" />
     <Compile Include="Model\UI\DBPictureBoxField.cs" />
     <Compile Include="Model\UI\DBRadioGroupField.cs" />
     <Compile Include="Model\UI\DBRichEditField.cs" />
     <Compile Include="Model\UI\DBTextField.cs" />
     <Compile Include="Model\UI\DBTimePickerField.cs" />
+    <Compile Include="Model\UI\DBTreeView.cs" />
+    <Compile Include="Model\UI\DBView.cs" />
     <Compile Include="Model\UI\UIColumnInfo.cs" />
     <Compile Include="Model\UI\UIEntityInfo.cs" />
     <Compile Include="Model\UI\UITableInfo.cs" />
@@ -194,10 +197,7 @@
     <Compile Include="Model\UI\Dialog.cs" />
     <Compile Include="PropertyTools\ListColumnsFromLookupTableEditor.cs" />
     <Compile Include="Model\UI\OptionItem.cs" />
-    <Compile Include="Model\UI\DBControl.cs" />
     <Compile Include="Model\UI\DBControlType.cs" />
-    <Compile Include="Model\UI\DBViewControl.cs" />
-    <Compile Include="Model\UI\DBViewControlType.cs" />
     <Compile Include="Model\DB\ColumnInfo.cs" />
     <Compile Include="Model\UI\CommonModule.cs" />
     <Compile Include="Model\DB\Connection.cs" />
@@ -338,7 +338,6 @@
       <DependentUpon>TableDlg.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="Model\ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

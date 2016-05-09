@@ -8,14 +8,6 @@ namespace EasyGenerator.Studio.Utils
 {
     public class ProfileHelper
     {
-
-
-        //  [DllImport("kernel32")]
-        // private static extern int GetPrivateProfileString(string lpAppName, string lpKeyName, string lpDefault, StringBuilder lpReturnedString, int nSize, string lpFileName);
-
-        // [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
-        //private static extern uint GetPrivateProfileSection(string lpAppName, IntPtr lpReturnedString, uint nSize, string lpFileName);
-
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
         private static extern uint GetPrivateProfileSectionNames(IntPtr lpszReturnBuffer, uint nSize, string lpFileName);
 
