@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model.Db
+namespace EasyGenerator.Studio.Model.DB
 {
     public enum DatabaseType
     {

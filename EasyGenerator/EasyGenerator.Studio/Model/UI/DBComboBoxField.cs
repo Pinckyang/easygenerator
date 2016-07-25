@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     /// <summary>
     /// Combox控件，自定义选项
     /// </summary>
     [Serializable()]
-    public class DBComboBoxField : UIColumnInfo, ICloneable
+    public class DBComboBoxField : GUIColumnInfo, ICloneable
     {
         private List<OptionItem> fields = new List<OptionItem>();
 
@@ -33,7 +33,7 @@ namespace EasyGenerator.Studio.Model.Ui
             return this.Clone();
         }
 
-        public object Clone()
+        public new object Clone()
         {
             return this.MemberwiseClone();
         }

@@ -11,7 +11,7 @@ namespace EasyGenerator.Studio.PropertyTools
     public class CheckedListBoxUITypeEditor : UITypeEditor
     {
         public CheckedListBox checklisbox = new CheckedListBox();
-        private IWindowsFormsEditorService es;
+        //private IWindowsFormsEditorService es;
         public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
         {
             return UITypeEditorEditStyle.DropDown;

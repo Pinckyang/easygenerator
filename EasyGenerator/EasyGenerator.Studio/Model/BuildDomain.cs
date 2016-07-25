@@ -23,6 +23,7 @@ namespace EasyGenerator.Studio.Model
 
         private BuildDomain()
         {
+            domain = null;
         }
 
         public BuildDomain(BuildDomainDlg sender, Delegate senderDelegate)

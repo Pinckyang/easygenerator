@@ -8,7 +8,7 @@ using EasyGenerator.Studio.Utils;
 using EasyGenerator.Studio.PropertyTools;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     [Serializable()]
     [DefaultPropertyAttribute("Name")]
@@ -18,12 +18,12 @@ namespace EasyGenerator.Studio.Model.Ui
         private string name = "CommonModule";
         private string caption = "通用模块";
         private string description = "通用模块";
-        private List<Dialog> dialogs = null;
+        private List<GUIDialog> dialogs = null;
 
         public CommonModule(ContextObject owner)
             :base(owner)
         {
-            dialogs = new ContextObjectList<Dialog>(this);
+            dialogs = new ContextObjectList<GUIDialog>(this);
         }
 
         [ReadOnly(true)]
@@ -60,7 +60,7 @@ namespace EasyGenerator.Studio.Model.Ui
         [UiNodeAttribute()]
         [ReadOnly(true)]
         [XmlElement("Dialogs")]
-        public List<Dialog> Dialogs
+        public List<GUIDialog> Dialogs
         {
             get { return dialogs; }
             set { dialogs = value; }
@@ -68,11 +68,6 @@ namespace EasyGenerator.Studio.Model.Ui
 
         public object Clone()
         {
-            //MemoryStream stream = new MemoryStream();
-            //BinaryFormatter formatter = new BinaryFormatter();
-            //formatter.Serialize(stream, this);
-            //stream.Position = 0;
-            //return formatter.Deserialize(stream);
             return this.MemberwiseClone();
         }
     }

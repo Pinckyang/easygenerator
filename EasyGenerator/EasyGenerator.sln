@@ -3,18 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyGenerator.Studio", "EasyGenerator.Studio\EasyGenerator.Studio.csproj", "{A4888270-91C9-412B-A753-E965E7D8F241}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3E72CE85-5477-488E-9FFB-3FB44C8789FA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorEngine", "Core\RazorEngine\RazorEngine.csproj", "{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorEngine.Web", "Core\RazorEngine.Web\RazorEngine.Web.csproj", "{992F8CCC-BA76-42A6-9807-4E49EDABF694}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E0485CC5-E357-44DB-BB51-9D57D6B8883E}"
-	ProjectSection(SolutionItems) = preProject
-		Shared\RazorEnigne.snk = Shared\RazorEnigne.snk
-		Shared\SharedAssemblyInfo.cs = Shared\SharedAssemblyInfo.cs
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = EasyGenerator.vsmdi
@@ -58,61 +46,8 @@ Global
 		{A4888270-91C9-412B-A753-E965E7D8F241}.Standard .Net 2.0|Any CPU.Build.0 = Release|Any CPU
 		{A4888270-91C9-412B-A753-E965E7D8F241}.Standard|Any CPU.ActiveCfg = Release|Any CPU
 		{A4888270-91C9-412B-A753-E965E7D8F241}.Standard|Any CPU.Build.0 = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Debug .Net 2.0|Any CPU.ActiveCfg = Debug|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Debug .Net 2.0|Any CPU.Build.0 = Debug|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Express .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Express .Net 2.0|Any CPU.Build.0 = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Express|Any CPU.ActiveCfg = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Express|Any CPU.Build.0 = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoDebug|Any CPU.Build.0 = Debug|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoExpress|Any CPU.ActiveCfg = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoExpress|Any CPU.Build.0 = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoRelease|Any CPU.ActiveCfg = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoRelease|Any CPU.Build.0 = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoStandard|Any CPU.ActiveCfg = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.MonoStandard|Any CPU.Build.0 = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Release .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Release .Net 2.0|Any CPU.Build.0 = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Standard .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Standard .Net 2.0|Any CPU.Build.0 = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Standard|Any CPU.ActiveCfg = Release|Any CPU
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}.Standard|Any CPU.Build.0 = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Debug .Net 2.0|Any CPU.ActiveCfg = Debug|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Debug .Net 2.0|Any CPU.Build.0 = Debug|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Express .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Express .Net 2.0|Any CPU.Build.0 = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Express|Any CPU.ActiveCfg = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Express|Any CPU.Build.0 = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoDebug|Any CPU.Build.0 = Debug|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoExpress|Any CPU.ActiveCfg = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoExpress|Any CPU.Build.0 = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoRelease|Any CPU.ActiveCfg = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoRelease|Any CPU.Build.0 = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoStandard|Any CPU.ActiveCfg = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.MonoStandard|Any CPU.Build.0 = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Release .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Release .Net 2.0|Any CPU.Build.0 = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Release|Any CPU.Build.0 = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Standard .Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Standard .Net 2.0|Any CPU.Build.0 = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Standard|Any CPU.ActiveCfg = Release|Any CPU
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694}.Standard|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{64128C85-B9AF-4B4C-BE83-04983EF7F8C9} = {3E72CE85-5477-488E-9FFB-3FB44C8789FA}
-		{992F8CCC-BA76-42A6-9807-4E49EDABF694} = {3E72CE85-5477-488E-9FFB-3FB44C8789FA}
-		{E0485CC5-E357-44DB-BB51-9D57D6B8883E} = {3E72CE85-5477-488E-9FFB-3FB44C8789FA}
 	EndGlobalSection
 EndGlobal

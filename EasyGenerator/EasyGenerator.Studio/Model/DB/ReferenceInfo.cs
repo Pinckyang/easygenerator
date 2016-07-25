@@ -10,7 +10,7 @@ using System.Xml.Schema;
 using System.Xml;
 using System.Diagnostics;
 
-namespace EasyGenerator.Studio.Model.Db
+namespace EasyGenerator.Studio.Model.DB
 {
     [Serializable()]
     [DefaultPropertyAttribute("Name")]

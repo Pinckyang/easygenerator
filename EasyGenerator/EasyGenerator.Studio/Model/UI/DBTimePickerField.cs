@@ -6,10 +6,10 @@ using System.Xml.Serialization;
 using System.ComponentModel;
 using EasyGenerator.Studio.PropertyTools;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     [Serializable()]
-    public class DBTimePickerField : UIColumnInfo, ICloneable
+    public class DBTimePickerField : GUIColumnInfo, ICloneable
     {
         private SearchMode searchMode = SearchMode.Single;
         private string defaultSearchFromTimeValue = "";
@@ -93,7 +93,7 @@ namespace EasyGenerator.Studio.Model.Ui
             return this.Clone();
         }
 
-        public object Clone()
+        public new object Clone()
         {
             return this.MemberwiseClone();
         }

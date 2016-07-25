@@ -6,7 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using EasyGenerator.Studio.DbHelper.Info;
 using EasyGenerator.Studio.Model;
-using EasyGenerator.Studio.Model.Db;
+using EasyGenerator.Studio.Model.DB;
 
 namespace EasyGenerator.Studio.DbHelper.MSSQL
 {
@@ -91,7 +91,7 @@ namespace EasyGenerator.Studio.DbHelper.MSSQL
             {
                 cmd.Connection.Open();
             }
-            cmd.CommandText = "select  u.name,  v.name,   substring(t.text, 1, 1),   t.text  from   sysusers u,   sysobjects v,   syscomments t where   t.id=v.id   and u.uid=v.uid   and v.type='V'";
+            cmd.CommandText = "select  u.name,  v.name,   substring(t.text, 1, 1),   t.text  from   sysusers u,   sysobjects v,   syscomments t where   t.id=v.id   and u.UId=v.UId   and v.type='V'";
             using (IDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())

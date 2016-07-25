@@ -7,6 +7,7 @@ using System.Collections;
 using EasyGenerator.Studio.Model;
 using System.Reflection;
 using System.ComponentModel;
+using EasyGenerator.Studio.Model.DB;
 
 namespace EasyGenerator.Studio.Controls
 {

@@ -9,7 +9,7 @@ using EasyGenerator.Studio.PropertyTools;
 using EasyGenerator.Studio.Utils;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model.Db
+namespace EasyGenerator.Studio.Model.DB
 {
     [Serializable()]
     [DefaultPropertyAttribute("Connection")]
@@ -75,7 +75,6 @@ namespace EasyGenerator.Studio.Model.Db
         {
             return Connection.InitialCatalog+"/"+Connection.DataSource;
         }
-
         public object Clone()
         {
             return this.MemberwiseClone();

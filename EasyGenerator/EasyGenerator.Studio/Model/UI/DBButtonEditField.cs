@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     [Serializable()]
-    public class DBButtonEditField : UIColumnInfo, ICloneable
+    public class DBButtonEditField : GUIColumnInfo, ICloneable
     {
         public DBButtonEditField(ContextObject owner)
             : base(owner)
@@ -17,7 +17,7 @@ namespace EasyGenerator.Studio.Model.Ui
             return this.Clone();
         }
 
-        public object Clone()
+        public new object Clone()
         {
             return this.MemberwiseClone();
         }

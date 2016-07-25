@@ -63,7 +63,7 @@ namespace EasyGenerator.Studio.Model.UI
             return string.Empty;
         }
 
-        public object Clone()
+        public new object Clone()
         {
             return this.MemberwiseClone();
         }

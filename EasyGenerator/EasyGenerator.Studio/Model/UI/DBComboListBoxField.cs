@@ -7,10 +7,10 @@ using System.ComponentModel;
 using EasyGenerator.Studio.PropertyTools;
 using System.Drawing.Design;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     [Serializable()]
-    public class DBComboListBoxField : UIColumnInfo, ICloneable
+    public class DBComboListBoxField : GUIColumnInfo, ICloneable
     {
         private string lookupTable;
         private List<string> lookupFields = new List<string>();
@@ -69,7 +69,7 @@ namespace EasyGenerator.Studio.Model.Ui
             return this.Clone();
         }
 
-        public object Clone()
+        public new object Clone()
         {
             return this.MemberwiseClone();
         }

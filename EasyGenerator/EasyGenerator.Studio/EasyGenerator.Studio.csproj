@@ -10,7 +10,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EasyGenerator.Studio</RootNamespace>
     <AssemblyName>EasyGenerator.Studio</AssemblyName>
-    <ApplicationIcon>Application.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <SccProjectName>
     </SccProjectName>
     <SccLocalPath>
@@ -64,51 +65,41 @@
     <StartupObject>EasyGenerator.Studio.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RazorEngine, Version=2.1.5972.37485, Culture=neutral, PublicKeyToken=1f722ed313f51831, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutDlg.cs">
+    <Compile Include="Forms\AboutDlg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutDlg.Designer.cs">
+    <Compile Include="Forms\AboutDlg.Designer.cs">
       <DependentUpon>AboutDlg.cs</DependentUpon>
     </Compile>
     <Compile Include="AssemblyCache\CacheAssemblies.cs" />
     <Compile Include="AssemblyCache\CacheFlags.cs" />
-    <Compile Include="AssemblyCache\Controllers.cs" />
-    <Compile Include="AssemblyCache\GACDlg.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AssemblyCache\GACDlg.Designer.cs">
-      <DependentUpon>GACDlg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AssemblyCache\IAssemblyEnum.cs" />
-    <Compile Include="AssemblyCache\IAssemblyName.cs" />
     <Compile Include="AssemblyCache\NameDisplayFlags.cs" />
-    <Compile Include="BuildDomainDlg.cs">
+    <Compile Include="Forms\BuildDomainDlg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BuildDomainDlg.Designer.cs">
+    <Compile Include="Forms\BuildDomainDlg.Designer.cs">
       <DependentUpon>BuildDomainDlg.cs</DependentUpon>
     </Compile>
     <Compile Include="Builder\Domain.cs" />
     <Compile Include="Controls\DbTreeNode.cs" />
     <Compile Include="Controls\UiTreeNode.cs" />
-    <Compile Include="Controls\UserControls\ListView\Designers.cs" />
-    <Compile Include="Controls\UserControls\ListView\ListviewAPI.cs" />
-    <Compile Include="Controls\UserControls\ListView\XPListview.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\UserControls\ListView\XPListViewGroup.cs" />
-    <Compile Include="Controls\UserControls\ListView\XPListViewGroupCollection.cs" />
-    <Compile Include="Controls\UserControls\ListView\XPListViewItem.cs" />
-    <Compile Include="Controls\UserControls\ListView\XPListViewItemCollection.cs" />
     <Compile Include="Controls\UserControls\MirroredListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -129,10 +120,10 @@
     <Compile Include="DbHelper\MSSQL\MSSQLDriver.cs" />
     <Compile Include="DbHelper\MSSQL\MSSQL2000SchemaExtractor.cs" />
     <Compile Include="DbHelper\OLESchemaExtractor.cs" />
-    <Compile Include="DriverDlg.cs">
+    <Compile Include="Forms\DriverDlg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DriverDlg.Designer.cs">
+    <Compile Include="Forms\DriverDlg.Designer.cs">
       <DependentUpon>DriverDlg.cs</DependentUpon>
     </Compile>
     <Compile Include="Engine\CodeGenerationDlg.cs">
@@ -150,30 +141,54 @@
     <Compile Include="Engine\TemplateDir.cs" />
     <Compile Include="Engine\TemplateFile.cs" />
     <Compile Include="Engine\OutputFile.cs" />
-    <Compile Include="EntitiesDlg.cs">
+    <Compile Include="Forms\EntitiesDlg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EntitiesDlg.Designer.cs">
+    <Compile Include="Forms\EntitiesDlg.Designer.cs">
       <DependentUpon>EntitiesDlg.cs</DependentUpon>
     </Compile>
-    <Compile Include="GenerationDlg.cs">
+    <Compile Include="Forms\GenerationDlg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GenerationDlg.Designer.cs">
+    <Compile Include="Forms\GenerationDlg.Designer.cs">
       <DependentUpon>GenerationDlg.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginWindowDlg.cs">
+    <Compile Include="Forms\LoginWindowDlg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginWindowDlg.Designer.cs">
+    <Compile Include="Forms\LoginWindowDlg.Designer.cs">
       <DependentUpon>LoginWindowDlg.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\ColumnsFromTableNameConverter.cs" />
+    <Compile Include="Model\BuildDomain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\ColumnsFromTableNameConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\ContextObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\DB\ColumnInfo.cs" />
+    <Compile Include="Model\DB\Connection.cs" />
+    <Compile Include="Model\DB\Database.cs" />
+    <Compile Include="Model\DB\DatabaseType.cs" />
+    <Compile Include="Model\DB\EntityInfo.cs" />
+    <Compile Include="Model\DB\PrimaryColumnInfo.cs" />
+    <Compile Include="Model\DB\ReferenceInfo.cs" />
+    <Compile Include="Model\DB\SqlType.cs" />
+    <Compile Include="Model\DB\TableInfo.cs" />
+    <Compile Include="Model\DB\ViewInfo.cs" />
+    <Compile Include="Model\Project.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\ProjectAccesser.cs" />
+    <Compile Include="Model\UI\CommonModule.cs" />
     <Compile Include="Model\UI\DBButtonEditField.cs" />
     <Compile Include="Model\UI\DBCheckBoxField.cs" />
     <Compile Include="Model\UI\DBComboBoxField.cs" />
     <Compile Include="Model\UI\DBComboListBoxField.cs" />
     <Compile Include="Model\UI\DBComboTreeListField.cs" />
+    <Compile Include="Model\UI\DBControlType.cs" />
     <Compile Include="Model\UI\DBDatePickerField.cs" />
     <Compile Include="Model\UI\DBDateTimePickerField.cs" />
     <Compile Include="Model\UI\DBEditField.cs" />
@@ -187,70 +202,49 @@
     <Compile Include="Model\UI\DBTimePickerField.cs" />
     <Compile Include="Model\UI\DBTreeView.cs" />
     <Compile Include="Model\UI\DBView.cs" />
-    <Compile Include="Model\UI\UIColumnInfo.cs" />
-    <Compile Include="Model\UI\UIEntityInfo.cs" />
-    <Compile Include="Model\UI\UITableInfo.cs" />
-    <Compile Include="Model\UI\UIViewInfo.cs" />
+    <Compile Include="Model\UI\GUI.cs" />
+    <Compile Include="Model\UI\GUIColumnInfo.cs" />
+    <Compile Include="Model\UI\GUIDialog.cs" />
+    <Compile Include="Model\UI\GUIEntityInfo.cs" />
+    <Compile Include="Model\UI\GUILoginModule.cs" />
+    <Compile Include="Model\UI\GUIModule.cs" />
+    <Compile Include="Model\UI\GUITableInfo.cs" />
+    <Compile Include="Model\UI\GUIViewInfo.cs" />
+    <Compile Include="Model\UI\GUIWindow.cs" />
+    <Compile Include="Model\UI\OptionItem.cs" />
+    <Compile Include="Model\UI\SearchMode.cs" />
+    <Compile Include="Model\UI\SearchModeControl.cs" />
+    <Compile Include="Model\UI\GUISystemModule.cs" />
+    <Compile Include="Model\UI\TextAlign.cs" />
     <Compile Include="PropertyTools\TablesConverter.cs" />
     <Compile Include="PropertyTools\CheckedListBoxEditor.cs" />
     <Compile Include="PropertyTools\DatetimeDefaultConverter.cs" />
-    <Compile Include="Model\UI\Dialog.cs" />
     <Compile Include="PropertyTools\ListColumnsFromLookupTableEditor.cs" />
-    <Compile Include="Model\UI\OptionItem.cs" />
-    <Compile Include="Model\UI\DBControlType.cs" />
-    <Compile Include="Model\DB\ColumnInfo.cs" />
-    <Compile Include="Model\UI\CommonModule.cs" />
-    <Compile Include="Model\DB\Connection.cs" />
-    <Compile Include="Model\ContextObject.cs" />
-    <Compile Include="Model\DB\Database.cs" />
-    <Compile Include="Model\DB\DatabaseType.cs" />
     <Compile Include="PropertyTools\PropertyOrder.cs" />
-    <Compile Include="Model\UI\SearchModeControl.cs" />
     <Compile Include="PropertyTools\StringValueDefaultConverter.cs" />
-    <Compile Include="Model\DB\EntityInfo.cs" />
-    <Compile Include="Model\UI\LoginModule.cs" />
-    <Compile Include="Model\UI\Module.cs" />
-    <Compile Include="Model\DB\PrimaryColumnInfo.cs" />
-    <Compile Include="Model\UI\SearchMode.cs" />
     <Compile Include="PropertyTools\NodeInvisibleAttribute.cs" />
-    <Compile Include="Model\Project.cs" />
-    <Compile Include="Model\DB\ReferenceInfo.cs" />
-    <Compile Include="Model\DB\SqlType.cs" />
-    <Compile Include="Model\UI\SystemModule.cs" />
-    <Compile Include="Model\DB\TableInfo.cs" />
-    <Compile Include="Model\UI\TextAlign.cs" />
-    <Compile Include="Model\UI\UI.cs" />
-    <Compile Include="Model\DB\ViewInfo.cs" />
-    <Compile Include="Model\UI\Window.cs" />
     <Compile Include="PropertyTools\CheckedListBoxUITypeEditor.cs" />
     <Compile Include="PropertyTools\ContextObjectTypeConverter.cs" />
     <Compile Include="PropertyTools\ClientTreeViewStringConverter.cs" />
     <Compile Include="PropertyTools\NodeAttribute.cs" />
     <Compile Include="PropertyTools\PropertyHelper.cs" />
-    <Compile Include="ModuleDlg.cs">
+    <Compile Include="Forms\ModuleDlg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModuleDlg.Designer.cs">
+    <Compile Include="Forms\ModuleDlg.Designer.cs">
       <DependentUpon>ModuleDlg.cs</DependentUpon>
     </Compile>
-    <Compile Include="RefreshProjectDlg.cs">
+    <Compile Include="Forms\Splash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RefreshProjectDlg.Designer.cs">
-      <DependentUpon>RefreshProjectDlg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Splash.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Splash.Designer.cs">
+    <Compile Include="Forms\Splash.Designer.cs">
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\BuildDomain.cs" />
     <Compile Include="Builder\DatabaseBuilder.cs" />
-    <Compile Include="EasyGeneratorStudio.cs">
+    <Compile Include="Forms\EasyGeneratorStudio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EasyGeneratorStudio.Designer.cs">
+    <Compile Include="Forms\EasyGeneratorStudio.Designer.cs">
       <DependentUpon>EasyGeneratorStudio.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -259,35 +253,27 @@
     <Compile Include="Utils\ProfileHelper.cs" />
     <Compile Include="Utils\ContextObjectList.cs" />
     <Compile Include="Utils\XmlHelper.cs" />
-    <Compile Include="WindowDlg.cs">
+    <Compile Include="Forms\WindowDlg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowDlg.Designer.cs">
+    <Compile Include="Forms\WindowDlg.Designer.cs">
       <DependentUpon>WindowDlg.cs</DependentUpon>
     </Compile>
-    <Compile Include="TableDlg.cs">
+    <Compile Include="Forms\TableDlg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TableDlg.Designer.cs">
+    <Compile Include="Forms\TableDlg.Designer.cs">
       <DependentUpon>TableDlg.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AboutDlg.resx">
+    <EmbeddedResource Include="Forms\AboutDlg.resx">
       <SubType>Designer</SubType>
       <DependentUpon>AboutDlg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AssemblyCache\GACDlg.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>GACDlg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BuildDomainDlg.resx">
+    <EmbeddedResource Include="Forms\BuildDomainDlg.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BuildDomainDlg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UserControls\ListView\XPListview.resx">
-      <DependentUpon>XPListview.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DriverDlg.resx">
+    <EmbeddedResource Include="Forms\DriverDlg.resx">
       <SubType>Designer</SubType>
       <DependentUpon>DriverDlg.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,18 +281,18 @@
       <SubType>Designer</SubType>
       <DependentUpon>CodeGenerationDlg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EntitiesDlg.resx">
+    <EmbeddedResource Include="Forms\EntitiesDlg.resx">
       <SubType>Designer</SubType>
       <DependentUpon>EntitiesDlg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GenerationDlg.resx">
+    <EmbeddedResource Include="Forms\GenerationDlg.resx">
       <SubType>Designer</SubType>
       <DependentUpon>GenerationDlg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginWindowDlg.resx">
+    <EmbeddedResource Include="Forms\LoginWindowDlg.resx">
       <DependentUpon>LoginWindowDlg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModuleDlg.resx">
+    <EmbeddedResource Include="Forms\ModuleDlg.resx">
       <DependentUpon>ModuleDlg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -314,15 +300,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RefreshProjectDlg.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>RefreshProjectDlg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EasyGeneratorStudio.resx">
+    <EmbeddedResource Include="Forms\EasyGeneratorStudio.resx">
       <SubType>Designer</SubType>
       <DependentUpon>EasyGeneratorStudio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Splash.resx">
+    <EmbeddedResource Include="Forms\Splash.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Splash.cs</DependentUpon>
     </EmbeddedResource>
@@ -331,10 +313,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="WindowDlg.resx">
+    <EmbeddedResource Include="Forms\WindowDlg.resx">
       <DependentUpon>WindowDlg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TableDlg.resx">
+    <EmbeddedResource Include="Forms\TableDlg.resx">
       <DependentUpon>TableDlg.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
@@ -425,7 +407,8 @@
     <None Include="Resources\back-alt.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Application.ico" />
+    <Content Include="DLL\RazorEngine.dll" />
+    <Content Include="DLL\System.Web.Razor.dll" />
     <Content Include="Readme.txt" />
     <None Include="Resources\GotoShortcutsHS1.png" />
     <None Include="Resources\AddTableHS1.png" />
@@ -677,12 +660,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\EditorWrapper\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core\RazorEngine\RazorEngine.csproj">
-      <Project>{64128C85-B9AF-4B4C-BE83-04983EF7F8C9}</Project>
-      <Name>RazorEngine</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

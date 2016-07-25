@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     [Serializable()]
-    public class DBPasswordField : UIColumnInfo, ICloneable
+    public class DBPasswordField : GUIColumnInfo, ICloneable
     {
         public DBPasswordField(ContextObject owner)
             : base(owner)
@@ -17,7 +17,7 @@ namespace EasyGenerator.Studio.Model.Ui
             return this.Clone();
         }
 
-        public object Clone()
+        public new object Clone()
         {
             return this.MemberwiseClone();
         }

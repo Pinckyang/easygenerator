@@ -1,0 +1,16 @@
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.AboutDlg.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.BuildDomainDlg.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.DriverDlg.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.Engine.CodeGenerationDlg.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.EntitiesDlg.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.GenerationDlg.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.LoginWindowDlg.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.ModuleDlg.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.Properties.Resources.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.RefreshProjectDlg.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.EasyGeneratorStudio.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.Splash.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.WindowDlg.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.TableDlg.resources
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.csproj.GenerateResource.Cache
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.pdb

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     [Serializable()]
-    public class DBCheckBoxField : UIColumnInfo, ICloneable
+    public class DBCheckBoxField : GUIColumnInfo, ICloneable
     {
         public DBCheckBoxField(ContextObject owner)
             : base(owner)
@@ -18,7 +18,7 @@ namespace EasyGenerator.Studio.Model.Ui
             return this.Clone();
         }
 
-        public object Clone()
+        public new object Clone()
         {
             return this.MemberwiseClone();
         }

@@ -7,10 +7,10 @@ using System.ComponentModel;
 using System.Drawing.Design;
 using EasyGenerator.Studio.PropertyTools;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     [Serializable()]
-    public class DBComboTreeListField : UIColumnInfo, ICloneable
+    public class DBComboTreeListField : GUIColumnInfo, ICloneable
     {
         private string lookupTable;
         private string lookupKeyField;
@@ -84,7 +84,7 @@ namespace EasyGenerator.Studio.Model.Ui
             return this.Clone();
         }
 
-        public object Clone()
+        public new object Clone()
         {
             return this.MemberwiseClone();
         }

@@ -92,7 +92,7 @@ namespace EasyGenerator.Studio.Engine
             this.lvResume.TabIndex = 0;
             this.lvResume.UseCompatibleStateImageBehavior = false;
             this.lvResume.View = System.Windows.Forms.View.Details;
-            this.lvResume.DoubleClick += new System.EventHandler(this.uiLiResume_DoubleClick);
+           // this.lvResume.DoubleClick += new System.EventHandler(this.UILiResume_DoubleClick);
             // 
             // columnHeader3
             // 

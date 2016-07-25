@@ -6,8 +6,8 @@ using System.Windows.Forms.Design;
 using System.ComponentModel;
 using System.Windows.Forms;
 using EasyGenerator.Studio.Model;
-using EasyGenerator.Studio.Model.Ui;
-using EasyGenerator.Studio.Model.Db;
+using EasyGenerator.Studio.Model.UI;
+using EasyGenerator.Studio.Model.DB;
 
 namespace EasyGenerator.Studio.PropertyTools
 {

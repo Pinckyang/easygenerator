@@ -1,0 +1,3 @@
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\bin\Debug\EasyGenerator.Studio.exe.config
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.exe
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.pdb

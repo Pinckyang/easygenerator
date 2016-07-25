@@ -11,8 +11,8 @@ using RazorEngine;
 using RazorEngine.Templating;
 using System.CodeDom.Compiler;
 using EasyGenerator.Studio.Utils;
-using EasyGenerator.Studio.Model.Db;
-using EasyGenerator.Studio.Model.Ui;
+using EasyGenerator.Studio.Model.DB;
+using EasyGenerator.Studio.Model.UI;
 
 namespace EasyGenerator.Studio.Engine
 {
@@ -152,7 +152,7 @@ namespace EasyGenerator.Studio.Engine
 
                             if (module != null)
                             {
-                                foreach (Window window in module.Windows)
+                                foreach (GUIWindow window in module.Windows)
                                 {
                                     GenerateChildTempates(folder, "\\[WINDOWS\\]", window.Name, tempCharset, tempNative);
                                 }
@@ -163,7 +163,7 @@ namespace EasyGenerator.Studio.Engine
                         {
                             foreach (var module in project.Ui.SystemModule.Modules)
                             {
-                                foreach (Window window in module.Windows)
+                                foreach (GUIWindow window in module.Windows)
                                 {
                                     GenerateChildTempates(folder, "\\[WINDOWS\\]", window.Name, tempCharset, tempNative);
                                 }
@@ -172,7 +172,7 @@ namespace EasyGenerator.Studio.Engine
                     }
                     else if (matchFolder.Value.ToUpper() == "[DIALOGS]")
                     {
-                        foreach (Dialog dialog in project.Ui.CommonModule.Dialogs)
+                        foreach (GUIDialog dialog in project.Ui.CommonModule.Dialogs)
                         {
                             GenerateChildTempates(folder, "\\[DIALOGS\\]", dialog.Name, tempCharset, tempNative);
                         }
@@ -355,7 +355,7 @@ namespace EasyGenerator.Studio.Engine
 
                             if (module != null)
                             {
-                                foreach (Window window in module.Windows)
+                                foreach (GUIWindow window in module.Windows)
                                 {
                                     OutputFile outputFile = new PageModel();
                                     outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[WINDOWS\\]", window.Name, RegexOptions.IgnoreCase));
@@ -374,7 +374,7 @@ namespace EasyGenerator.Studio.Engine
                         {
                             foreach (var module in pro.Ui.SystemModule.Modules)
                             {
-                                foreach (Window window in module.Windows)
+                                foreach (GUIWindow window in module.Windows)
                                 {
                                     OutputFile outputFile = new PageModel();
                                     outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[WINDOWS\\]", window.Name, RegexOptions.IgnoreCase));
@@ -391,7 +391,7 @@ namespace EasyGenerator.Studio.Engine
                     }
                     else if (match.Value.ToUpper() == "[DIALOGS]")
                     {
-                        foreach (Dialog dialog in pro.Ui.CommonModule.Dialogs)
+                        foreach (GUIDialog dialog in pro.Ui.CommonModule.Dialogs)
                         {
                             OutputFile outputFile = new PageModel();
                             outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[DIALOGS\\]", dialog.Name, RegexOptions.IgnoreCase));
@@ -475,7 +475,7 @@ namespace EasyGenerator.Studio.Engine
                     }
                     else if (match.Value.ToUpper() == "[WINDOW]")
                     {
-                        Window window = null;
+                        GUIWindow window = null;
                         foreach (var module in pro.Ui.SystemModule.Modules)
                         {
                             window = module.Windows.Find(e=>e.Name==matchValue);
@@ -498,7 +498,7 @@ namespace EasyGenerator.Studio.Engine
                     else if (match.Value.ToUpper() == "[DIALOG]")
                     {
 
-                        Dialog dialog = pro.Ui.CommonModule.Dialogs.Find(e=>e.Name==matchValue);
+                        GUIDialog dialog = pro.Ui.CommonModule.Dialogs.Find(e=>e.Name==matchValue);
 
                         OutputFile outputFile = new PageModel();
                         outputFile.FileName = NomenclatureHelper.ConvertToPascalCase(Regex.Replace(fileName, "\\[DIALOG\\]", matchValue, RegexOptions.IgnoreCase));

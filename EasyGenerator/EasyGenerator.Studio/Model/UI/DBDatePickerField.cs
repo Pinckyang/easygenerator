@@ -6,10 +6,10 @@ using EasyGenerator.Studio.PropertyTools;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     [Serializable()]
-    public class DBDatePickerField : UIColumnInfo, ICloneable
+    public class DBDatePickerField : GUIColumnInfo, ICloneable
     {
         private SearchMode searchMode = SearchMode.Single;
         private SearchModeControl searchModeControl = null;
@@ -95,7 +95,7 @@ namespace EasyGenerator.Studio.Model.Ui
             return this.Clone();
         }
 
-        public object Clone()
+        public new object Clone()
         {
             return this.MemberwiseClone();
         }

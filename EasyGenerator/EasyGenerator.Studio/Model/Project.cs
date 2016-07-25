@@ -2,8 +2,8 @@
 using System.ComponentModel;
 using EasyGenerator.Studio.PropertyTools;
 using System.Xml.Serialization;
-using EasyGenerator.Studio.Model.Db;
-using EasyGenerator.Studio.Model.Ui;
+using EasyGenerator.Studio.Model.DB;
+using EasyGenerator.Studio.Model.UI;
 
 namespace EasyGenerator.Studio.Model
 {
@@ -27,7 +27,7 @@ namespace EasyGenerator.Studio.Model
             :base(owner)
         {
              Database=new Database(this);
-             Ui=new UI(this);
+             Ui=new GUI(this);
         }
 
         [CategoryAttribute("设计"), DefaultValueAttribute("")]
@@ -69,7 +69,7 @@ namespace EasyGenerator.Studio.Model
 
         [XmlElement("Ui")]
         [BrowsableAttribute(false)]
-        public UI Ui
+        public GUI Ui
         {
             get;
             set;

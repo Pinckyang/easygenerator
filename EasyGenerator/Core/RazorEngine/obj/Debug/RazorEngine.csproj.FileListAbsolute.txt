@@ -1,0 +1,1 @@
+D:\Workspace\git\easygenerator\EasyGenerator\Core\RazorEngine\obj\Debug\RazorEngine.csprojResolveAssemblyReference.cache

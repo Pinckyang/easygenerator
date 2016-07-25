@@ -5,7 +5,7 @@ using System.ComponentModel;
 using EasyGenerator.Studio.PropertyTools;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     public class SearchModeControl:ContextObject
     {

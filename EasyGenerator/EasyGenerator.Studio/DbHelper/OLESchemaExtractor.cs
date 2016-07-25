@@ -5,7 +5,7 @@ using EasyGenerator.Studio.DbHelper.Info;
 using System.Data;
 using System.Collections;
 using EasyGenerator.Studio.Model;
-using EasyGenerator.Studio.Model.Db;
+using EasyGenerator.Studio.Model.DB;
 
 namespace EasyGenerator.Studio.DbHelper
 {

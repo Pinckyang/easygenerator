@@ -26,7 +26,7 @@ namespace EasyGenerator.Studio.Utils
         {
 
         }
-        public void Add(T value)
+        public new void Add(T value)
         {
             value.Owner = Owner;
             base.Add(value);

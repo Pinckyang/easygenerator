@@ -5,10 +5,10 @@ using System.Text;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     [Serializable()]
-    public class DBFileUploadField : UIColumnInfo, ICloneable
+    public class DBFileUploadField : GUIColumnInfo, ICloneable
     {
         public DBFileUploadField(ContextObject owner)
             : base(owner)
@@ -49,7 +49,7 @@ namespace EasyGenerator.Studio.Model.Ui
             return this.Clone();
         }
 
-        public object Clone()
+        public new object Clone()
         {
             return this.MemberwiseClone();
         }

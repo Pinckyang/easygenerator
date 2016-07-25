@@ -5,10 +5,10 @@ using System.Text;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     [Serializable()]
-    public class DBPictureBoxField : UIColumnInfo, ICloneable
+    public class DBPictureBoxField : GUIColumnInfo, ICloneable
     {
         public DBPictureBoxField(ContextObject owner)
             : base(owner)
@@ -47,7 +47,7 @@ namespace EasyGenerator.Studio.Model.Ui
             return this.Clone();
         }
 
-        public object Clone()
+        public new object Clone()
         {
             return this.MemberwiseClone();
         }

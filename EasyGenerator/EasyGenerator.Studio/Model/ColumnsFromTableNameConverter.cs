@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 using EasyGenerator.Studio.Model;
-using EasyGenerator.Studio.Model.Db;
-using EasyGenerator.Studio.Model.Ui;
+using EasyGenerator.Studio.Model.DB;
+using EasyGenerator.Studio.Model.UI;
 
 namespace EasyGenerator.Studio.PropertyTools
 {
@@ -16,7 +16,7 @@ namespace EasyGenerator.Studio.PropertyTools
         }
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            LoginModule loginModule = context.Instance as LoginModule;
+            GUILoginModule loginModule = context.Instance as GUILoginModule;
             string tableName=loginModule.TableName;
 
             ContextObject rootContextObject = loginModule.GetRoot();

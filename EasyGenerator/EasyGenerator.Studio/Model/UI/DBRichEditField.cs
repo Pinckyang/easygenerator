@@ -5,10 +5,10 @@ using System.Text;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     [Serializable()]
-    public class DBRichEditField : UIColumnInfo, ICloneable
+    public class DBRichEditField : GUIColumnInfo, ICloneable
     {
         public DBRichEditField(ContextObject owner)
             : base(owner)
@@ -49,7 +49,7 @@ namespace EasyGenerator.Studio.Model.Ui
             return this.Clone();
         }
 
-        public object Clone()
+        public new object Clone()
         {
             return this.MemberwiseClone();
         }

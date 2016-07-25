@@ -6,7 +6,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using EasyGenerator.Studio.PropertyTools;
 
-namespace EasyGenerator.Studio.Model.Db
+namespace EasyGenerator.Studio.Model.DB
 {
     [Serializable()]
     [DbNodeAttribute(ImageIndex = 3)]

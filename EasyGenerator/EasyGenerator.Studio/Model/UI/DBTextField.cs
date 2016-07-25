@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     [Serializable()]
-    public class DBTextField : UIColumnInfo, ICloneable
+    public class DBTextField : GUIColumnInfo, ICloneable
     {
         public DBTextField(ContextObject owner)
             : base(owner)

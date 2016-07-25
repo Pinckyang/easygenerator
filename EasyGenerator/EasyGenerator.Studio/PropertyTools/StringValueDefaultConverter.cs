@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 using EasyGenerator.Studio.Model;
-using EasyGenerator.Studio.Model.Ui;
-using EasyGenerator.Studio.Model.Db;
+using EasyGenerator.Studio.Model.UI;
+using EasyGenerator.Studio.Model.DB;
 
 namespace EasyGenerator.Studio.PropertyTools
 {
@@ -16,7 +16,7 @@ namespace EasyGenerator.Studio.PropertyTools
         }
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            UIColumnInfo control = context.Instance as UIColumnInfo;
+            GUIColumnInfo control = context.Instance as GUIColumnInfo;
             ColumnInfo column = control.ColumnInfo as ColumnInfo;
             List<string> list = new List<string>();
             list.Add("DateTime.Now");

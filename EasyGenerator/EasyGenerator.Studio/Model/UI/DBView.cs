@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using EasyGenerator.Studio.Model.Ui;
+using EasyGenerator.Studio.Model.UI;
 using System.ComponentModel;
 using System.Xml.Serialization;
+using EasyGenerator.Studio.Model.DB;
 
 namespace EasyGenerator.Studio.Model.UI
 {
  [Serializable()]
-    public class DBView:UIEntityInfo,ICloneable
+    public class DBView:GUIEntityInfo,ICloneable
     {
         private string name;
         private string caption;
@@ -37,7 +38,7 @@ namespace EasyGenerator.Studio.Model.UI
 
         [CategoryAttribute("显示"), DefaultValueAttribute("")]
         [XmlAttribute("Caption")]
-        public string Caption
+        public new string Caption
         {
             get { return caption; }
             set 

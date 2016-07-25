@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace EasyGenerator.Studio.Model.Ui
+namespace EasyGenerator.Studio.Model.UI
 {
     [Serializable()]
-    public class DBRadioGroupField : UIColumnInfo, ICloneable
+    public class DBRadioGroupField : GUIColumnInfo, ICloneable
     {
         private List<OptionItem> radios = new List<OptionItem>();
 
@@ -28,7 +28,7 @@ namespace EasyGenerator.Studio.Model.Ui
             return this.Clone();
         }
 
-        public object Clone()
+        public new object Clone()
         {
             return this.MemberwiseClone();
         }
