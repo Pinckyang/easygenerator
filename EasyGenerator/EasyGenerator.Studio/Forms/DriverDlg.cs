@@ -14,16 +14,6 @@ namespace EasyGenerator.Studio
 {
     public partial class DriverDlg : Form
     {
-        //Driver selectedDriver;
-       // Project project;
-
-        //public Project Project
-        //{
-        //    get { return project; }
-        //    set { project = caption; }
-        //}
-        ///Domain domain = new Domain(
-        ///
         private string connection;
 
         public string Connection
@@ -44,7 +34,6 @@ namespace EasyGenerator.Studio
             {
                 try
                 {
-                   // this.selectedDriver = DriverFactory.GetDriver(this.uiLocation.Text,this.project);
                     this.Connection = this.uiLocation.Text;
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -60,11 +49,6 @@ namespace EasyGenerator.Studio
         {
             return true;
         }
-
-        //public Driver SelectedDriver
-        //{
-        //    get { return selectedDriver; }
-        //}
 
         public string DomainName
         {

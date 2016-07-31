@@ -38,18 +38,18 @@ namespace EasyGenerator.Studio.Model.DB
             set;
         }
 
-        [CategoryAttribute("设计"), DefaultValueAttribute(DatabaseType.SQLServer2000)]
-        [DbNodeInvisibleAttribute()]
-        [XmlAttribute("DatabaseType")]
-        public DatabaseType DatabaseType
-        {
-            get { return databaseType; }
-            set 
-            { 
-                databaseType = value;
-                NotifyPropertyChanged(this, "DatabaseType");
-            }
-        }
+        //[CategoryAttribute("设计"), DefaultValueAttribute(DatabaseType.SQLServer2000)]
+        //[DbNodeInvisibleAttribute()]
+        //[XmlAttribute("DatabaseType")]
+        //public DatabaseType DatabaseType
+        //{
+        //    get { return databaseType; }
+        //    set 
+        //    { 
+        //        databaseType = value;
+        //        NotifyPropertyChanged(this, "DatabaseType");
+        //    }
+        //}
 
         [BrowsableAttribute(false)]
         [DbNodeAttribute(Text = "Tables", ImageIndex = 1)]

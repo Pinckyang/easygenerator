@@ -8,28 +8,23 @@ namespace EasyGenerator.Studio.DbHelper
 {
     internal sealed class DriverFactory
     {
-        internal static Driver GetDriver(string location, Project project)
+        internal static Driver GetDriver(string location)
         {
-            try
-            {
-                ConnectionInfo connInfo = new ConnectionInfo(location);
-                return GetDriver(connInfo, project);
-            }
-            catch 
-            {
-                throw;
-            }
+            ConnectionInfo connInfo = new ConnectionInfo(location);
+            return GetDriver(connInfo);
         }
 
-        internal static Driver GetDriver(ConnectionInfo connInfo,Project project)
+        internal static Driver GetDriver(ConnectionInfo connInfo)
         {
             switch (connInfo.Provider)
             {
                 case "mssql":
                 case "mssql2005":
-                    return new MSSQLDriver(connInfo, project);
+                    return new MSSQLDriver(connInfo);
                 case "mssql2008":
-                    return new MSSQLDriver(connInfo, project);
+                    return new MSSQLDriver(connInfo);
+                case "mssql2012":
+                    return new MSSQLDriver(connInfo);
                 //case "msaccess":
                 //    return new AccessDriver(connInfo);
                 default:

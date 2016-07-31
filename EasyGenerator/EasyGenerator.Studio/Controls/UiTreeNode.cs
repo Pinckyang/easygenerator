@@ -79,13 +79,14 @@ namespace EasyGenerator.Studio.Controls
                 this.SelectedImageIndex = attribute.ImageIndex;
             }
 
-            if (contextObject is ReferencedInfo)
+            if (contextObject is ForeignKeyConstraint)
             {
-                ReferencedInfo referenceInfo = (ReferencedInfo)contextObject;
-                if (referenceInfo.TableName == referenceInfo.ReferencedTableName)
-                {
-                    return;
-                }
+                ForeignKeyConstraint referenceInfo = (ForeignKeyConstraint)contextObject;
+                //TODO:
+                //if (referenceInfo.RelatedTableName == referenceInfo.ReferencedTableName)
+                //{
+                //    return;
+                //}
 
             }
 

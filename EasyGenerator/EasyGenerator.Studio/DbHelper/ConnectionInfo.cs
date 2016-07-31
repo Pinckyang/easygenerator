@@ -9,8 +9,6 @@ namespace EasyGenerator.Studio.DbHelper
     [Serializable()]
     public class ConnectionInfo : ISerializable
     {
-        //IList<Table> tables;
-
         private string location;
         private string provider;
         private string host;
@@ -21,7 +19,6 @@ namespace EasyGenerator.Studio.DbHelper
 
         internal ConnectionInfo()
         {
-           // this.tables = new ContextObjectList<Table>();
         }
 
         public ConnectionInfo(string location)
@@ -32,9 +29,7 @@ namespace EasyGenerator.Studio.DbHelper
         }
 
         public ConnectionInfo(SerializationInfo Info, StreamingContext ctxt)
-           // : base(Info, ctxt)
         {
-           // this.tables = (IList<Table>)Info.GetValue("tables", typeof(IList<Table>));
             this.location = (string)Info.GetValue("location", typeof(string));
             this.provider = (string)Info.GetValue("provider", typeof(string));
             this.host = (string)Info.GetValue("host", typeof(string));
@@ -48,8 +43,6 @@ namespace EasyGenerator.Studio.DbHelper
 
         void ISerializable.GetObjectData(SerializationInfo Info, StreamingContext ctxt)
         {
-           // base.GetObjectData(Info, ctxt);
-            //Info.AddValue("tables", this.tables);
             Info.AddValue("location", this.location);
             Info.AddValue("provider", this.provider);
             Info.AddValue("host", this.host);
@@ -63,11 +56,6 @@ namespace EasyGenerator.Studio.DbHelper
 
         #region Properties
 
-
-        /// <summary>
-        /// get/set the location of connection
-        /// Expected form provider/[[user[:password]@]host[:port]]/database
-        /// </summary>
         public string Location
         {
             get { return location; }
@@ -121,10 +109,7 @@ namespace EasyGenerator.Studio.DbHelper
 
         #endregion
 
-        #region Public Methods
 
-
-        #endregion
 
         #region Utils
 

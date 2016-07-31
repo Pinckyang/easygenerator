@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -153,7 +152,7 @@ namespace EasyGenerator.Studio
                 return;
             }
 
-            if (node.ContextObject  is ReferenceInfo)
+            if (node.ContextObject  is ForeignKeyConstraint)
             {
                 tbnModuleAdd.Enabled = false;
                 tbnModuleDelete.Enabled = false;
@@ -236,8 +235,100 @@ namespace EasyGenerator.Studio
 
             if (dlg.ShowDialog(this) == DialogResult.OK)
             {
-                Driver driver = DriverFactory.GetDriver(dlg.Connection, this.CurrentProject);
-                OLESchemaExtractor extractor = new MSSQL2000SchemaExtractor(driver, this.CurrentProject);
+                Driver driver = DriverFactory.GetDriver(dlg.Connection);
+
+                this.CurrentProject.Database.Connection.DataSource=driver.ConnectionInfo.Database;
+                this.CurrentProject.Database.Connection.InitialCatalog=driver.ConnectionInfo.Database;
+                this.CurrentProject.Database.Connection.UserID=driver.ConnectionInfo.User;
+                this.CurrentProject.Database.Connection.Password=driver.ConnectionInfo.Password;
+                this.CurrentProject.Caption = driver.ConnectionInfo.Database;
+                this.CurrentProject.Name = driver.ConnectionInfo.Database;
+
+                ISchemaExtractor extractor = driver.CreateExtractor();//new MSSQL2000SchemaExtractor(driver, this.CurrentProject);
+                foreach(KeyValuePair<string,ISchemaExtractor.EntityModel> table in extractor.GetAllTables())
+                {
+                    TableInfo tableModel = new TableInfo(this.CurrentProject.Database);
+                    tableModel.Caption = table.Value.TableName.Replace("_"," ");
+                    tableModel.Name = table.Value.TableName;
+                    tableModel.Schema = table.Value.TableSchema;
+                    this.CurrentProject.Database.Tables.Add(tableModel);
+                }
+
+                foreach (KeyValuePair<string, ISchemaExtractor.EntityModel> view in extractor.GetAllViews())
+                {
+                    ViewInfo tableModel = new ViewInfo(this.CurrentProject.Database);
+                    tableModel.Caption = view.Value.TableName.Replace("_", " ");
+                    tableModel.Name = view.Value.TableName;
+                    tableModel.Schema = view.Value.TableSchema;
+                    this.CurrentProject.Database.Views.Add(tableModel);
+                }
+
+                foreach (KeyValuePair<string, ISchemaExtractor.ColumnModel> col in extractor.GetColumns())
+                {
+                    EntityInfo entity= this.CurrentProject.Database.Tables.Find(e => e.Name == col.Value.TableName);
+                    if (entity == null)
+                    {
+                        entity = this.CurrentProject.Database.Views.Find(e => e.Name == col.Value.TableName);
+                    }
+
+                    if (entity == null)
+                    {
+                        continue;
+                    }
+
+                    ColumnInfo column = new ColumnInfo(entity);
+                    column.Caption = col.Value.ColumnName.Replace("_", " ");
+                    column.IsForeignKey=false;
+                    column.IsIdentity = col.Value.IsIdentity;
+                    column.IsPrimaryKey=false;
+                    column.IsRequire = !col.Value.Nullable;
+                    column.Length = col.Value.Length;
+                    column.Name = col.Value.ColumnName;
+                    column.Precision = col.Value.Precision;
+                    //column.Referenced = col.Value.r;
+                    //column.Referencing;
+                    column.Scale = col.Value.Scale;
+                    column.SqlType = col.Value.DataType;
+                    entity.Columns.Add(column);
+                }
+
+                foreach (KeyValuePair<string, ISchemaExtractor.PrimaryKeyModel> col in extractor.GetAllPrimaryKeys())
+                {
+                    EntityInfo entity = this.CurrentProject.Database.Tables.Find(e => e.Name == col.Value.TableName);
+                    if (entity == null)
+                    {
+                        continue;
+                    }
+                    ColumnInfo columnInfo = entity.Columns.Find(e => e.Name == col.Value.ColumnName);
+                    if (columnInfo == null)
+                    {
+                        continue;
+                    }
+                    columnInfo.IsPrimaryKey = true;
+                }
+
+                foreach (KeyValuePair<string, ISchemaExtractor.ForgeinKeyModel> col in extractor.GetAllForeignKeys())
+                {
+                    EntityInfo entity = this.CurrentProject.Database.Tables.Find(e => e.Name == col.Value.TableName);
+                    if (entity == null)
+                    {
+                        continue;
+                    }
+                    ColumnInfo columnInfo = entity.Columns.Find(e => e.Name == col.Value.ColumnName);
+                    if (columnInfo == null)
+                    {
+                        continue;
+                    }
+
+                    ForeignKeyConstraint constraint=new ForeignKeyConstraint(columnInfo);
+                    constraint.Name=col.Value.ConstraintName;
+                    constraint.RelatedKey=col.Value.ReferencingColumnName;
+                    constraint.RelatedTableName=col.Value.ReferecingTableName;
+                    columnInfo.IsForeignKey = true;
+                    columnInfo.ForeignKeyConstraint = constraint;
+                }
+
+
 
                 DisplayProperties(null);
 
@@ -326,18 +417,13 @@ namespace EasyGenerator.Studio
         /// <param name="node"></param>
         internal void DisplayProperties(DbTreeNode node)
         {
-            if (node == null)
+            if(node==null)
             {
                 this.SetSelectedPropertyObject(null);
-                //this.uiTxtCaption.Text = string.Empty;
-            }
-            else
-            {
-                //this.uiPGNamedObject.SelectedObject = node.PropertyWrapper;
-                //this.uiPGNamedObject.Refresh();
-                //this.uiTxtCaption.Text = node.Text;
+                return;
             }
 
+            this.SetSelectedPropertyObject(node);
         }
 
 

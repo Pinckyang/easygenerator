@@ -31,13 +31,13 @@ namespace EasyGenerator.Studio.PropertyTools
             list.Add("DateTime.Now.Date.AddMinutes(-1)");
             list.Add("{IP}");
 
-            if (!column.IsPrimaryKey && column.Referenced.Count>0)
-            {
-                foreach (ReferencedInfo kv in column.Referenced)
-                {
-                    list.Add("$"+kv.ReferencedTable.Name+"."+kv.ReferencedKey);
-                }
-            }            
+            //if (!column.IsPrimaryKey && column.Referenced.Count>0)
+            //{
+            //    foreach (ForeignKeyConstraint kv in column.Referenced)
+            //    {
+            //        list.Add("$"+kv.ReferencedTable.Name+"."+kv.ReferencedKey);
+            //    }
+            //}            
             return new StandardValuesCollection(list.ToArray());
         }
 

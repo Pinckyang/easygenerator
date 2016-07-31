@@ -16,6 +16,9 @@ namespace EasyGenerator.Studio.Model.DB
         [XmlEnum(Name = "SQLServer2008")]
         SQLServer2008,
 
+        [XmlEnum(Name = "SQLServer2012")]
+        SQLServer2012,
+
         [XmlEnum(Name = "MySQL")]
         MySQL,
 

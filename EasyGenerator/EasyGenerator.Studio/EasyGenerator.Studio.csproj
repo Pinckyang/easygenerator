@@ -118,8 +118,8 @@
     <Compile Include="DbHelper\Info\ConstraintInfo.cs" />
     <Compile Include="DbHelper\Info\KeyInfo.cs" />
     <Compile Include="DbHelper\MSSQL\MSSQLDriver.cs" />
-    <Compile Include="DbHelper\MSSQL\MSSQL2000SchemaExtractor.cs" />
-    <Compile Include="DbHelper\OLESchemaExtractor.cs" />
+    <Compile Include="DbHelper\MSSQL\MSSQLSchemaExtractor.cs" />
+    <Compile Include="DbHelper\ISchemaExtractor.cs" />
     <Compile Include="Forms\DriverDlg.cs">
       <SubType>Form</SubType>
     </Compile>

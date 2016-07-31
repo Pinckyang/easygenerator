@@ -20,10 +20,13 @@ namespace EasyGenerator.Studio.Model.DB
     [XmlInclude(typeof(PrimaryColumnInfo))]
     public class ColumnInfo : ContextObject,ICloneable
     {
+        private bool isPrimaryKey = false;
+
         public ColumnInfo(ContextObject owner)
             :base(owner)
         {
-            Referenced = new ContextObjectList<ReferencedInfo>(this);
+           // Referenced = new ContextObjectList<ForeignKeyConstraint>(this);
+
         }
 
         [CategoryAttribute("数据库")]
@@ -53,8 +56,20 @@ namespace EasyGenerator.Studio.Model.DB
         [XmlAttribute("IsPrimaryKey")]
         public bool IsPrimaryKey
         {
-            get;
-            set;
+            get
+            {
+                return isPrimaryKey;
+            }
+            set
+            {
+                isPrimaryKey = value;
+                if(value==true)
+                {
+                    DbNodeAttribute attribute = (DbNodeAttribute)this.GetType().GetCustomAttributes(typeof(DbNodeAttribute), false)[0];
+                    attribute.GetType().GetField("ImageIndex", BindingFlags.Public | BindingFlags.Instance).SetValue(attribute, 5);
+                   // attribute.ImageIndex = 5;
+                }
+            }
         }
 
         [CategoryAttribute("数据库")]
@@ -128,30 +143,30 @@ namespace EasyGenerator.Studio.Model.DB
         }
 
         /// <summary>
-        /// 外键关不错
+        /// 外键关联表
         /// </summary>
         [CategoryAttribute("数据库")]
         [ReadOnly(true)]
         [BrowsableAttribute(false)]
-        [XmlElement("Referencing")]
-        public ReferencingInfo Referencing
+        [XmlElement("ForeignKeyConstraint")]
+        public ForeignKeyConstraint ForeignKeyConstraint
         {
             get;
             set;
         }
 
-        /// <summary>
-        /// 明细表关联
-        /// </summary>
-        [CategoryAttribute("数据库")]
-        [ReadOnly(true)]
-        [BrowsableAttribute(false)]
-        [XmlElement("Referenced")]
-        public List<ReferencedInfo> Referenced
-        {
-            get;
-            set;
-        }
+        ///// <summary>
+        ///// 明细表关联
+        ///// </summary>
+        //[CategoryAttribute("数据库")]
+        //[ReadOnly(true)]
+        //[BrowsableAttribute(false)]
+        //[XmlElement("Referenced")]
+        //public List<ForeignKeyConstraint> Referenced
+        //{
+        //    get;
+        //    set;
+        //}
 
         public override string ToString()
         {

@@ -20,7 +20,8 @@ namespace EasyGenerator.Studio.Model
         public Project()
             :base(null)
         {
-
+            Database = new Database(this);
+            Ui = new GUI(this);
         }
 
         public Project(ContextObject owner)

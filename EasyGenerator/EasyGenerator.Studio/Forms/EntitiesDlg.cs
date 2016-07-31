@@ -43,8 +43,8 @@ namespace EasyGenerator.Studio
         {
             try
             {
-                string[] allTables = this.driver.Extractor.GetAllTables();
-                string[] allViews = this.driver.Extractor.GetAllViews();
+                ICollection<string> allTables = this.driver.CreateExtractor().GetAllTables().Keys;
+                ICollection<string> allViews = this.driver.CreateExtractor().GetAllViews().Keys;
 
                 foreach (string table in allTables)
                 {

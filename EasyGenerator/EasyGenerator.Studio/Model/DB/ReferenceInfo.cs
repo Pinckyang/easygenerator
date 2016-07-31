@@ -14,12 +14,12 @@ namespace EasyGenerator.Studio.Model.DB
 {
     [Serializable()]
     [DefaultPropertyAttribute("Name")]
-    [XmlInclude(typeof(ReferencedInfo))]
-    [XmlInclude(typeof(ReferencingInfo))]
-    public abstract class ReferenceInfo : ContextObject, ICloneable
+    //[XmlInclude(typeof(ForeignKeyConstraint))]
+    //[XmlInclude(typeof(ReferencingInfo))]
+    public class ForeignKeyConstraint : ContextObject, ICloneable
     {
 
-        public ReferenceInfo(ContextObject owner)
+        public ForeignKeyConstraint(ContextObject owner)
             :base(owner)
         {
         }
@@ -39,8 +39,8 @@ namespace EasyGenerator.Studio.Model.DB
         [BrowsableAttribute(true)]
         [ReadOnly(true)]
         [DbNodeInvisibleAttribute()]
-        [XmlAttribute("TableName")]
-        public string TableName
+        [XmlAttribute("RelatedTableName")]
+        public string RelatedTableName
         {
             get;
             set;
@@ -50,16 +50,21 @@ namespace EasyGenerator.Studio.Model.DB
         [BrowsableAttribute(true)]
         [ReadOnly(true)]
         [DbNodeInvisibleAttribute()]
-        [XmlAttribute("ColumnName")]
-        public string ColumnName
+        [XmlAttribute("RelatedKey")]
+        public string RelatedKey
         {
             get;
             set;
         }
-        public abstract object Clone();
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
     }
 
-    /// <summary>
+    /*/// <summary>
     /// 外键关联referencing table
     /// </summary>
     [Serializable()]
@@ -67,7 +72,7 @@ namespace EasyGenerator.Studio.Model.DB
     [DbNodeAttribute(ImageIndex = 7)]
     //[UiNodeAttribute(ImageIndex = 9)]
     [XmlType(TypeName = "ReferencingInfo")]
-    public class ReferencingInfo : ReferenceInfo, ICloneable
+    public class ReferencingInfo : Constraint, ICloneable
     {
         public ReferencingInfo(ContextObject owner)
             : base(owner)
@@ -122,8 +127,8 @@ namespace EasyGenerator.Studio.Model.DB
         {
             return this.MemberwiseClone();
         }
-    }
-
+    }*/
+    /*
     /// <summary>
     ///主键被关联 referenced table
     /// </summary>
@@ -131,14 +136,15 @@ namespace EasyGenerator.Studio.Model.DB
     [DefaultPropertyAttribute("Name")]
     [DbNodeAttribute(ImageIndex = 6)]
    // [UiNodeAttribute(ImageIndex = 8)]
-    [XmlType(TypeName = "ReferencedInfo")]
-    public class ReferencedInfo : ReferenceInfo, ICloneable
+    [XmlType(TypeName = "ForeignKeyConstraint")]
+    public class ForeignKeyConstraint : Constraint, ICloneable
     {
-        public ReferencedInfo(ContextObject owner)
+        public ForeignKeyConstraint(ContextObject owner)
             : base(owner)
         {
         }
-        [CategoryAttribute("数据库")]
+
+        /*[CategoryAttribute("数据库")]
         [BrowsableAttribute(false)]
         [ReadOnly(true)]
         [XmlIgnore]
@@ -186,7 +192,7 @@ namespace EasyGenerator.Studio.Model.DB
         {
             return this.MemberwiseClone();
         }
-    }
+    }*/
 
         /// <summary>
     /// 外键关联referencing table
@@ -199,15 +205,15 @@ namespace EasyGenerator.Studio.Model.DB
         public UIReferencingInfo(ContextObject owner)
             : base(owner)
         {
-            ReferencingInfo = new ReferencingInfo(this);
+            //ReferencingInfo = new ReferencingInfo(this);
         }
       
 
-        public ReferencingInfo ReferencingInfo
-        {
-            get;
-            set;
-        }
+        //public ReferencingInfo ReferencingInfo
+        //{
+        //    get;
+        //    set;
+        //}
     }
 
     /// <summary>
@@ -216,7 +222,7 @@ namespace EasyGenerator.Studio.Model.DB
     [Serializable()]
     [UiNodeAttribute(ImageIndex = 8)]
     [XmlType(TypeName = "UIReferencedInfo")]
-    public class UIReferencedInfo : ReferenceInfo, ICloneable
+    public class UIReferencedInfo : ContextObject,ICloneable
     {
         public UIReferencedInfo(ContextObject owner)
             : base(owner)
@@ -251,22 +257,22 @@ namespace EasyGenerator.Studio.Model.DB
         {
             get
             {
-                foreach (ColumnInfo column in ReferencedTable.Columns)
-                {
-                    if (column.IsForeignKey && column.Referenced.Find(e => e.Name == this.Name) != null)
-                    {
-                        return column.Name;
-                    }
-                }
+                //foreach (ColumnInfo column in ReferencedTable.Columns)
+                //{
+                //    if (column.IsForeignKey && column.Referenced.Find(e => e.Name == this.Name) != null)
+                //    {
+                //        return column.Name;
+                //    }
+                //}
                 return string.Empty;
             }
         }
 
         public override string ToString()
         {
-            return string.Format("{0}({1}->[{2}:{3}])", this.Name, "Detail", this.ReferencedTableName, this.ReferencedKey);
+            return string.Empty;// string.Format("{0}({1}->[{2}:{3}])", this.Name, "Detail", this.ReferencedTableName, this.ReferencedKey);
         }
-        public override object Clone()
+        public object Clone()
         {
             return this.MemberwiseClone();
         }

@@ -4,33 +4,26 @@ using System.Text;
 //using EasyGenerator.Model;
 using System.Data.SqlClient;
 using EasyGenerator.Studio.Model;
+using System.Data;
 
 namespace EasyGenerator.Studio.DbHelper.MSSQL
 {
     public class MSSQLDriver: Driver
     {
-        public MSSQLDriver(ConnectionInfo connectionInfo,Project project)
-            : base(connectionInfo,project)
+        public MSSQLDriver(ConnectionInfo connectionInfo)
+            : base(connectionInfo)
         {
 
         }
 
-        /// <summary>
-        /// return the MSSQLExtractor
-        /// </summary>
-        public override OLESchemaExtractor Extractor
+        public override IDbCommand CreateCommand()
         {
-            get
-            {
-                if (extractor == null)
-                {
-                    extractor = new MSSQL2000SchemaExtractor(this,this.Project);
-                }
-                return extractor;
-            }
+            SqlCommand command =  new SqlCommand();
+            command.Connection = (SqlConnection)this.CreateConnection();
+            return command;
         }
 
-        public override System.Data.IDbConnection CreateConnection()
+        public override IDbConnection CreateConnection()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("Data Source={0};Initial Catalog={1};", ConnectionInfo.Host, ConnectionInfo.Database);
@@ -45,14 +38,9 @@ namespace EasyGenerator.Studio.DbHelper.MSSQL
             return new SqlConnection(sb.ToString());
         }
 
-        public override void ConfigureConnection(System.Data.IDbConnection connection)
+        public override ISchemaExtractor CreateExtractor()
         {
-            //throw new Exception("The method or operation is not implemented.");
-        }
-
-        public override void TestConnection(System.Data.IDbConnection connection)
-        {
-           throw new Exception("The method or operation is not implemented.");
+            return new MSSQLSchemaExtractor(this);
         }
     }
 }

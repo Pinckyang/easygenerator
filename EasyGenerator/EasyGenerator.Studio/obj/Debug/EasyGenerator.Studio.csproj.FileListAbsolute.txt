@@ -19,3 +19,4 @@ D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\bin\Debug\Easy
 D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\bin\Debug\EasyGenerator.Studio.pdb
 D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\bin\Debug\RazorEngine.dll
 D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\bin\Debug\System.Web.Razor.dll
+D:\Workspace\git\easygenerator\EasyGenerator\EasyGenerator.Studio\obj\Debug\EasyGenerator.Studio.csprojResolveAssemblyReference.cache
